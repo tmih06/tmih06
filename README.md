@@ -1,8 +1,8 @@
-<h2 align="left">Hi 👋! My name is Minh and I'm a random dev, from VietNam </h2>
+<h2 align="left">Hi 👋! My name is Minh and I'm from VietNam </h2>
 
 ###
 
-<h3 align="left">Im currently learning Algorithm Trading</h3>
+<h3 align="left">I'm currently learning Algorithm Trading</h3>
 
 ###
 
