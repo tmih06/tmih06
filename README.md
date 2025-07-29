@@ -6,6 +6,16 @@
 
 ###
 
+<p align="center"> 
+    <img src="https://github-readme-streak-stats-eta-three.vercel.app?user=xkiian&theme=tokyonight&hide_border=true" alt="GitHub Streak" width="60%">
+</p>
+<p align="center">
+  <img height="25" src="https://api.visitorbadge.io/api/VisitorHit?user=tmih06&countColor=%234a12ba" alt="Profile Views"/>
+  <img height="25" src="https://img.shields.io/github/followers/tmih06?color=4a12ba&style=for-the-badge&logo=github&label=Follow" alt="Followers"/>
+  <img height="25" src="https://img.shields.io/github/stars/tmih06?color=4a12ba&style=for-the-badge&logo=github&label=Stars" alt="Stars"/>
+</p>
+
+
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=tmih06&hide_title=false&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=dracula&locale=en&hide_border=false&order=1" height="150" alt="stats graph"  />
   <img src="https://github-readme-stats.vercel.app/api/top-langs?username=tmih06&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=dracula&hide_border=false&order=2" height="150" alt="languages graph"  />
@@ -66,13 +76,6 @@
 </div>
 
 <img src="https://raw.githubusercontent.com/tmih06/tmih06/output/github-snake-dark.svg" alt="Snake animation" style="pointer-events: none;" />
-
-###
-
-<div align="center">
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=tmih06.tmih06&"  />
-</div>
-
 ###
 
 <table style="border: none;">
