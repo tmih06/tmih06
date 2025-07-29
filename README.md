@@ -75,12 +75,6 @@
   </a>
 </div>
 
-###
-
-<img align="right" height="190" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc293ZHgxZzBwdnN1aXBiYzAzYjR3MXV3aTB3dGllcWM2NzVkYXc2cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErZ8hv5eO92JW/giphy.gif"  />
-
-###
-
 <img src="https://raw.githubusercontent.com/tmih06/tmih06/output/github-snake-dark.svg" alt="Snake animation" />
 
 ###
@@ -91,10 +85,21 @@
 
 ###
 
-<div align="center">
-  <a href="https://open.spotify.com/user/31vxnjk3raxayku3kltahf5z7ary">
-    <img src="https://spotify-recently-played-readme.vercel.app/api?user=31vxnjk3raxayku3kltahf5z7ary&count=5&unique=true" alt="Spotify recently played"  />
-  </a>
-</div>
+<table>
+  <tr>
+    <td>
+      <img align="right" height="190" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc293ZHgxZzBwdnN1aXBiYzAzYjR3MXV3aTB3dGllcWM2NzVkYXc2cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErZ8hv5eO92JW/giphy.gif"  />
+    </td>
+    <td>
+     <div align="left">
+      <a href="https://open.spotify.com/user/31vxnjk3raxayku3kltahf5z7ary">
+        <img src="https://spotify-recently-played-readme.vercel.app/api?user=31vxnjk3raxayku3kltahf5z7ary&count=5&unique=true" alt="Spotify recently played"  />
+      </a>
+    </div>
+    </td>
+  </tr>
+</table>
+
+
 
 ###
