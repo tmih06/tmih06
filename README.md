@@ -7,7 +7,7 @@
 ###
 
 <p align="center"> 
-    <img src="https://github-readme-streak-stats-eta-three.vercel.app?user=xkiian&theme=tokyonight&hide_border=true" alt="GitHub Streak" width="60%">
+    <img src="https://github-readme-streak-stats-eta-three.vercel.app?user=tmih06&theme=tokyonight&hide_border=true" alt="GitHub Streak" width="60%">
 </p>
 <p align="center">
   <img height="25" src="https://api.visitorbadge.io/api/VisitorHit?user=tmih06&countColor=%234a12ba" alt="Profile Views"/>
