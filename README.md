@@ -70,7 +70,6 @@
 </div>
 
 <img src="https://raw.githubusercontent.com/tmih06/tmih06/output/github-snake-dark.svg" alt="Snake animation" style="pointer-events: none;" />
-###
 
 <table style="border: none;">
   <tr>
