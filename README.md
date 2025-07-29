@@ -12,6 +12,7 @@
 </div>
 
 ###
+<h2 align="left">Some of my skills </h2>
 
 <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aarch64/aarch64-original.svg" height="40" alt="aarch64 logo"  />
@@ -75,7 +76,7 @@
   </a>
 </div>
 
-<img src="https://raw.githubusercontent.com/tmih06/tmih06/output/github-snake-dark.svg" alt="Snake animation" />
+<img src="https://raw.githubusercontent.com/tmih06/tmih06/output/github-snake-dark.svg" alt="Snake animation" style="pointer-events: none;" />
 
 ###
 
@@ -85,7 +86,7 @@
 
 ###
 
-<table>
+<table style="border: none;">
   <tr>
     <td>
       <img align="right" height="190" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExc293ZHgxZzBwdnN1aXBiYzAzYjR3MXV3aTB3dGllcWM2NzVkYXc2cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ErZ8hv5eO92JW/giphy.gif"  />
