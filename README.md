@@ -81,7 +81,7 @@
 
 ###
 
-<img src="https://raw.githubusercontent.com/tmih06/tmih06/output/snake.svg" alt="Snake animation" />
+<img src="https://raw.githubusercontent.com/tmih06/tmih06/output/github-snake-dark.svg" alt="Snake animation" />
 
 ###
 
