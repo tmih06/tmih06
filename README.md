@@ -6,9 +6,12 @@
 
 ###
 
-<p align="center"> 
-    <img src="https://github-readme-streak-stats-eta-three.vercel.app?user=tmih06&theme=tokyonight&hide_border=true" alt="GitHub Streak" width="60%">
-</p>
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=tmih06&theme=aura&hide_border=true&include_all_commits=true&count_private=true" width="55%" /> </br>
+  <img src="https://github-readme-streak-stats-eta-three.vercel.app?user=tmih06&theme=aura&hide_border=true" alt="GitHub Streak" width="50%">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=tmih06&theme=aura&hide_border=true&include_all_commits=true&count_private=true&layout=compact" width="36%" /> </br>
+</div>
+
 <p align="center">
   <img height="25" src="https://api.visitorbadge.io/api/VisitorHit?user=tmih06&countColor=%234a12ba" alt="Profile Views"/>
   <img height="25" src="https://img.shields.io/github/followers/tmih06?color=4a12ba&style=for-the-badge&logo=github&label=Follow" alt="Followers"/>
