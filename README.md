@@ -1,10 +1,4 @@
-<h2 align="left">Hi 👋! My name is Minh and I'm from VietNam </h2>
 
-###
-
-<h3 align="left">I'm currently learning Algorithm Trading</h3>
-
-###
 
 <div align="center">
   <img src="https://github-readme-stats.vercel.app/api?username=tmih06&theme=aura&hide_border=true&include_all_commits=true&count_private=true" width="55%" /> </br>
