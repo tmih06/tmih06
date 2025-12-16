@@ -27,11 +27,9 @@ jobs:
           plugin_isocalendar_duration: full-year
       - uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.activity.svg
-          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.topics.svg
+          token: NOT_NEEDED
           base: ""
-          plugin_activity: yes
-          plugin_activity_limit: 5
-          plugin_activity_days: 0
-          plugin_activity_filter: issue, pr, release, fork, review, ref/create
+          plugin_topics: yes
+          plugin_topics_limit: 20
 
