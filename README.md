@@ -6,9 +6,8 @@
   <!-- <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=tmih06&theme=aura&hide_border=true&include_all_commits=true&count_private=true&layout=compact" width="36%" /> </br> -->
 </div>
 <p align="center">
-  <img src="/github-metrics.svg" alt="Metrics" width="300">
-  <img src="/metrics.plugin.isocalendar.fullyear.svg" alt="ContributeCalendar" width="300">
-  <img src="/metrics.plugin.activity.svg" alt="RecentActivities" width="300">
+  <img src="/github-metrics.svg" alt="Metrics" width="500">
+  <img src="/metrics.plugin.isocalendar.fullyear.svg" alt="ContributeCalendar" width="500">
 </p>
 
 <p align="center">
