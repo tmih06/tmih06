@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="390px" height="600px" font-size="16px">
+<style>
+text, tspan {white-space: pre;}
+</style>
+<rect width="390px" height="600px" fill="#ffffff" rx="15"/>
+<text x="15" y="30" fill="#1f2328" class="ascii">
+<tspan x="15" y="30">                                        </tspan>
+<tspan x="15" y="50">                                        </tspan>
+<tspan x="15" y="70">                -.                      </tspan>
+<tspan x="15" y="90">              .=+=.       ..            </tspan>
+<tspan x="15" y="110">             -+++**+==-==+*-            </tspan>
+<tspan x="15" y="130">           :=++***#######**             </tspan>
+<tspan x="15" y="150">          :=++***+**####**-             </tspan>
+<tspan x="15" y="170">         .:+******++*####*-             </tspan>
+<tspan x="15" y="190">         .:+********+#####+             </tspan>
+<tspan x="15" y="210">         :=+****+***=*###**:            </tspan>
+<tspan x="15" y="230">        .-=*****#**++******+            </tspan>
+<tspan x="15" y="250">        .=+**+*****+********:           </tspan>
+<tspan x="15" y="270">         .--:.:--=+*********=           </tspan>
+<tspan x="15" y="290">          ....:-=+*********++:          </tspan>
+<tspan x="15" y="310">          ....-=++******+**++=          </tspan>
+<tspan x="15" y="330">          ....:-=++****++*++=+.         </tspan>
+<tspan x="15" y="350">          ....:--==+++++++++==-         </tspan>
+<tspan x="15" y="370">          . ..::-=====++====-==         </tspan>
+<tspan x="15" y="390">          . ...:::---=----:---=:        </tspan>
+<tspan x="15" y="410">          .  ....::--------:::-:        </tspan>
+<tspan x="15" y="430">             .....:::::::::-::::        </tspan>
+<tspan x="15" y="450">             .....:::::::::-::::        </tspan>
+<tspan x="15" y="470">          .  .....:::::.:::--::-        </tspan>
+<tspan x="15" y="490">          .  .....:::::::::-:::-        </tspan>
+<tspan x="15" y="510">              ........:::.:--:::.       </tspan>
+</text>
+</svg>

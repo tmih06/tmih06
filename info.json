@@ -1,0 +1,33 @@
+{
+  "username": "tmih06",
+  "include_private_repos": false,
+  "name": "Thanh Minh",
+  "birthday": {
+    "year": 2006,
+    "month": 4,
+    "day": 8
+  },
+  "profile": {
+    "title": "tmih06@github ",
+    "avatar_path": "avatar.png",
+    "ascii_width": 40,
+    "ascii_height": 25,
+    "os": "Arch Linux (btw)",
+    "host": "Vietnam",
+    "kernel": "Full-Stack Developer",
+    "ide": "Notepad",
+    "languages_programming": ".py, .js, .ts, .java, .cs, .rs",
+    "languages_real": "Vietnamese, English",
+    "hobbies_software": "Open Source",
+    "hobbies_hardware": "",
+    "contact": {
+      "email": "tmih.real@gmail.com",
+      "discord": "tmih06",
+      "facebook": "fb.com/tmih06.real"
+    }
+  },
+  "github_actions_bot": {
+    "email": "github-actions-bot@tmih06.github.io",
+    "name": "tmih06/GitHub-Actions-Bot"
+  }
+}
