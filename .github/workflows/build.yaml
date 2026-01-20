@@ -29,7 +29,6 @@ jobs:
       - name: Update README file
         env:
           ACCESS_TOKEN: ${{ secrets.METRICS_TOKEN }}
-          USER_NAME: ${{ secrets.USERNAME }}
         run: python today.py
       - name: Commit
         run: |-

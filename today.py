@@ -23,7 +23,7 @@ with open(os.path.join(os.path.dirname(__file__), "info.json"), "r") as f:
 
 # GitHub API setup
 HEADERS = {"Authorization": "Bearer " + os.environ["ACCESS_TOKEN"]}
-USER_NAME = os.environ.get("USER_NAME", CONFIG.get("username", "tmih06"))
+USER_NAME = CONFIG["username"]
 BIRTHDAY = datetime.datetime(
     CONFIG["birthday"]["year"], CONFIG["birthday"]["month"], CONFIG["birthday"]["day"]
 )
