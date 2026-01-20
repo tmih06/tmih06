@@ -1,6 +1,6 @@
 python-dateutil>=2.8.2,<3.0.0
 requests>=2.31.0,<3.0.0
-lxml>=5.0.0,<6.0.0
+lxml>=5.2.1,<6.0.0
 python-dotenv>=1.0.0,<2.0.0
 Pillow>=10.0.0,<11.0.0
 

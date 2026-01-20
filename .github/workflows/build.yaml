@@ -9,6 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,7 +32,6 @@ jobs:
         run: python -m pip install -r cache/requirements.txt
       - name: Update README file
         env:
-          name: production
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: python today.py
       - name: Commit
