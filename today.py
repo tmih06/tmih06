@@ -235,8 +235,8 @@ def get_lines_of_code():
         repo_deletions = 0
         status = "ok"
 
-        # GitHub may need time to compute stats, retry up to 3 times
-        for attempt in range(3):
+        # GitHub may need time to compute stats, retry up to 10 times
+        for attempt in range(100):
             stats_response = requests.get(stats_url, headers=HEADERS)
 
             if stats_response.status_code == 200:
@@ -250,8 +250,9 @@ def get_lines_of_code():
                 status = "ok"
                 break
             elif stats_response.status_code == 202:
-                # Stats are being computed, retry immediately
+                # Stats are being computed, wait and retry
                 status = "computing..."
+                time.sleep(2)
                 continue
             elif stats_response.status_code == 204:
                 status = "empty"
