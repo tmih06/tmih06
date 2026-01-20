@@ -29,7 +29,7 @@ jobs:
       - name: Update README file
         env:
           name: production
-          ACCESS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: python today.py
       - name: Commit
         run: |-
