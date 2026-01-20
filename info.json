@@ -1,6 +1,6 @@
 {
   "username": "tmih06",
-  "include_private_repos": false,
+  "include_private_repos": true,
   "name": "Thanh Minh",
   "birthday": {
     "year": 2006,
