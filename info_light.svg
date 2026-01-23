@@ -12,7 +12,7 @@ text, tspan {white-space: pre;}
 <text x="15" y="30" fill="#1f2328">
 <tspan x="15" y="30">- tmih06@github  </tspan>————————————————————————————————————————-—-
 <tspan x="15" y="50" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> .................................... </tspan><tspan class="value">Arch Linux (btw)</tspan>
-<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> ..................... </tspan><tspan class="value">19 years, 9 months, 14 days</tspan>
+<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> ..................... </tspan><tspan class="value">19 years, 9 months, 15 days</tspan>
 <tspan x="15" y="90" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> ........................................... </tspan><tspan class="value">Vietnam</tspan>
 <tspan x="15" y="110" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ............................ </tspan><tspan class="value">Full-Stack Developer</tspan>
 <tspan x="15" y="130" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ............................................ </tspan><tspan class="value">Notepad</tspan>
@@ -29,7 +29,7 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="390">- Activity </tspan>——————————————————————————————————————————————-—-
 <tspan x="15" y="410" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> .............. </tspan><tspan class="value">855</tspan><tspan class="cc"> | </tspan><tspan class="key">PRs Opened</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">11</tspan>
 <tspan x="15" y="430" class="cc">. </tspan><tspan class="key">PRs Reviewed</tspan>:<tspan class="cc"> ........... </tspan><tspan class="value">0</tspan><tspan class="cc"> | </tspan><tspan class="key">Issues</tspan>:<tspan class="cc"> ................. </tspan><tspan class="value">6</tspan>
-<tspan x="15" y="450" class="cc">. </tspan><tspan class="key">Current Streak</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">1 days</tspan><tspan class="cc"> | </tspan><tspan class="key">Longest Streak</tspan>:<tspan class="cc"> ... </tspan><tspan class="value">28 days</tspan>
+<tspan x="15" y="450" class="cc">. </tspan><tspan class="key">Current Streak</tspan>:<tspan class="cc"> .... </tspan><tspan class="value">0 days</tspan><tspan class="cc"> | </tspan><tspan class="key">Longest Streak</tspan>:<tspan class="cc"> ... </tspan><tspan class="value">28 days</tspan>
 <tspan x="15" y="470" class="cc">. </tspan><tspan class="key">Best Day</tspan>:<tspan class="cc"> ...... </tspan><tspan class="value">38 commits</tspan><tspan class="cc"> | </tspan><tspan class="key">Avg</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">~0.62/day</tspan>
 <tspan x="15" y="510">- GitHub Stats </tspan>——————————————————————————————————————————-—-
 <tspan x="15" y="530" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> ..................... </tspan><tspan class="value">40</tspan><tspan class="cc"> | </tspan><tspan class="key">Stars</tspan>:<tspan class="cc"> .............. </tspan><tspan class="value">2</tspan>
