@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="390px" height="600px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="390px" height="620px" font-size="16px">
 <style>
 text, tspan {white-space: pre;}
 </style>
-<rect width="390px" height="600px" fill="#ffffff" rx="15"/>
+<rect width="390px" height="620px" fill="#ffffff" rx="15"/>
 <text x="15" y="30" fill="#1f2328" class="ascii">
 <tspan x="15" y="30">                                        </tspan>
 <tspan x="15" y="50">                                        </tspan>

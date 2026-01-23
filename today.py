@@ -574,7 +574,7 @@ def generate_svg(filename, stats, activity, age, ascii_art, loc_stats, is_dark=T
     # Calculate dynamic height based on contact items
     # Base height (up to Hobbies) = 270, Contact header = 20, each contact = 20, gap = 20
     # Activity section = 100, GitHub Stats section = 80, bottom padding = 50
-    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 50
+    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 70
     svg_height = max(600, base_height)
 
     # Build SVG content
@@ -717,6 +717,20 @@ def generate_svg(filename, stats, activity, age, ascii_art, loc_stats, is_dark=T
         )
     )
 
+    now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    svg_lines.append(
+        make_line(
+            390,
+            stats_y + 80,
+            "Last Updated",
+            now_str,
+            W,
+            dot_color,
+            key_color,
+            value_color,
+        )
+    )
+
     svg_lines.append("</text>")
     svg_lines.append("</svg>")
 
@@ -815,7 +829,7 @@ def generate_info_svg(filename, stats, activity, age, loc_stats, is_dark=True):
     W = 58
 
     # Calculate dynamic height based on contact items
-    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 50
+    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 70
     svg_height = max(600, base_height)
 
     svg_lines = []
@@ -943,6 +957,20 @@ def generate_info_svg(filename, stats, activity, age, loc_stats, is_dark=True):
     svg_lines.append(
         make_loc_line(
             15, stats_y + 60, total_loc_str, additions_str, deletions_str, 32, 22
+        )
+    )
+
+    now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    svg_lines.append(
+        make_line(
+            15,
+            stats_y + 80,
+            "Last Updated",
+            now_str,
+            W,
+            dot_color,
+            key_color,
+            value_color,
         )
     )
 
@@ -1126,7 +1154,7 @@ if __name__ == "__main__":
     profile = CONFIG.get("profile", {})
     contact = profile.get("contact", {})
     contact_items = [(k, v) for k, v in contact.items() if v]
-    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 50
+    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 70
     svg_height = max(600, base_height)
 
     generate_ascii_svg("ascii_dark.svg", ascii_art, svg_height, is_dark=True)
