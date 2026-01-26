@@ -12,7 +12,7 @@ text, tspan {white-space: pre;}
 <text x="15" y="30" fill="#1f2328">
 <tspan x="15" y="30">- tmih06@github  </tspan>————————————————————————————————————————-—-
 <tspan x="15" y="50" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> .................................... </tspan><tspan class="value">Arch Linux (btw)</tspan>
-<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> ..................... </tspan><tspan class="value">19 years, 9 months, 17 days</tspan>
+<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> ..................... </tspan><tspan class="value">19 years, 9 months, 18 days</tspan>
 <tspan x="15" y="90" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> ........................................... </tspan><tspan class="value">Vietnam</tspan>
 <tspan x="15" y="110" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ............................ </tspan><tspan class="value">Full-Stack Developer</tspan>
 <tspan x="15" y="130" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ............................................ </tspan><tspan class="value">Notepad</tspan>
@@ -35,6 +35,6 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="530" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> ..................... </tspan><tspan class="value">40</tspan><tspan class="cc"> | </tspan><tspan class="key">Stars</tspan>:<tspan class="cc"> .............. </tspan><tspan class="value">2</tspan>
 <tspan x="15" y="550" class="cc">. </tspan><tspan class="key">Contributions</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">928</tspan><tspan class="cc"> | </tspan><tspan class="key">Followers</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value">6</tspan>
 <tspan x="15" y="570" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc"> ........ </tspan><tspan class="value">706,880</tspan><tspan class="cc"> |   </tspan><tspan class="add">729,503++</tspan><tspan class="cc">, </tspan><tspan class="del">22,623--</tspan>
-<tspan x="15" y="590" class="cc">. </tspan><tspan class="key">Last Updated</tspan>:<tspan class="cc"> ....................... </tspan><tspan class="value">2026-01-25 04:55:23</tspan>
+<tspan x="15" y="590" class="cc">. </tspan><tspan class="key">Last Updated</tspan>:<tspan class="cc"> ....................... </tspan><tspan class="value">2026-01-26 05:01:59</tspan>
 </text>
 </svg>
