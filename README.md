@@ -14,3 +14,5 @@
     </td>
   </tr>
 </table>
+
+[![Skills](https://skills.syvixor.com/api/icons?perline=15&i=adobeaftereffects,adobepremierepro,adobephotoshop,blender,bash,claudeai,cmake,dotnet,javascript,java,typescript,python,rust,archlinux,docker,kubernetes,github,githubactions,githubpages,googlecloud,googlecolaboratory,git,gitbash,huggingface,supabase,n8n,coolify)](https://github.com/syvixor/skills-icons)
