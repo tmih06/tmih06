@@ -243,10 +243,12 @@ def get_lines_of_code():
                 stats = stats_response.json()
                 if stats:
                     for contributor in stats:
-                        if contributor.get("author", {}).get("login") == USER_NAME:
-                            for week in contributor.get("weeks", []):
-                                repo_additions += week.get("a", 0)
-                                repo_deletions += week.get("d", 0)
+                        try:
+                            if contributor.get("author", {}).get("login") == USER_NAME:
+                                for week in contributor.get("weeks", []):
+                                    repo_additions += week.get("a", 0)
+                                    repo_deletions += week.get("d", 0)
+                        except: continue
                 status = "ok"
                 break
             elif stats_response.status_code == 202:
