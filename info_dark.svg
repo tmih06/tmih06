@@ -12,7 +12,7 @@ text, tspan {white-space: pre;}
 <text x="15" y="30" fill="#c9d1d9">
 <tspan x="15" y="30">- tmih06@github  </tspan>————————————————————————————————————————-—-
 <tspan x="15" y="50" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> .................................... </tspan><tspan class="value">Arch Linux (btw)</tspan>
-<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> .................... </tspan><tspan class="value">19 years, 10 months, 20 days</tspan>
+<tspan x="15" y="70" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> .................... </tspan><tspan class="value">19 years, 10 months, 21 days</tspan>
 <tspan x="15" y="90" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> ........................................... </tspan><tspan class="value">Vietnam</tspan>
 <tspan x="15" y="110" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ........................................... </tspan><tspan class="value">AIOps</tspan>
 <tspan x="15" y="130" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ....................... </tspan><tspan class="value">neovim, opencode, claudecode</tspan>
@@ -27,14 +27,14 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="330" class="cc">. </tspan><tspan class="key">Discord</tspan>:<tspan class="cc"> ......................................... </tspan><tspan class="value">tmih06</tspan>
 <tspan x="15" y="350" class="cc">. </tspan><tspan class="key">Facebook</tspan>:<tspan class="cc"> ............................ </tspan><tspan class="value">fb.com/tmih06.real</tspan>
 <tspan x="15" y="390">- Activity </tspan>——————————————————————————————————————————————-—-
-<tspan x="15" y="410" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">1,119</tspan><tspan class="cc"> | </tspan><tspan class="key">PRs Opened</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">50</tspan>
-<tspan x="15" y="430" class="cc">. </tspan><tspan class="key">PRs Reviewed</tspan>:<tspan class="cc"> ........... </tspan><tspan class="value">9</tspan><tspan class="cc"> | </tspan><tspan class="key">Issues</tspan>:<tspan class="cc"> ................ </tspan><tspan class="value">23</tspan>
-<tspan x="15" y="450" class="cc">. </tspan><tspan class="key">Current Streak</tspan>:<tspan class="cc"> ... </tspan><tspan class="value">68 days</tspan><tspan class="cc"> | </tspan><tspan class="key">Longest Streak</tspan>:<tspan class="cc"> ... </tspan><tspan class="value">68 days</tspan>
-<tspan x="15" y="470" class="cc">. </tspan><tspan class="key">Best Day</tspan>:<tspan class="cc"> ...... </tspan><tspan class="value">46 commits</tspan><tspan class="cc"> | </tspan><tspan class="key">Avg</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">~0.82/day</tspan>
+<tspan x="15" y="410" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">1,125</tspan><tspan class="cc"> | </tspan><tspan class="key">PRs Opened</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">51</tspan>
+<tspan x="15" y="430" class="cc">. </tspan><tspan class="key">PRs Reviewed</tspan>:<tspan class="cc"> ........... </tspan><tspan class="value">9</tspan><tspan class="cc"> | </tspan><tspan class="key">Issues</tspan>:<tspan class="cc"> ................ </tspan><tspan class="value">24</tspan>
+<tspan x="15" y="450" class="cc">. </tspan><tspan class="key">Current Streak</tspan>:<tspan class="cc"> ... </tspan><tspan class="value">70 days</tspan><tspan class="cc"> | </tspan><tspan class="key">Longest Streak</tspan>:<tspan class="cc"> ... </tspan><tspan class="value">70 days</tspan>
+<tspan x="15" y="470" class="cc">. </tspan><tspan class="key">Best Day</tspan>:<tspan class="cc"> ...... </tspan><tspan class="value">46 commits</tspan><tspan class="cc"> | </tspan><tspan class="key">Avg</tspan>:<tspan class="cc"> ............ </tspan><tspan class="value">~0.83/day</tspan>
 <tspan x="15" y="510">- GitHub Stats </tspan>——————————————————————————————————————————-—-
 <tspan x="15" y="530" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> ..................... </tspan><tspan class="value">48</tspan><tspan class="cc"> | </tspan><tspan class="key">Stars</tspan>:<tspan class="cc"> .............. </tspan><tspan class="value">2</tspan>
-<tspan x="15" y="550" class="cc">. </tspan><tspan class="key">Contributions</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value">1,250</tspan><tspan class="cc"> | </tspan><tspan class="key">Followers</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value">7</tspan>
-<tspan x="15" y="570" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc"> ........ </tspan><tspan class="value">862,217</tspan><tspan class="cc"> |   </tspan><tspan class="add">951,361++</tspan><tspan class="cc">, </tspan><tspan class="del">89,144--</tspan>
-<tspan x="15" y="590" class="cc">. </tspan><tspan class="key">Last Updated</tspan>:<tspan class="cc"> ....................... </tspan><tspan class="value">2026-02-28 05:04:43</tspan>
+<tspan x="15" y="550" class="cc">. </tspan><tspan class="key">Contributions</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value">1,258</tspan><tspan class="cc"> | </tspan><tspan class="key">Followers</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value">7</tspan>
+<tspan x="15" y="570" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc"> ........ </tspan><tspan class="value">863,775</tspan><tspan class="cc"> |   </tspan><tspan class="add">953,104++</tspan><tspan class="cc">, </tspan><tspan class="del">89,329--</tspan>
+<tspan x="15" y="590" class="cc">. </tspan><tspan class="key">Last Updated</tspan>:<tspan class="cc"> ....................... </tspan><tspan class="value">2026-03-01 05:21:57</tspan>
 </text>
 </svg>
