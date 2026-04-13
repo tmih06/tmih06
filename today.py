@@ -582,13 +582,13 @@ def generate_waka_ai(waka):
         return
     import math
     cats = [c for c in waka["categories"] if c.get("total_seconds", 0) > 0]
-    W, H = 500, 140
-    pad = 20
+    W, H = 340, 140
+    pad = 15
     bar_y, bar_h = 70, 28
     bar_w = W - pad * 2
 
     out = [svg_open(W, H)]
-    out.append(make_header(pad, pad + 14, "Coding Activity  (last 30d)", 52))
+    out.append(make_header(pad, pad + 14, "Coding Activity  (last 30d)", 34))
 
     # Stacked bar
     total = sum(c.get("total_seconds", 0) for c in cats) or 1
