@@ -539,15 +539,16 @@ def generate_waka_os(waka):
     if not waka or not waka.get("operating_systems"):
         return
     oses = waka["operating_systems"]
-    W, H = 340, 60 + len(oses) * 36 + 20
-    pad = 15
-    bar_x, bar_w = 100, 170
+    W, pad = 340, 15
+    bar_x, bar_w = 100, 180
+    row_h = 44
+    H = 55 + len(oses) * row_h + 15
 
     out = [svg_open(W, H)]
     out.append(make_header(pad, pad + 14, "Operating Systems  (last 30d)", 34))
 
     for i, os_item in enumerate(oses):
-        y = pad + 36 + i * 36
+        y = pad + 36 + i * row_h
         pct = os_item.get("percent", 0)
         filled = int(bar_w * pct / 100)
         color = BAR_COLORS[i % len(BAR_COLORS)]
@@ -555,20 +556,20 @@ def generate_waka_os(waka):
         text_val = os_item.get("text", fmt_seconds(os_item.get("total_seconds", 0)))
 
         out.append(
-            f'<text x="{pad}" y="{y + 13}" font-family="Consolas,monospace" '
-            f'font-size="13px" fill="{VAL}">{x(name)}</text>'
+            f'<text x="{pad}" y="{y + 15}" font-family="Consolas,monospace" '
+            f'font-size="14px" fill="{VAL}">{x(name)}</text>'
         )
         out.append(
-            f'<rect x="{bar_x}" y="{y}" width="{bar_w}" height="18" '
+            f'<rect x="{bar_x}" y="{y}" width="{bar_w}" height="22" '
             f'fill="{DOT}" opacity="0.25" rx="4"/>'
         )
         if filled > 0:
             out.append(
-                f'<rect x="{bar_x}" y="{y}" width="{filled}" height="18" '
+                f'<rect x="{bar_x}" y="{y}" width="{filled}" height="22" '
                 f'fill="{color}" rx="4"/>'
             )
         out.append(
-            f'<text x="{bar_x + bar_w + 8}" y="{y + 13}" font-family="Consolas,monospace" '
+            f'<text x="{bar_x + bar_w + 8}" y="{y + 15}" font-family="Consolas,monospace" '
             f'font-size="12px" fill="{DOT}">{pct:.1f}%  {x(text_val)}</text>'
         )
 
@@ -582,9 +583,9 @@ def generate_waka_ai(waka):
         return
     import math
     cats = [c for c in waka["categories"] if c.get("total_seconds", 0) > 0]
-    W, H = 340, 140
+    W, H = 340, 170
     pad = 15
-    bar_y, bar_h = 70, 28
+    bar_y, bar_h = 55, 36
     bar_w = W - pad * 2
 
     out = [svg_open(W, H)]
@@ -604,7 +605,7 @@ def generate_waka_ai(waka):
         cx += w
 
     # Legend below bar
-    lx, ly = pad, bar_y + bar_h + 18
+    lx, ly = pad, bar_y + bar_h + 20
     for i, cat in enumerate(cats):
         color = BAR_COLORS[i % len(BAR_COLORS)]
         pct = cat["total_seconds"] / total * 100
@@ -612,11 +613,11 @@ def generate_waka_ai(waka):
         text_val = cat.get("text", "")
         label = f'{name}: {pct:.1f}%  {text_val}'
         out.append(f'<rect x="{lx}" y="{ly-9}" width="8" height="8" fill="{color}" rx="2"/>')
-        out.append(f'<text x="{lx+12}" y="{ly}" font-family="Consolas,monospace" font-size="11px" fill="{TEXT}">{x(label)}</text>')
+        out.append(f'<text x="{lx+12}" y="{ly}" font-family="Consolas,monospace" font-size="12px" fill="{TEXT}">{x(label)}</text>')
         lx += len(label) * 7 + 20
         if lx > W - 100:
             lx = pad
-            ly += 16
+            ly += 20
 
     out.append("</svg>")
     _write("waka_ai.svg", "\n".join(out))
