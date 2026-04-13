@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="500" height="140" font-size="14px"><rect width="500" height="140" fill="#161b22" rx="12"/>
+<text x="20" y="34" font-family="Consolas,monospace" font-size="14px" fill="#616e7f">- Coding Activity  (last 30d) ———————————————————-—-</text>
+<rect x="20" y="70" width="338" height="28" fill="#58a6ff" rx="4 0 0 4"/>
+<rect x="358" y="70" width="84" height="28" fill="#3fb950" rx="0"/>
+<rect x="442" y="70" width="27" height="28" fill="#ffa657" rx="0"/>
+<rect x="469" y="70" width="9" height="28" fill="#f85149" rx="0 4 4 0"/>
+<rect x="20" y="107" width="8" height="8" fill="#58a6ff" rx="2"/>
+<text x="32" y="116" font-family="Consolas,monospace" font-size="11px" fill="#c9d1d9">AI Coding: 73.5%  95 hrs 56 mins</text>
+<rect x="264" y="107" width="8" height="8" fill="#3fb950" rx="2"/>
+<text x="276" y="116" font-family="Consolas,monospace" font-size="11px" fill="#c9d1d9">Coding: 18.4%  24 hrs 3 mins</text>
+<rect x="20" y="123" width="8" height="8" fill="#ffa657" rx="2"/>
+<text x="32" y="132" font-family="Consolas,monospace" font-size="11px" fill="#c9d1d9">Writing Docs: 6.1%  7 hrs 54 mins</text>
+<rect x="271" y="123" width="8" height="8" fill="#f85149" rx="2"/>
+<text x="283" y="132" font-family="Consolas,monospace" font-size="11px" fill="#c9d1d9">Writing Tests: 2.0%  2 hrs 34 mins</text>
+</svg>

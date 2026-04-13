@@ -1,16 +1,28 @@
 <table border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td align="center" style="border: none;">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://github.com/tmih06/tmih06/blob/main/ascii_dark.svg">
-        <img alt="Thanh Minh's GitHub Profile README" src="https://github.com/tmih06/tmih06/blob/main/ascii_light.svg" width="100%">
-      </picture>
+      <img alt="GitHub Stats" src="https://github.com/tmih06/tmih06/blob/main/github_stats.svg" width="100%">
     </td>
     <td align="center" style="border: none;">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://github.com/tmih06/tmih06/blob/main/info_dark.svg">
-        <img alt="Thanh Minh's GitHub Profile README" src="https://github.com/tmih06/tmih06/blob/main/info_light.svg" width="100%">
-      </picture>
+      <img alt="WakaTime Languages" src="https://github.com/tmih06/tmih06/blob/main/waka_languages.svg" width="100%">
+      <br/>
+      <img alt="WakaTime Activity" src="https://github.com/tmih06/tmih06/blob/main/waka_activity.svg" width="100%">
+    </td>
+    <td align="center" style="border: none;">
+      <img alt="Language Pie" src="https://github.com/tmih06/tmih06/blob/main/waka_pie.svg" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="border: none;">
+      <img alt="WakaTime Editors" src="https://github.com/tmih06/tmih06/blob/main/waka_editors.svg" width="100%">
+    </td>
+    <td align="center" style="border: none;">
+      <img alt="WakaTime OS" src="https://github.com/tmih06/tmih06/blob/main/waka_os.svg" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" style="border: none;">
+      <img alt="AI vs Human Coding" src="https://github.com/tmih06/tmih06/blob/main/waka_ai.svg" width="60%">
     </td>
   </tr>
 </table>

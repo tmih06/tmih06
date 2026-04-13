@@ -1,1171 +1,714 @@
 """
-GitHub Profile Stats Generator
-Originally by Andrew Grant (Andrew6rant), 2022-2025
-Rewritten for tmih06 - focused on comprehensive GitHub metrics
+GitHub Profile Stats Generator — tmih06
+Dark mode only. GitHub stats + WakaTime charts.
 """
 
+import base64
 import datetime
-from dateutil import relativedelta
-import requests
 import os
-import json
-from dotenv import load_dotenv
-from lxml import etree
 import time
-from PIL import Image
 
-# Load environment variables from .env file (if it exists)
+import requests
+from dateutil import relativedelta
+from dotenv import load_dotenv
+
 load_dotenv()
 
-# Load configuration from info.json
-with open(os.path.join(os.path.dirname(__file__), "info.json"), "r") as f:
-    CONFIG = json.load(f)
+GH_HEADERS = {"Authorization": "Bearer " + os.environ["ACCESS_TOKEN"]}
+WAKA_KEY = os.environ.get("WAKATIME_API_KEY", "")
+USER_NAME = "tmih06"
+BIRTHDAY = datetime.datetime(2006, 4, 8)
 
-# GitHub API setup
-HEADERS = {"Authorization": "Bearer " + os.environ["ACCESS_TOKEN"]}
-USER_NAME = CONFIG["username"]
-BIRTHDAY = datetime.datetime(
-    CONFIG["birthday"]["year"], CONFIG["birthday"]["month"], CONFIG["birthday"]["day"]
-)
-
-# SVG Configuration
-LINE_WIDTH = 60  # Character width for right-aligned values
-
-QUERY_COUNT = {
-    "user_stats": 0,
-    "contribution_years": 0,
-    "contribution_calendar": 0,
-    "user_getter": 0,
+CONFIG = {
+    "include_private_repos": True,
+    "profile": {
+        "title": "tmih06@github ",
+        "os": "Arch Linux (btw)",
+        "host": "Vietnam",
+        "kernel": "AIOps",
+        "ide": "neovim, opencode, claudecode",
+        "languages_programming": ".py, .js, .ts, .java, .cs, .rs",
+        "languages_real": "Vietnamese, English",
+        "hobbies_software": "Open Source, Agent skills",
+        "hobbies_hardware": "Hybrid AI Cluster",
+        "contact": {
+            "email": "tmih.real@gmail.com",
+            "discord": "tmih06",
+            "facebook": "fb.com/tmih06.real",
+        },
+    },
 }
 
+# ── Dark mode palette ────────────────────────────────────────────────────────
+BG      = "#161b22"
+TEXT    = "#c9d1d9"
+KEY     = "#ffa657"
+VAL     = "#a5d6ff"
+DOT     = "#616e7f"
+ADD     = "#3fb950"
+DEL     = "#f85149"
+ACCENT  = "#58a6ff"
 
-def query_count(funct_id):
-    """Counts how many times the GitHub GraphQL API is called"""
-    global QUERY_COUNT
-    QUERY_COUNT[funct_id] += 1
+BAR_COLORS = ["#58a6ff", "#3fb950", "#ffa657", "#f85149", "#d2a8ff",
+              "#79c0ff", "#56d364", "#e3b341"]
 
 
-def simple_request(func_name, query, variables):
-    """Makes a GraphQL request with retry logic"""
-    max_retries = 3
-    for attempt in range(max_retries):
-        request = requests.post(
+# ── GitHub API ───────────────────────────────────────────────────────────────
+
+def gh_query(name, query, variables):
+    for attempt in range(3):
+        r = requests.post(
             "https://api.github.com/graphql",
             json={"query": query, "variables": variables},
-            headers=HEADERS,
+            headers=GH_HEADERS,
         )
-        if request.status_code == 200:
-            return request
-        elif request.status_code in [502, 503, 504]:
-            if attempt < max_retries - 1:
-                wait_time = (attempt + 1) * 2
-                print(
-                    f"       [Retry {attempt + 1}/{max_retries}] Got {request.status_code}, waiting {wait_time}s..."
-                )
-                time.sleep(wait_time)
-                continue
+        if r.status_code == 200:
+            return r.json()
+        if r.status_code in (502, 503, 504) and attempt < 2:
+            time.sleep((attempt + 1) * 2)
+            continue
         break
-
-    if request.status_code == 403:
-        raise Exception(
-            f"{func_name}() failed: Rate limit or abuse detection triggered"
-        )
-    raise Exception(
-        f"{func_name}() failed with status {request.status_code}: {request.text}"
-    )
+    raise Exception(f"{name} failed: {r.status_code} {r.text}")
 
 
 def get_user_stats():
-    """
-    Gets comprehensive user statistics including:
-    - Repositories: count, preferred license, releases, packages, disk usage
-    - Community: organizations, following, sponsoring, starred, watching
-    - Engagement: sponsors, stargazers, forkers, watchers
-    """
-    query_count("user_stats")
-    query = """
+    data = gh_query("get_user_stats", """
     query($login: String!) {
         user(login: $login) {
-            name
             createdAt
             followers { totalCount }
-            following { totalCount }
             repositories(first: 100, ownerAffiliations: [OWNER]) {
                 totalCount
                 totalDiskUsage
                 nodes {
                     licenseInfo { spdxId }
-                    releases { totalCount }
                     stargazerCount
                     forkCount
-                    watchers { totalCount }
                 }
             }
-            packages { totalCount }
-            organizations { totalCount }
-            sponsoring { totalCount }
-            sponsors { totalCount }
-            starredRepositories { totalCount }
-            watching { totalCount }
             issues { totalCount }
             pullRequests { totalCount }
-            repositoriesContributedTo { totalCount }
         }
-    }"""
-    request = simple_request("get_user_stats", query, {"login": USER_NAME})
-    response = request.json()
+    }""", {"login": USER_NAME})["data"]["user"]
 
-    if "errors" in response:
-        print(f"       API Error: {response['errors']}")
-        raise Exception(f"GitHub API error: {response['errors']}")
-
-    data = response["data"]["user"]
-
-    # Calculate preferred license
     licenses = {}
-    total_releases = 0
-    total_stargazers = 0
-    total_forkers = 0
-    total_watchers = 0
-
+    total_stars = 0
     for repo in data["repositories"]["nodes"]:
-        if repo["licenseInfo"] and repo["licenseInfo"]["spdxId"]:
+        if repo["licenseInfo"]:
             lic = repo["licenseInfo"]["spdxId"]
             licenses[lic] = licenses.get(lic, 0) + 1
-        total_releases += repo["releases"]["totalCount"]
-        total_stargazers += repo["stargazerCount"]
-        total_forkers += repo["forkCount"]
-        total_watchers += repo["watchers"]["totalCount"]
-
-    preferred_license = max(licenses, key=licenses.get) if licenses else "None"
-    disk_usage_mb = data["repositories"]["totalDiskUsage"] / 1024
+        total_stars += repo["stargazerCount"]
 
     return {
-        "name": data["name"] or USER_NAME,
         "created_at": data["createdAt"],
         "followers": data["followers"]["totalCount"],
-        "following": data["following"]["totalCount"],
         "repositories": data["repositories"]["totalCount"],
-        "disk_usage_mb": disk_usage_mb,
-        "preferred_license": preferred_license,
-        "releases": total_releases,
-        "packages": data["packages"]["totalCount"],
-        "organizations": data["organizations"]["totalCount"],
-        "sponsoring": data["sponsoring"]["totalCount"],
-        "sponsors": data["sponsors"]["totalCount"],
-        "starred": data["starredRepositories"]["totalCount"],
-        "watching": data["watching"]["totalCount"],
-        "issues_opened": data["issues"]["totalCount"],
+        "disk_mb": data["repositories"]["totalDiskUsage"] / 1024,
+        "preferred_license": max(licenses, key=licenses.get) if licenses else "None",
+        "issues": data["issues"]["totalCount"],
         "pull_requests": data["pullRequests"]["totalCount"],
-        "contributed_to": data["repositoriesContributedTo"]["totalCount"],
-        "stargazers": total_stargazers,
-        "forkers": total_forkers,
-        "watchers": total_watchers,
+        "stars": total_stars,
     }
 
 
 def get_contribution_years():
-    """Gets all years the user has contributed."""
-    query_count("contribution_years")
-    query = """
+    data = gh_query("get_contribution_years", """
     query($login: String!) {
         user(login: $login) {
-            contributionsCollection {
-                contributionYears
-            }
+            contributionsCollection { contributionYears }
         }
-    }"""
-    request = simple_request("get_contribution_years", query, {"login": USER_NAME})
-    response = request.json()
-
-    if "errors" in response:
-        print(f"       API Error: {response['errors']}")
-        raise Exception(f"GitHub API error: {response['errors']}")
-
-    return response["data"]["user"]["contributionsCollection"]["contributionYears"]
+    }""", {"login": USER_NAME})
+    return data["data"]["user"]["contributionsCollection"]["contributionYears"]
 
 
-def get_lines_of_code():
-    """
-    Fetches total lines added and deleted across all owned repositories.
-    Uses the GitHub REST API to get contributor stats.
-    Respects include_private_repos config option.
-    """
-    include_private = CONFIG.get("include_private_repos", True)
-    visibility_mode = "all" if include_private else "public"
-    print(f"       Fetching repository list ({visibility_mode})...")
-
-    # Use authenticated endpoint to get repos based on visibility setting
-    if include_private:
-        repos_url = f"https://api.github.com/user/repos?per_page=100&affiliation=owner"
-    else:
-        repos_url = (
-            f"https://api.github.com/users/{USER_NAME}/repos?per_page=100&type=owner"
-        )
-
-    repos_response = requests.get(repos_url, headers=HEADERS)
-
-    if repos_response.status_code != 200:
-        print(f"       Warning: Could not fetch repos ({repos_response.status_code})")
-        return {"additions": 0, "deletions": 0}
-
-    repos = repos_response.json()
-    total_additions = 0
-    total_deletions = 0
-    processed = 0
-    skipped_forks = 0
-
-    # Count non-fork repos first
-    non_fork_repos = [r for r in repos if not r.get("fork")]
-    total_repos = len(non_fork_repos)
-
-    for repo in repos:
-        if repo.get("fork"):
-            skipped_forks += 1
-            continue  # Skip forked repos
-
-        repo_name = repo["name"]
-        is_private = repo.get("private", False)
-        visibility = "private" if is_private else "public"
-        stats_url = (
-            f"https://api.github.com/repos/{USER_NAME}/{repo_name}/stats/contributors"
-        )
-
-        repo_additions = 0
-        repo_deletions = 0
-        status = "ok"
-
-        # GitHub may need time to compute stats, retry up to 10 times
-        for attempt in range(100):
-            stats_response = requests.get(stats_url, headers=HEADERS)
-
-            if stats_response.status_code == 200:
-                stats = stats_response.json()
-                if stats:
-                    for contributor in stats:
-                        try:
-                            if contributor.get("author", {}).get("login") == USER_NAME:
-                                for week in contributor.get("weeks", []):
-                                    repo_additions += week.get("a", 0)
-                                    repo_deletions += week.get("d", 0)
-                        except: continue
-                status = "ok"
-                break
-            elif stats_response.status_code == 202:
-                # Stats are being computed, wait and retry
-                status = "computing..."
-                time.sleep(2)
-                continue
-            elif stats_response.status_code == 204:
-                status = "empty"
-                break
-            else:
-                status = f"error({stats_response.status_code})"
-                break
-
-        total_additions += repo_additions
-        total_deletions += repo_deletions
-        processed += 1
-        print(
-            f"       [{processed}/{total_repos}] {'***' if is_private else repo_name} ({visibility}): +{repo_additions:,} / -{repo_deletions:,} [{status}]"
-        )
-
-    print(f"       Skipped {skipped_forks} forked repos")
-    return {"additions": total_additions, "deletions": total_deletions}
-
-    return {"additions": total_additions, "deletions": total_deletions}
-
-
-def get_contribution_calendar(start_date, end_date):
-    """Gets the contribution calendar for a date range."""
-    query_count("contribution_calendar")
-    query = """
+def get_contribution_calendar(start, end):
+    data = gh_query("get_contribution_calendar", """
     query($login: String!, $start: DateTime!, $end: DateTime!) {
         user(login: $login) {
             contributionsCollection(from: $start, to: $end) {
                 totalCommitContributions
-                totalIssueContributions
                 totalPullRequestContributions
                 totalPullRequestReviewContributions
                 contributionCalendar {
                     totalContributions
-                    weeks {
-                        contributionDays {
-                            contributionCount
-                            date
-                        }
-                    }
+                    weeks { contributionDays { contributionCount date } }
                 }
             }
         }
-    }"""
-    request = simple_request(
-        "get_contribution_calendar",
-        query,
-        {"login": USER_NAME, "start": start_date, "end": end_date},
-    )
-    response = request.json()
-
-    if "errors" in response:
-        print(f"       API Error: {response['errors']}")
-        raise Exception(f"GitHub API error: {response['errors']}")
-
-    return response["data"]["user"]["contributionsCollection"]
+    }""", {"login": USER_NAME, "start": start, "end": end})
+    return data["data"]["user"]["contributionsCollection"]
 
 
-def calculate_streaks_and_activity(years):
-    """
-    Calculate contribution streaks and activity stats from contribution history.
-    """
-    all_days = []
-    total_contributions = 0
-    total_commits = 0
-    total_prs = 0
-    total_pr_reviews = 0
-    total_issues = 0
-    start_date = None
-
+def calculate_activity(years):
+    all_days, total_contributions, total_commits, total_prs, total_reviews = [], 0, 0, 0, 0
     for year in sorted(years):
-        year_start = f"{year}-01-01T00:00:00Z"
-        year_end = f"{year}-12-31T23:59:59Z"
-
-        now = datetime.datetime.now()
-        if year == now.year:
-            year_end = now.strftime("%Y-%m-%dT23:59:59Z")
-
-        print(f"       Fetching {year}...")
-        data = get_contribution_calendar(year_start, year_end)
-
-        total_contributions += data["contributionCalendar"]["totalContributions"]
-        total_commits += data["totalCommitContributions"]
-        total_prs += data["totalPullRequestContributions"]
-        total_pr_reviews += data["totalPullRequestReviewContributions"]
-        total_issues += data["totalIssueContributions"]
-
-        for week in data["contributionCalendar"]["weeks"]:
+        end = datetime.datetime.now().strftime("%Y-%m-%dT23:59:59Z") if year == datetime.datetime.now().year else f"{year}-12-31T23:59:59Z"
+        cal = get_contribution_calendar(f"{year}-01-01T00:00:00Z", end)
+        total_contributions += cal["contributionCalendar"]["totalContributions"]
+        total_commits += cal["totalCommitContributions"]
+        total_prs += cal["totalPullRequestContributions"]
+        total_reviews += cal["totalPullRequestReviewContributions"]
+        for week in cal["contributionCalendar"]["weeks"]:
             for day in week["contributionDays"]:
-                all_days.append(
-                    {"date": day["date"], "count": day["contributionCount"]}
-                )
-
-        if start_date is None:
-            start_date = f"{year}-01-01"
+                all_days.append({"date": day["date"], "count": day["contributionCount"]})
 
     all_days.sort(key=lambda x: x["date"])
-
-    # Calculate streaks
-    current_streak = 0
-    longest_streak = 0
-    longest_streak_start = None
-    longest_streak_end = None
-    temp_streak = 0
-    temp_streak_start = None
-    best_day_count = 0
-    best_day_date = None
-
     today = datetime.datetime.now().strftime("%Y-%m-%d")
-    yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime(
-        "%Y-%m-%d"
-    )
+    yesterday = (datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y-%m-%d")
 
-    for i, day in enumerate(all_days):
-        if day["count"] > 0:
-            if temp_streak == 0:
-                temp_streak_start = day["date"]
-            temp_streak += 1
-
-            if day["count"] > best_day_count:
-                best_day_count = day["count"]
-                best_day_date = day["date"]
+    # Streaks
+    cur_streak = longest = temp = 0
+    best_day = best_count = 0
+    for i, d in enumerate(all_days):
+        if d["count"] > 0:
+            temp += 1
+            if d["count"] > best_count:
+                best_count, best_day = d["count"], d["date"]
         else:
-            if temp_streak > longest_streak:
-                longest_streak = temp_streak
-                longest_streak_start = temp_streak_start
-                longest_streak_end = (
-                    all_days[i - 1]["date"] if i > 0 else temp_streak_start
-                )
-            temp_streak = 0
+            longest = max(longest, temp)
+            temp = 0
+    longest = max(longest, temp)
 
-    # Check final streak
-    if temp_streak > longest_streak:
-        longest_streak = temp_streak
-        longest_streak_start = temp_streak_start
-        longest_streak_end = all_days[-1]["date"] if all_days else temp_streak_start
-
-    # Calculate current streak
-    for day in reversed(all_days):
-        if day["date"] == today or day["date"] == yesterday:
-            if day["count"] > 0:
-                current_streak = 1
-                idx = all_days.index(day) - 1
-                while idx >= 0 and all_days[idx]["count"] > 0:
-                    current_streak += 1
-                    idx -= 1
-                break
-        elif day["date"] < yesterday:
+    for d in reversed(all_days):
+        if d["date"] in (today, yesterday) and d["count"] > 0:
+            cur_streak = 1
+            idx = all_days.index(d) - 1
+            while idx >= 0 and all_days[idx]["count"] > 0:
+                cur_streak += 1
+                idx -= 1
+            break
+        elif d["date"] < yesterday:
             break
 
-    # Average per day
     total_days = len([d for d in all_days if d["date"] <= today])
-    avg_per_day = total_contributions / total_days if total_days > 0 else 0
-
     return {
         "total_contributions": total_contributions,
-        "current_streak": current_streak,
-        "longest_streak": longest_streak,
-        "longest_streak_start": longest_streak_start,
-        "longest_streak_end": longest_streak_end,
-        "best_day_count": best_day_count,
-        "best_day_date": best_day_date,
-        "avg_per_day": avg_per_day,
         "total_commits": total_commits,
         "total_prs": total_prs,
-        "total_pr_reviews": total_pr_reviews,
-        "total_issues": total_issues,
-        "start_date": start_date,
+        "total_reviews": total_reviews,
+        "current_streak": cur_streak,
+        "longest_streak": longest,
+        "best_day_count": best_count,
+        "avg_per_day": total_contributions / total_days if total_days else 0,
     }
 
 
-def daily_readme(birthday):
-    """Calculate age string from birthday"""
-    diff = relativedelta.relativedelta(datetime.datetime.today(), birthday)
-    return f"{diff.years} years, {diff.months} months, {diff.days} days"
+def get_lines_of_code():
+    r = requests.get("https://api.github.com/user/repos?per_page=100&affiliation=owner", headers=GH_HEADERS)
+    if r.status_code != 200:
+        return {"additions": 0, "deletions": 0}
+    adds, dels = 0, 0
+    for repo in r.json():
+        if repo.get("fork"):
+            continue
+        url = f"https://api.github.com/repos/{USER_NAME}/{repo['name']}/stats/contributors"
+        for _ in range(100):
+            sr = requests.get(url, headers=GH_HEADERS)
+            if sr.status_code == 200:
+                for c in sr.json() or []:
+                    if c.get("author", {}).get("login") == USER_NAME:
+                        for w in c.get("weeks", []):
+                            adds += w.get("a", 0)
+                            dels += w.get("d", 0)
+                break
+            elif sr.status_code == 202:
+                time.sleep(2)
+            else:
+                break
+    return {"additions": adds, "deletions": dels}
 
 
-def image_to_ascii(image_path, width=40, height=25):
-    """Convert an image to ASCII art"""
-    # ASCII characters from dark to light
-    ASCII_CHARS = " .:-=+*#%@"
+# ── WakaTime API ─────────────────────────────────────────────────────────────
 
-    try:
-        img = Image.open(image_path)
-    except FileNotFoundError:
-        print(f"       Warning: Avatar image not found at {image_path}")
+def waka_headers():
+    token = base64.b64encode(f"{WAKA_KEY}:".encode()).decode()
+    return {"Authorization": f"Basic {token}"}
+
+
+def get_waka_stats():
+    """Returns languages + editors + OS from last_30_days stats."""
+    if not WAKA_KEY:
         return None
-
-    # Convert to grayscale
-    img = img.convert("L")
-
-    # Resize image
-    img = img.resize((width, height))
-
-    # Convert pixels to ASCII
-    pixels = list(img.getdata())
-    ascii_lines = []
-    for row in range(height):
-        line = ""
-        for col in range(width):
-            pixel = pixels[row * width + col]
-            # Map pixel value (0-255) to ASCII char
-            char_idx = int(pixel / 256 * len(ASCII_CHARS))
-            char_idx = min(char_idx, len(ASCII_CHARS) - 1)
-            line += ASCII_CHARS[char_idx]
-        ascii_lines.append(line)
-
-    return ascii_lines
-
-
-def format_date(date_str):
-    """Format ISO date to readable format"""
-    if not date_str:
-        return "N/A"
-    try:
-        dt = datetime.datetime.strptime(date_str[:10], "%Y-%m-%d")
-        return dt.strftime("%b %d, %Y")
-    except:
-        return date_str
-
-
-def format_date_short(date_str):
-    """Format ISO date to short format"""
-    if not date_str:
-        return "N/A"
-    try:
-        dt = datetime.datetime.strptime(date_str[:10], "%Y-%m-%d")
-        return dt.strftime("%b %d")
-    except:
-        return date_str
-
-
-def years_ago(date_str):
-    """Calculate how many years ago from ISO date string"""
-    if not date_str:
-        return "Unknown"
-    try:
-        dt = datetime.datetime.strptime(date_str[:10], "%Y-%m-%d")
-        diff = relativedelta.relativedelta(datetime.datetime.today(), dt)
-        return f"{diff.years} years ago"
-    except:
-        return "Unknown"
-
-
-def dot_pad(key, value, total_width):
-    """Create a dot-padded string: 'Key: .... Value' with total width"""
-    key_len = len(key) + 2  # +2 for ": "
-    value_len = len(str(value))
-    dots_needed = total_width - key_len - value_len
-    if dots_needed < 2:
-        dots_needed = 2
-    dots = " " + "." * dots_needed + " "
-    return dots
-
-
-def generate_svg(filename, stats, activity, age, ascii_art, loc_stats, is_dark=True):
-    """Generate SVG with dynamic dot padding"""
-
-    profile = CONFIG.get("profile", {})
-
-    # Colors
-    if is_dark:
-        bg_color = "#161b22"
-        text_color = "#c9d1d9"
-        key_color = "#ffa657"
-        value_color = "#a5d6ff"
-        dot_color = "#616e7f"
-        add_color = "#3fb950"
-        del_color = "#f85149"
-    else:
-        bg_color = "#ffffff"
-        text_color = "#1f2328"
-        key_color = "#953800"
-        value_color = "#0550ae"
-        dot_color = "#afb8c1"
-        add_color = "#1a7f37"
-        del_color = "#cf222e"
-
-    # Data preparation
-    title = profile.get("title", f"{USER_NAME}@github")
-    os_val = profile.get("os", "Linux")
-    uptime_val = age
-    host_val = profile.get("host", "Earth")
-    kernel_val = profile.get("kernel", "Developer")
-    ide_val = profile.get("ide", "VSCode")
-
-    lang_prog = profile.get("languages_programming", "Python")
-    lang_comp = profile.get("languages_computer", "HTML, CSS")
-    lang_real = profile.get("languages_real", "English")
-
-    hobby_sw = profile.get("hobbies_software", "Coding")
-    hobby_hw = profile.get("hobbies_hardware", "Computers")
-
-    contact = profile.get("contact", {})
-    contact_items = [(k.title(), v) for k, v in contact.items() if v]
-
-    commits = f"{activity['total_commits']:,}"
-    prs_opened = str(activity["total_prs"])
-    prs_reviewed = str(activity["total_pr_reviews"])
-    issues = str(stats["issues_opened"])
-    current_streak = f"{activity['current_streak']} days"
-    longest_streak = f"{activity['longest_streak']} days"
-    longest_period = f"{format_date_short(activity['longest_streak_start'])} - {format_date_short(activity['longest_streak_end'])}, {activity['longest_streak_end'][:4] if activity['longest_streak_end'] else ''}"
-    best_day = str(activity["best_day_count"])
-    best_day_date = format_date(activity["best_day_date"])
-    avg_day = f"~{activity['avg_per_day']:.2f}"
-
-    repos = str(stats["repositories"])
-    contributed = str(stats["contributed_to"])
-    stars = str(stats["stargazers"])
-    contributions = f"{activity['total_contributions']:,}"
-    followers = str(stats["followers"])
-    disk = f"{stats['disk_usage_mb']:.1f} MB"
-    license_val = stats["preferred_license"]
-
-    # Line width for dot padding (characters from start of value section to end)
-    W = 58
-
-    # Calculate dynamic height based on contact items
-    # Base height (up to Hobbies) = 270, Contact header = 20, each contact = 20, gap = 20
-    # Activity section = 100, GitHub Stats section = 80, bottom padding = 50
-    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 70
-    svg_height = max(600, base_height)
-
-    # Build SVG content
-    svg_lines = []
-    svg_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-    svg_lines.append(
-        f'<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="985px" height="{svg_height}px" font-size="16px">'
-    )
-    svg_lines.append("<style>")
-    svg_lines.append(f".key {{fill: {key_color};}}")
-    svg_lines.append(f".value {{fill: {value_color};}}")
-    svg_lines.append(f".cc {{fill: {dot_color};}}")
-    svg_lines.append(f".add {{fill: {add_color};}}")
-    svg_lines.append(f".del {{fill: {del_color};}}")
-    svg_lines.append("text, tspan {white-space: pre;}")
-    svg_lines.append("</style>")
-    svg_lines.append(
-        f'<rect width="985px" height="{svg_height}px" fill="{bg_color}" rx="15"/>'
-    )
-
-    # ASCII Art
-    svg_lines.append(f'<text x="15" y="30" fill="{text_color}" class="ascii">')
-    if ascii_art:
-        for i, line in enumerate(ascii_art[:25]):
-            y = 30 + i * 20
-            svg_lines.append(f'<tspan x="15" y="{y}">{escape_xml(line)}</tspan>')
-    svg_lines.append("</text>")
-
-    # Profile section
-    svg_lines.append(f'<text x="390" y="30" fill="{text_color}">')
-
-    # Header
-    svg_lines.append(make_header(390, 30, title, 60))
-
-    # Profile info with dynamic dots
-    svg_lines.append(
-        make_line(390, 50, "OS", os_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(
-        make_line(390, 70, "Uptime", uptime_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(
-        make_line(390, 90, "Host", host_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(
-        make_line(390, 110, "Kernel", kernel_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(
-        make_line(390, 130, "IDE", ide_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(f'<tspan x="390" y="150" class="cc">. </tspan>')
-
-    # Languages
-    svg_lines.append(
-        make_dotted_line(390, 170, "Languages", "Programming", lang_prog, W)
-    )
-    svg_lines.append(make_dotted_line(390, 190, "Languages", "Real", lang_real, W))
-    svg_lines.append(f'<tspan x="390" y="210" class="cc">. </tspan>')
-
-    # Hobbies
-    svg_lines.append(make_dotted_line(390, 230, "Hobbies", "Software", hobby_sw, W))
-    svg_lines.append(make_dotted_line(390, 250, "Hobbies", "Hardware", hobby_hw, W))
-
-    # Contact section
-    svg_lines.append(make_header(390, 290, "Contact", 60))
-    contact_y = 310
-    for label, value in contact_items:
-        svg_lines.append(
-            make_line(
-                390, contact_y, label, value, W, dot_color, key_color, value_color
-            )
+    for _ in range(5):
+        r = requests.get(
+            "https://wakatime.com/api/v1/users/current/stats/last_30_days",
+            headers=waka_headers(),
         )
-        contact_y += 20
+        if r.status_code == 200:
+            break
+        if r.status_code == 202:
+            time.sleep(3)
+            continue
+        print(f"       WakaTime stats failed: {r.status_code}")
+        return None
+    data = r.json().get("data", {})
+    return {
+        "languages": data.get("languages", []),
+        "editors": data.get("editors", [])[:6],
+        "operating_systems": data.get("operating_systems", [])[:6],
+        "categories": data.get("categories", []),
+        "daily_average": data.get("daily_average", 0),
+        "total_seconds": data.get("total_seconds", 0),
+        "best_day": data.get("best_day"),
+    }
 
-    # Activity section
-    activity_y = 290 + 20 + len(contact_items) * 20 + 20
-    svg_lines.append(make_header(390, activity_y, "Activity", 60))
-    svg_lines.append(
-        make_double_line(
-            390, activity_y + 20, "Commits", commits, "PRs Opened", prs_opened, 28, 26
-        )
-    )
-    svg_lines.append(
-        make_double_line(
-            390, activity_y + 40, "PRs Reviewed", prs_reviewed, "Issues", issues, 28, 26
-        )
-    )
-    svg_lines.append(
-        make_double_line(
-            390,
-            activity_y + 60,
-            "Current Streak",
-            current_streak,
-            "Longest Streak",
-            longest_streak,
-            28,
-            26,
-        )
-    )
-    svg_lines.append(
-        make_double_line(
-            390,
-            activity_y + 80,
-            "Best Day",
-            f"{best_day} commits",
-            "Avg",
-            f"{avg_day}/day",
-            28,
-            26,
-        )
-    )
 
-    # GitHub Stats section
-    stats_y = activity_y + 120
-    svg_lines.append(make_header(390, stats_y, "GitHub Stats", 60))
-    svg_lines.append(
-        make_double_line(390, stats_y + 20, "Repos", repos, "Stars", stars, 32, 22)
+def get_waka_summaries():
+    """Returns last 30 days daily totals."""
+    if not WAKA_KEY:
+        return None
+    r = requests.get(
+        "https://wakatime.com/api/v1/users/current/summaries?range=last_30_days",
+        headers=waka_headers(),
     )
-    svg_lines.append(
-        make_double_line(
-            390,
-            stats_y + 40,
-            "Contributions",
-            contributions,
-            "Followers",
-            followers,
-            32,
-            22,
-        )
+    if r.status_code != 200:
+        print(f"       WakaTime summaries failed: {r.status_code}")
+        return None
+    days = []
+    for day in r.json().get("data", []):
+        days.append({
+            "date": day["range"]["date"],
+            "seconds": day["grand_total"]["total_seconds"],
+        })
+    return days
+
+
+# ── SVG helpers ──────────────────────────────────────────────────────────────
+
+def x(s):
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def svg_open(w, h):
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" '
+        f'width="{w}" height="{h}" font-size="14px">'
+        f'<rect width="{w}" height="{h}" fill="{BG}" rx="12"/>'
     )
 
-    # Lines of Code line (double-line format with space-padded additions/deletions)
-    total_loc = loc_stats["additions"] - loc_stats["deletions"]
-    total_loc_str = f"{total_loc:,}"
-    additions_str = f"{loc_stats['additions']:,}"
-    deletions_str = f"{loc_stats['deletions']:,}"
-    svg_lines.append(
-        make_loc_line(
-            390, stats_y + 60, total_loc_str, additions_str, deletions_str, 32, 22
-        )
+
+def make_line(px, py, key, value, width=56):
+    kl, vl = len(key) + 4, len(str(value))
+    dots = "." * max(2, width - kl - vl) + " "
+    return (
+        f'<text x="{px}" y="{py}" font-family="Consolas,monospace" font-size="14px">'
+        f'<tspan fill="{DOT}">. </tspan>'
+        f'<tspan fill="{KEY}">{x(key)}</tspan>'
+        f'<tspan fill="{DOT}">: {dots}</tspan>'
+        f'<tspan fill="{VAL}">{x(str(value))}</tspan>'
+        f'</text>'
     )
 
-    now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    svg_lines.append(
-        make_line(
-            390,
-            stats_y + 80,
-            "Last Updated",
-            now_str,
-            W,
-            dot_color,
-            key_color,
-            value_color,
-        )
-    )
 
-    svg_lines.append("</text>")
-    svg_lines.append("</svg>")
-
-    # Write file
-    filepath = os.path.join(os.path.dirname(__file__), filename)
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write("\n".join(svg_lines))
-
-
-def generate_ascii_svg(filename, ascii_art, svg_height=570, is_dark=True):
-    """Generate standalone ASCII art SVG"""
-    if is_dark:
-        bg_color = "#161b22"
-        text_color = "#c9d1d9"
-    else:
-        bg_color = "#ffffff"
-        text_color = "#1f2328"
-
-    svg_lines = []
-    svg_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-    svg_lines.append(
-        f'<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="390px" height="{svg_height}px" font-size="16px">'
-    )
-    svg_lines.append("<style>")
-    svg_lines.append("text, tspan {white-space: pre;}")
-    svg_lines.append("</style>")
-    svg_lines.append(
-        f'<rect width="390px" height="{svg_height}px" fill="{bg_color}" rx="15"/>'
-    )
-
-    svg_lines.append(f'<text x="15" y="30" fill="{text_color}" class="ascii">')
-    if ascii_art:
-        for i, line in enumerate(ascii_art[:25]):
-            y = 30 + i * 20
-            svg_lines.append(f'<tspan x="15" y="{y}">{escape_xml(line)}</tspan>')
-    svg_lines.append("</text>")
-    svg_lines.append("</svg>")
-
-    filepath = os.path.join(os.path.dirname(__file__), filename)
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write("\n".join(svg_lines))
-
-
-def generate_info_svg(filename, stats, activity, age, loc_stats, is_dark=True):
-    """Generate standalone info section SVG"""
-    profile = CONFIG.get("profile", {})
-
-    if is_dark:
-        bg_color = "#161b22"
-        text_color = "#c9d1d9"
-        key_color = "#ffa657"
-        value_color = "#a5d6ff"
-        dot_color = "#616e7f"
-        add_color = "#3fb950"
-        del_color = "#f85149"
-    else:
-        bg_color = "#ffffff"
-        text_color = "#1f2328"
-        key_color = "#953800"
-        value_color = "#0550ae"
-        dot_color = "#afb8c1"
-        add_color = "#1a7f37"
-        del_color = "#cf222e"
-
-    # Data preparation
-    title = profile.get("title", f"{USER_NAME}@github")
-    os_val = profile.get("os", "Linux")
-    uptime_val = age
-    host_val = profile.get("host", "Earth")
-    kernel_val = profile.get("kernel", "Developer")
-    ide_val = profile.get("ide", "VSCode")
-
-    lang_prog = profile.get("languages_programming", "Python")
-    lang_real = profile.get("languages_real", "English")
-
-    hobby_sw = profile.get("hobbies_software", "Coding")
-    hobby_hw = profile.get("hobbies_hardware", "Computers")
-
-    contact = profile.get("contact", {})
-    contact_items = [(k.title(), v) for k, v in contact.items() if v]
-
-    commits = f"{activity['total_commits']:,}"
-    prs_opened = str(activity["total_prs"])
-    prs_reviewed = str(activity["total_pr_reviews"])
-    issues = str(stats["issues_opened"])
-    current_streak = f"{activity['current_streak']} days"
-    longest_streak = f"{activity['longest_streak']} days"
-    best_day = str(activity["best_day_count"])
-    avg_day = f"~{activity['avg_per_day']:.2f}"
-
-    repos = str(stats["repositories"])
-    stars = str(stats["stargazers"])
-    contributions = f"{activity['total_contributions']:,}"
-    followers = str(stats["followers"])
-
-    W = 58
-
-    # Calculate dynamic height based on contact items
-    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 70
-    svg_height = max(600, base_height)
-
-    svg_lines = []
-    svg_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-    svg_lines.append(
-        f'<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="610px" height="{svg_height}px" font-size="16px">'
-    )
-    svg_lines.append("<style>")
-    svg_lines.append(f".key {{fill: {key_color};}}")
-    svg_lines.append(f".value {{fill: {value_color};}}")
-    svg_lines.append(f".cc {{fill: {dot_color};}}")
-    svg_lines.append(f".add {{fill: {add_color};}}")
-    svg_lines.append(f".del {{fill: {del_color};}}")
-    svg_lines.append("text, tspan {white-space: pre;}")
-    svg_lines.append("</style>")
-    svg_lines.append(
-        f'<rect width="610px" height="{svg_height}px" fill="{bg_color}" rx="15"/>'
-    )
-
-    svg_lines.append(f'<text x="15" y="30" fill="{text_color}">')
-
-    # Header
-    svg_lines.append(make_header(15, 30, title, 60))
-
-    # Profile info
-    svg_lines.append(
-        make_line(15, 50, "OS", os_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(
-        make_line(15, 70, "Uptime", uptime_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(
-        make_line(15, 90, "Host", host_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(
-        make_line(15, 110, "Kernel", kernel_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append(
-        make_line(15, 130, "IDE", ide_val, W, dot_color, key_color, value_color)
-    )
-    svg_lines.append('<tspan x="15" y="150" class="cc">. </tspan>')
-
-    # Languages
-    svg_lines.append(
-        make_dotted_line(15, 170, "Languages", "Programming", lang_prog, W)
-    )
-    svg_lines.append(make_dotted_line(15, 190, "Languages", "Real", lang_real, W))
-    svg_lines.append('<tspan x="15" y="210" class="cc">. </tspan>')
-
-    # Hobbies
-    svg_lines.append(make_dotted_line(15, 230, "Hobbies", "Software", hobby_sw, W))
-    svg_lines.append(make_dotted_line(15, 250, "Hobbies", "Hardware", hobby_hw, W))
-
-    # Contact section
-    svg_lines.append(make_header(15, 290, "Contact", 60))
-    contact_y = 310
-    for label, value in contact_items:
-        svg_lines.append(
-            make_line(15, contact_y, label, value, W, dot_color, key_color, value_color)
-        )
-        contact_y += 20
-
-    # Activity section
-    activity_y = 290 + 20 + len(contact_items) * 20 + 20
-    svg_lines.append(make_header(15, activity_y, "Activity", 60))
-    svg_lines.append(
-        make_double_line(
-            15, activity_y + 20, "Commits", commits, "PRs Opened", prs_opened, 28, 26
-        )
-    )
-    svg_lines.append(
-        make_double_line(
-            15, activity_y + 40, "PRs Reviewed", prs_reviewed, "Issues", issues, 28, 26
-        )
-    )
-    svg_lines.append(
-        make_double_line(
-            15,
-            activity_y + 60,
-            "Current Streak",
-            current_streak,
-            "Longest Streak",
-            longest_streak,
-            28,
-            26,
-        )
-    )
-    svg_lines.append(
-        make_double_line(
-            15,
-            activity_y + 80,
-            "Best Day",
-            f"{best_day} commits",
-            "Avg",
-            f"{avg_day}/day",
-            28,
-            26,
-        )
-    )
-
-    # GitHub Stats section
-    stats_y = activity_y + 120
-    svg_lines.append(make_header(15, stats_y, "GitHub Stats", 60))
-    svg_lines.append(
-        make_double_line(15, stats_y + 20, "Repos", repos, "Stars", stars, 32, 22)
-    )
-    svg_lines.append(
-        make_double_line(
-            15,
-            stats_y + 40,
-            "Contributions",
-            contributions,
-            "Followers",
-            followers,
-            32,
-            22,
-        )
-    )
-
-    # Lines of Code
-    total_loc = loc_stats["additions"] - loc_stats["deletions"]
-    total_loc_str = f"{total_loc:,}"
-    additions_str = f"{loc_stats['additions']:,}"
-    deletions_str = f"{loc_stats['deletions']:,}"
-    svg_lines.append(
-        make_loc_line(
-            15, stats_y + 60, total_loc_str, additions_str, deletions_str, 32, 22
-        )
-    )
-
-    now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    svg_lines.append(
-        make_line(
-            15,
-            stats_y + 80,
-            "Last Updated",
-            now_str,
-            W,
-            dot_color,
-            key_color,
-            value_color,
-        )
-    )
-
-    svg_lines.append("</text>")
-    svg_lines.append("</svg>")
-
-    filepath = os.path.join(os.path.dirname(__file__), filename)
-    with open(filepath, "w", encoding="utf-8") as f:
-        f.write("\n".join(svg_lines))
-
-
-def escape_xml(text):
-    """Escape special XML characters"""
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-
-def dots_for(count):
-    """Generate dot padding of specified length"""
-    if count < 2:
-        count = 2
-    return "." * count + " "
-
-
-def make_header(x, y, title, total_width=58):
-    """Create a responsive section header with dynamic dash padding"""
-    # Format: "- Title -———————————————————————————————————————————-—-"
-    # The dashes fill to total_width characters
+def make_header(px, py, title, width=56):
     prefix = f"- {title} "
     suffix = "-—-"
-    # Each em-dash (—) is 1 character
-    dashes_needed = total_width - len(prefix) - len(suffix)
-    if dashes_needed < 1:
-        dashes_needed = 1
-    dashes = "—" * dashes_needed
-    return f'<tspan x="{x}" y="{y}">{prefix}</tspan>{dashes}{suffix}'
+    dashes = "—" * max(1, width - len(prefix) - len(suffix))
+    return (
+        f'<text x="{px}" y="{py}" font-family="Consolas,monospace" font-size="14px" fill="{DOT}">'
+        f'{x(prefix + dashes + suffix)}</text>'
+    )
 
 
-def make_line(x, y, key, value, width, dot_color, key_color, value_color):
-    """Create a single line with dynamic dot padding"""
-    key_len = len(key) + 4  # ". " + key + ": "
-    value_len = len(str(value))
-    dots_count = width - key_len - value_len
-    if dots_count < 2:
-        dots_count = 2
-    dots = "." * dots_count + " "
-    return f'<tspan x="{x}" y="{y}" class="cc">. </tspan><tspan class="key">{key}</tspan>:<tspan class="cc"> {dots}</tspan><tspan class="value">{value}</tspan>'
+def fmt_seconds(s):
+    h = int(s // 3600)
+    m = int((s % 3600) // 60)
+    if h > 0:
+        return f"{h}h {m}m"
+    return f"{m}m"
 
 
-def make_dotted_line(x, y, prefix, suffix, value, width):
-    """Create a line with prefix.suffix: ... value format"""
-    key = f"{prefix}.{suffix}"
-    key_len = len(key) + 4  # ". " + key + ": "
-    value_len = len(str(value))
-    dots_count = width - key_len - value_len
-    if dots_count < 2:
-        dots_count = 2
-    dots = "." * dots_count + " "
-    return f'<tspan x="{x}" y="{y}" class="cc">. </tspan><tspan class="key">{prefix}</tspan>.<tspan class="key">{suffix}</tspan>:<tspan class="cc"> {dots}</tspan><tspan class="value">{value}</tspan>'
+def fmt_date(d):
+    try:
+        return datetime.datetime.strptime(d[:10], "%Y-%m-%d").strftime("%b %d, %Y")
+    except Exception:
+        return d
 
 
-def make_double_line(x, y, key1, val1, key2, val2, width1, width2):
-    """Create a line with two key-value pairs separated by |"""
-    key1_len = len(key1) + 4
-    val1_len = len(str(val1))
-    dots1_count = width1 - key1_len - val1_len
-    if dots1_count < 2:
-        dots1_count = 2
-    dots1 = "." * dots1_count + " "
+# ── SVG generators ───────────────────────────────────────────────────────────
 
-    key2_len = len(key2) + 2
-    val2_len = len(str(val2))
-    dots2_count = width2 - key2_len - val2_len
-    if dots2_count < 2:
-        dots2_count = 2
-    dots2 = "." * dots2_count + " "
-
-    return f'<tspan x="{x}" y="{y}" class="cc">. </tspan><tspan class="key">{key1}</tspan>:<tspan class="cc"> {dots1}</tspan><tspan class="value">{val1}</tspan><tspan class="cc"> | </tspan><tspan class="key">{key2}</tspan>:<tspan class="cc"> {dots2}</tspan><tspan class="value">{val2}</tspan>'
+def dline(px, py, k1, v1, k2, v2, col2=340):
+    """Double line with pixel-exact column alignment. col2 = x of second column."""
+    def seg(kx, k, v):
+        return (f'<tspan x="{kx}" fill="{DOT}">. </tspan>'
+                f'<tspan fill="{KEY}">{x(k)}: </tspan>'
+                f'<tspan fill="{VAL}">{x(str(v))}</tspan>')
+    return (f'<text y="{py}" font-family="Consolas,monospace" font-size="14px">'
+            f'{seg(px, k1, v1)}'
+            f'<tspan fill="{DOT}">  |  </tspan>'
+            f'{seg(col2, k2, v2)}'
+            f'</text>')
 
 
-def make_loc_line(x, y, loc_total, additions, deletions, width1, width2):
-    """Create the Lines of Code line with space-padded additions/deletions on the right"""
-    key = "Lines of Code"
-    key_len = len(key) + 4  # ". " + key + ": "
-    val_len = len(str(loc_total))
-    dots_count = width1 - key_len - val_len
-    if dots_count < 2:
-        dots_count = 2
-    dots = "." * dots_count + " "
+def generate_github_stats(stats, activity, loc):
+    W, pad = 760, 15
+    H = 260  # tight fit: 9 data lines + 2 headers + spacing
+    out = []
+    out.append('<?xml version="1.0" encoding="UTF-8"?>')
+    out.append(f'<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="{W}px" height="{H}px" font-size="16px">')
+    out.append('<style>.k{fill:#ffa657}.v{fill:#a5d6ff}.c{fill:#616e7f}.a{fill:#3fb950}.d{fill:#f85149} text,tspan{white-space:pre}</style>')
+    out.append(f'<rect width="{W}px" height="{H}px" fill="{BG}" rx="15"/>')
+    out.append(f'<text x="{pad}" y="30" fill="{TEXT}">')
 
-    # Right side: space-padded additions and deletions
-    add_str = f"{additions}++"
-    del_str = f"{deletions}--"
-    right_content_len = len(add_str) + 2 + len(del_str)  # "+2" for ", " separator
-    spaces_needed = width2 - right_content_len
-    if spaces_needed < 1:
-        spaces_needed = 1
-    spaces = " " * spaces_needed
+    # W=760, font=16px monospace ~9.6px/char → ~77 chars fit
+    COLS = 74
 
-    return f'<tspan x="{x}" y="{y}" class="cc">. </tspan><tspan class="key">{key}</tspan>:<tspan class="cc"> {dots}</tspan><tspan class="value">{loc_total}</tspan><tspan class="cc"> |{spaces}</tspan><tspan class="add">{add_str}</tspan><tspan class="cc">, </tspan><tspan class="del">{del_str}</tspan>'
+    def hdr(y, title):
+        prefix = f"- {title} "
+        suffix = "-—-"
+        dashes = "—" * max(1, COLS - len(prefix) - len(suffix))
+        return f'<tspan x="{pad}" y="{y}" class="c">{x(prefix + dashes + suffix)}</tspan>'
 
+    def dbl(y, k1, v1, k2, v2, w1=32, w2=30):
+        d1 = "." * max(2, w1 - len(k1) - 2 - len(str(v1))) + " "
+        d2 = "." * max(2, w2 - len(k2) - 2 - len(str(v2))) + " "
+        return (f'<tspan x="{pad}" y="{y}" class="c">. </tspan>'
+                f'<tspan class="k">{x(k1)}</tspan>'
+                f'<tspan class="c">: {d1}</tspan>'
+                f'<tspan class="v">{x(str(v1))}</tspan>'
+                f'<tspan class="c"> | </tspan>'
+                f'<tspan class="k">{x(k2)}</tspan>'
+                f'<tspan class="c">: {d2}</tspan>'
+                f'<tspan class="v">{x(str(v2))}</tspan>')
+
+    total_loc = loc["additions"] - loc["deletions"]
+    add_s = f"{loc['additions']:,}++"
+    del_s = f"{loc['deletions']:,}--"
+    loc_val = f"{total_loc:,}"
+    loc_d1 = "." * max(2, 32 - len("Lines of Code") - 2 - len(loc_val)) + " "
+    loc_d2 = "." * max(2, 4) + " "
+    now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    now_d = "." * max(2, COLS - len("Last Updated") - 4 - len(now_str)) + " "
+
+    out.append(hdr(30, "Activity"))
+    out.append(dbl(55,  "Commits",        f"{activity['total_commits']:,}", "PRs Opened",     str(activity['total_prs']),               32, 30))
+    out.append(dbl(75,  "PRs Reviewed",   str(activity['total_reviews']),  "Issues",          str(stats['issues']),                     32, 30))
+    out.append(dbl(95,  "Current Streak", f"{activity['current_streak']} days", "Longest Streak", f"{activity['longest_streak']} days", 32, 30))
+    out.append(dbl(115, "Best Day",       f"{activity['best_day_count']} commits", "Avg",     f"~{activity['avg_per_day']:.2f}/day",     32, 30))
+    out.append(hdr(145, "GitHub Stats"))
+    out.append(dbl(170, "Repos",          str(stats['repositories']),      "Stars",           str(stats['stars']),                      32, 30))
+    out.append(dbl(190, "Contributions",  f"{activity['total_contributions']:,}", "Followers", str(stats['followers']),                 32, 30))
+    out.append(
+        f'<tspan x="{pad}" y="210" class="c">. </tspan>'
+        f'<tspan class="k">Lines of Code</tspan>'
+        f'<tspan class="c">: {loc_d1}</tspan>'
+        f'<tspan class="v">{x(loc_val)}</tspan>'
+        f'<tspan class="c"> | {loc_d2}</tspan>'
+        f'<tspan class="a">{x(add_s)}</tspan>'
+        f'<tspan class="c">, </tspan>'
+        f'<tspan class="d">{x(del_s)}</tspan>'
+    )
+    out.append(
+        f'<tspan x="{pad}" y="230" class="c">. </tspan>'
+        f'<tspan class="k">Last Updated</tspan>'
+        f'<tspan class="c">: {now_d}</tspan>'
+        f'<tspan class="v">{x(now_str)}</tspan>'
+    )
+    out.append('</text></svg>')
+    _write("github_stats.svg", "\n".join(out))
+
+
+def generate_waka_languages(waka):
+    if not waka or not waka["languages"]:
+        return
+    all_langs = [l for l in waka["languages"] if l.get("percent", 0) >= 0.5]
+    other_sec = sum(l.get("total_seconds", 0) for l in waka["languages"] if l.get("percent", 0) < 0.5)
+    other_pct = sum(l.get("percent", 0) for l in waka["languages"] if l.get("percent", 0) < 0.5)
+    if other_pct > 0:
+        all_langs.append({"name": "Other", "percent": other_pct, "total_seconds": other_sec,
+                          "text": fmt_seconds(other_sec)})
+    n = len(all_langs)
+    W, pad, bar_x, bar_w = 610, 15, 130, 300
+    H = 50 + n * 26 + 20
+    out = []
+    out.append('<?xml version="1.0" encoding="UTF-8"?>')
+    out.append(f'<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="{W}px" height="{H}px" font-size="14px">')
+    out.append('<style>.k{fill:#ffa657}.v{fill:#a5d6ff}.c{fill:#616e7f} text,tspan{white-space:pre}</style>')
+    out.append(f'<rect width="{W}px" height="{H}px" fill="{BG}" rx="15"/>')
+
+    # Header
+    prefix = "- Languages (last 30d) "
+    suffix = "-—-"
+    dashes = "—" * max(1, 58 - len(prefix) - len(suffix))
+    out.append(f'<text x="{pad}" y="28" font-size="16px" fill="{DOT}">{x(prefix + dashes + suffix)}</text>')
+
+    for i, lang in enumerate(all_langs):
+        y = 46 + i * 26
+        pct = lang.get("percent", 0)
+        filled = int(bar_w * pct / 100)
+        color = BAR_COLORS[i % len(BAR_COLORS)]
+        name = lang.get("name", "")
+        text_val = lang.get("text", fmt_seconds(lang.get("total_seconds", 0)))
+        out.append(f'<rect x="{pad}" y="{y+2}" width="8" height="8" fill="{color}" rx="2"/>')
+        out.append(f'<text x="{pad+12}" y="{y+11}" font-size="13px" fill="{VAL}">{x(name)}</text>')
+        out.append(f'<rect x="{bar_x}" y="{y}" width="{bar_w}" height="14" fill="{DOT}" opacity="0.15" rx="3"/>')
+        if filled > 0:
+            out.append(f'<rect x="{bar_x}" y="{y}" width="{filled}" height="14" fill="{color}" rx="3" opacity="0.85"/>')
+        out.append(f'<text x="{bar_x+bar_w+8}" y="{y+11}" font-size="12px" fill="{DOT}">{pct:.1f}%  {x(text_val)}</text>')
+
+    out.append('</svg>')
+    _write("waka_languages.svg", "\n".join(out))
+
+
+def generate_waka_pie(waka):
+    """Standalone pie chart for language distribution."""
+    if not waka or not waka["languages"]:
+        return
+    import math
+    all_langs = [l for l in waka["languages"] if l.get("percent", 0) >= 0.5]
+    other_sec = sum(l.get("total_seconds", 0) for l in waka["languages"] if l.get("percent", 0) < 0.5)
+    other_pct = sum(l.get("percent", 0) for l in waka["languages"] if l.get("percent", 0) < 0.5)
+    if other_pct > 0:
+        all_langs.append({"name": "Other", "percent": other_pct, "total_seconds": other_sec})
+
+    W, H = 420, 320
+    cx, cy, r = 130, 170, 110
+    out = [svg_open(W, H)]
+    out.append(make_header(20, 34, "Lang Distribution", 44))
+
+    total = sum(l.get("total_seconds", 0) for l in all_langs) or 1
+    angle = -math.pi / 2
+    for i, lang in enumerate(all_langs):
+        sec = lang.get("total_seconds", 0)
+        sweep = 2 * math.pi * sec / total
+        if sweep < 0.005:
+            angle += sweep
+            continue
+        color = BAR_COLORS[i % len(BAR_COLORS)]
+        x1 = cx + r * math.cos(angle)
+        y1 = cy + r * math.sin(angle)
+        x2 = cx + r * math.cos(angle + sweep)
+        y2 = cy + r * math.sin(angle + sweep)
+        large = 1 if sweep > math.pi else 0
+        out.append(f'<path d="M {cx} {cy} L {x1:.2f} {y1:.2f} A {r} {r} 0 {large} 1 {x2:.2f} {y2:.2f} Z" fill="{color}" stroke="{BG}" stroke-width="2"/>')
+        angle += sweep
+
+    hole = int(r * 0.4)
+    out.append(f'<circle cx="{cx}" cy="{cy}" r="{hole}" fill="{BG}"/>')
+    out.append(f'<text x="{cx}" y="{cy+5}" text-anchor="middle" font-family="Consolas,monospace" font-size="12px" fill="{DOT}">{len(all_langs)} langs</text>')
+
+    # Legend — right side, stacked
+    lx, ly = cx * 2 + 10, 50
+    for i, lang in enumerate(all_langs):
+        color = BAR_COLORS[i % len(BAR_COLORS)]
+        pct = lang.get("percent", 0)
+        name = lang.get("name", "")
+        out.append(f'<rect x="{lx}" y="{ly}" width="8" height="8" fill="{color}" rx="2"/>')
+        out.append(f'<text x="{lx+12}" y="{ly+9}" font-family="Consolas,monospace" font-size="11px" fill="{TEXT}">{x(name)}  {pct:.1f}%</text>')
+        ly += 18
+
+    out.append("</svg>")
+    _write("waka_pie.svg", "\n".join(out))
+
+
+def generate_waka_editors(waka):
+    if not waka or not waka["editors"]:
+        return
+    import math
+    editors = [e for e in waka["editors"] if e.get("total_seconds", 0) > 0]
+    W, H = 420, 300
+    cx, cy, r = 130, 155, 95
+    pad = 20
+
+    out = [svg_open(W, H)]
+    out.append(make_header(pad, pad + 14, "Editors  (last 30d)", 44))
+
+    total = sum(e.get("total_seconds", 0) for e in editors) or 1
+    angle = -math.pi / 2
+    for i, ed in enumerate(editors):
+        pct = ed.get("total_seconds", 0) / total
+        sweep = 2 * math.pi * pct
+        if sweep < 0.01:
+            continue
+        color = BAR_COLORS[i % len(BAR_COLORS)]
+        ir = r - 22
+        x1  = cx + r  * math.cos(angle);          y1  = cy + r  * math.sin(angle)
+        x2  = cx + r  * math.cos(angle + sweep);  y2  = cy + r  * math.sin(angle + sweep)
+        ix1 = cx + ir * math.cos(angle);          iy1 = cy + ir * math.sin(angle)
+        ix2 = cx + ir * math.cos(angle + sweep);  iy2 = cy + ir * math.sin(angle + sweep)
+        large = 1 if sweep > math.pi else 0
+        out.append(f'<path d="M {ix1:.2f} {iy1:.2f} L {x1:.2f} {y1:.2f} A {r} {r} 0 {large} 1 {x2:.2f} {y2:.2f} L {ix2:.2f} {iy2:.2f} A {ir} {ir} 0 {large} 0 {ix1:.2f} {iy1:.2f} Z" fill="{color}" stroke="{BG}" stroke-width="2"/>')
+        angle += sweep
+
+    daily_avg = fmt_seconds(waka.get("daily_average", 0))
+    out.append(f'<text x="{cx}" y="{cy-8}" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="{DOT}">avg/day</text>')
+    out.append(f'<text x="{cx}" y="{cy+12}" text-anchor="middle" font-family="Consolas,monospace" font-size="16px" font-weight="bold" fill="{ACCENT}">{x(daily_avg)}</text>')
+
+    lx, ly = cx * 2 + 10, 50
+    for i, ed in enumerate(editors):
+        color = BAR_COLORS[i % len(BAR_COLORS)]
+        out.append(f'<rect x="{lx}" y="{ly}" width="10" height="10" fill="{color}" rx="2"/>')
+        out.append(f'<text x="{lx+16}" y="{ly+10}" font-family="Consolas,monospace" font-size="13px" fill="{TEXT}">{x(ed.get("name",""))}</text>')
+        out.append(f'<text x="{lx+16}" y="{ly+23}" font-family="Consolas,monospace" font-size="11px" fill="{DOT}">{ed.get("percent",0):.1f}%  {x(ed.get("text",""))}</text>')
+        ly += 36
+
+    out.append("</svg>")
+    _write("waka_editors.svg", "\n".join(out))
+
+
+def generate_waka_activity(days):
+    if not days:
+        return
+    W, H = 700, 230
+    pad, bar_area_h, bar_area_y = 20, 130, 50
+    n = len(days)
+    slot = (W - pad * 2) // n
+    bar_w = max(8, slot - 3)
+    max_sec = max((d["seconds"] for d in days), default=1) or 1
+    avg_sec = sum(d["seconds"] for d in days) / n
+
+    out = [svg_open(W, H)]
+    out.append(make_header(pad, pad + 14, "Daily Activity  (last 30d)", 68))
+
+    for i, day in enumerate(days):
+        bx = pad + i * slot
+        sec = day["seconds"]
+        bh = int(bar_area_h * sec / max_sec) if sec > 0 else 2
+        by = bar_area_y + bar_area_h - bh
+        color = ACCENT if i == n - 1 else BAR_COLORS[0]
+        out.append(f'<rect x="{bx}" y="{by}" width="{bar_w}" height="{bh}" fill="{color}" rx="2" opacity="0.85"/>')
+        if i % 5 == 0 or i == n - 1:
+            try:
+                label = datetime.datetime.strptime(day["date"], "%Y-%m-%d").strftime("%m/%d")
+            except Exception:
+                label = day["date"][-5:]
+            out.append(f'<text x="{bx + bar_w//2}" y="{bar_area_y + bar_area_h + 18}" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="{DOT}">{x(label)}</text>')
+        if sec > max_sec * 0.35:
+            out.append(f'<text x="{bx + bar_w//2}" y="{by - 4}" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="{TEXT}">{x(fmt_seconds(sec))}</text>')
+
+    # Avg line
+    avg_y = bar_area_y + bar_area_h - int(bar_area_h * avg_sec / max_sec)
+    out.append(f'<line x1="{pad}" y1="{avg_y}" x2="{W - pad}" y2="{avg_y}" stroke="{DEL}" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>')
+    out.append(f'<text x="{W - pad - 2}" y="{avg_y - 4}" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="{DEL}">avg {x(fmt_seconds(avg_sec))}</text>')
+
+    out.append("</svg>")
+    _write("waka_activity.svg", "\n".join(out))
+
+
+def generate_waka_os(waka):
+    if not waka or not waka.get("operating_systems"):
+        return
+    oses = waka["operating_systems"]
+    W, H = 420, 60 + len(oses) * 36 + 30
+    pad = 20
+    bar_x, bar_w = 120, 240
+
+    out = [svg_open(W, H)]
+    out.append(make_header(pad, pad + 14, "Operating Systems  (last 30d)", 44))
+
+    for i, os_item in enumerate(oses):
+        y = pad + 36 + i * 36
+        pct = os_item.get("percent", 0)
+        filled = int(bar_w * pct / 100)
+        color = BAR_COLORS[i % len(BAR_COLORS)]
+        name = os_item.get("name", "")
+        text_val = os_item.get("text", fmt_seconds(os_item.get("total_seconds", 0)))
+
+        out.append(
+            f'<text x="{pad}" y="{y + 13}" font-family="Consolas,monospace" '
+            f'font-size="13px" fill="{VAL}">{x(name)}</text>'
+        )
+        out.append(
+            f'<rect x="{bar_x}" y="{y}" width="{bar_w}" height="18" '
+            f'fill="{DOT}" opacity="0.25" rx="4"/>'
+        )
+        if filled > 0:
+            out.append(
+                f'<rect x="{bar_x}" y="{y}" width="{filled}" height="18" '
+                f'fill="{color}" rx="4"/>'
+            )
+        out.append(
+            f'<text x="{bar_x + bar_w + 8}" y="{y + 13}" font-family="Consolas,monospace" '
+            f'font-size="12px" fill="{DOT}">{pct:.1f}%  {x(text_val)}</text>'
+        )
+
+    out.append("</svg>")
+    _write("waka_os.svg", "\n".join(out))
+
+
+def generate_waka_ai(waka):
+    """Horizontal stacked bar: AI Coding vs Human Coding vs other categories."""
+    if not waka or not waka.get("categories"):
+        return
+    import math
+    cats = [c for c in waka["categories"] if c.get("total_seconds", 0) > 0]
+    W, H = 500, 140
+    pad = 20
+    bar_y, bar_h = 70, 28
+    bar_w = W - pad * 2
+
+    out = [svg_open(W, H)]
+    out.append(make_header(pad, pad + 14, "Coding Activity  (last 30d)", 52))
+
+    # Stacked bar
+    total = sum(c.get("total_seconds", 0) for c in cats) or 1
+    cx = pad
+    for i, cat in enumerate(cats):
+        pct = cat["total_seconds"] / total
+        w = int(bar_w * pct)
+        color = BAR_COLORS[i % len(BAR_COLORS)]
+        radius = "0"
+        if i == 0: radius = "4 0 0 4"
+        elif i == len(cats) - 1: radius = "0 4 4 0"
+        out.append(f'<rect x="{cx}" y="{bar_y}" width="{w}" height="{bar_h}" fill="{color}" rx="{radius}"/>')
+        cx += w
+
+    # Legend below bar
+    lx, ly = pad, bar_y + bar_h + 18
+    for i, cat in enumerate(cats):
+        color = BAR_COLORS[i % len(BAR_COLORS)]
+        pct = cat["total_seconds"] / total * 100
+        name = cat.get("name", "")
+        text_val = cat.get("text", "")
+        label = f'{name}: {pct:.1f}%  {text_val}'
+        out.append(f'<rect x="{lx}" y="{ly-9}" width="8" height="8" fill="{color}" rx="2"/>')
+        out.append(f'<text x="{lx+12}" y="{ly}" font-family="Consolas,monospace" font-size="11px" fill="{TEXT}">{x(label)}</text>')
+        lx += len(label) * 7 + 20
+        if lx > W - 100:
+            lx = pad
+            ly += 16
+
+    out.append("</svg>")
+    _write("waka_ai.svg", "\n".join(out))
+
+
+def _write(filename, content):
+    path = os.path.join(os.path.dirname(__file__), filename)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(content)
+    print(f"       Written: {filename}")
+
+
+# ── Main ─────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("=" * 60)
+    print("=" * 50)
     print("GitHub Profile Stats Generator")
-    print("=" * 60)
-    print(f"\nUser: {USER_NAME}")
-    print("-" * 60)
+    print("=" * 50)
 
-    start_time = time.perf_counter()
-
-    # Step 1: Fetch comprehensive user stats
-    print("\n[1/4] Fetching user statistics...")
+    print("\n[1/5] Fetching GitHub user stats...")
     stats = get_user_stats()
-    print(f"       Name: {stats['name']}")
-    print(f"       Joined GitHub: {years_ago(stats['created_at'])}")
-    print(f"       Followed by: {stats['followers']} users")
 
-    # Step 2: Get contribution years
-    print("\n[2/4] Fetching contribution years...")
+    print("\n[2/5] Fetching contribution years...")
     years = get_contribution_years()
-    print(f"       Contributing since: {min(years)}")
 
-    # Step 3: Calculate streaks and activity
-    print("\n[3/5] Calculating contributions and streaks...")
-    activity = calculate_streaks_and_activity(years)
+    print("\n[3/5] Calculating activity & streaks...")
+    activity = calculate_activity(years)
 
-    # Calculate age
-    age = daily_readme(BIRTHDAY)
-
-    # Step 4: Fetch lines of code
     print("\n[4/5] Fetching lines of code...")
-    loc_stats = get_lines_of_code()
-    print(f"       Lines added: {loc_stats['additions']:,}")
-    print(f"       Lines deleted: {loc_stats['deletions']:,}")
+    loc = get_lines_of_code()
 
-    total_time = time.perf_counter() - start_time
+    print("\n[5/5] Fetching WakaTime stats...")
+    waka = get_waka_stats()
+    waka_days = get_waka_summaries()
 
-    # Print summary
-    print("\n" + "=" * 60)
-    print(f"  {stats['name']} (@{USER_NAME})")
-    print("=" * 60)
-    print(f"  Commits: {activity['total_commits']:,}")
-    print(f"  Contributions: {activity['total_contributions']:,}")
-    print(f"  Longest Streak: {activity['longest_streak']} days")
-    print("-" * 60)
-    print(f"  Total time: {total_time:.2f} seconds")
-    print(f"  API calls: {sum(QUERY_COUNT.values())}")
-    print("=" * 60)
-
-    # Generate ASCII art from avatar if available
-    ascii_art = None
-    avatar_path = CONFIG.get("profile", {}).get("avatar_path")
-    if avatar_path:
-        full_path = os.path.join(os.path.dirname(__file__), avatar_path)
-        ascii_width = CONFIG.get("profile", {}).get("ascii_width", 40)
-        ascii_height = CONFIG.get("profile", {}).get("ascii_height", 25)
-        print(f"\n[5/5] Generating ASCII art from {avatar_path}...")
-        ascii_art = image_to_ascii(full_path, ascii_width, ascii_height)
-        if ascii_art:
-            print("       ASCII art generated successfully")
-        else:
-            print("       Skipping ASCII art (image not found)")
-    else:
-        print("\n[5/5] No avatar configured, skipping ASCII art")
-
-    # Generate SVG files
-    print("\n       Generating SVG files...")
-    generate_svg(
-        "dark_mode.svg", stats, activity, age, ascii_art, loc_stats, is_dark=True
-    )
-    print("       Updated: dark_mode.svg")
-    generate_svg(
-        "light_mode.svg", stats, activity, age, ascii_art, loc_stats, is_dark=False
-    )
-    print("       Updated: light_mode.svg")
-
-    # Generate split SVG files
-    print("\n       Generating split SVG files...")
-
-    # Calculate dynamic height based on contact items
-    profile = CONFIG.get("profile", {})
-    contact = profile.get("contact", {})
-    contact_items = [(k, v) for k, v in contact.items() if v]
-    base_height = 270 + 20 + len(contact_items) * 20 + 20 + 100 + 80 + 70
-    svg_height = max(600, base_height)
-
-    generate_ascii_svg("ascii_dark.svg", ascii_art, svg_height, is_dark=True)
-    print("       Updated: ascii_dark.svg")
-    generate_ascii_svg("ascii_light.svg", ascii_art, svg_height, is_dark=False)
-    print("       Updated: ascii_light.svg")
-    generate_info_svg("info_dark.svg", stats, activity, age, loc_stats, is_dark=True)
-    print("       Updated: info_dark.svg")
-    generate_info_svg("info_light.svg", stats, activity, age, loc_stats, is_dark=False)
-    print("       Updated: info_light.svg")
+    print("\n       Generating SVGs...")
+    generate_github_stats(stats, activity, loc)
+    generate_waka_languages(waka)
+    generate_waka_pie(waka)
+    generate_waka_editors(waka)
+    generate_waka_activity(waka_days)
+    generate_waka_os(waka)
+    generate_waka_ai(waka)
 
     print("\nDone!")

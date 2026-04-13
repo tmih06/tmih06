@@ -33,6 +33,7 @@ jobs:
       - name: Update README file
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
         run: python today.py
       - name: Commit
         run: |-
