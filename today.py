@@ -213,7 +213,7 @@ def get_lines_of_code():
             sr = requests.get(url, headers=GH_HEADERS)
             if sr.status_code == 200:
                 for c in sr.json() or []:
-                    if c.get("author", {}).get("login") == USER_NAME:
+                    if c and c.get("author", {}).get("login") == USER_NAME:
                         for w in c.get("weeks", []):
                             adds += w.get("a", 0)
                             dels += w.get("d", 0)
