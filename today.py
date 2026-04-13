@@ -199,29 +199,40 @@ def calculate_activity(years):
 
 
 def get_lines_of_code():
+    from concurrent.futures import ThreadPoolExecutor
+
     print("  Fetching repo list...", flush=True)
     r = requests.get("https://api.github.com/user/repos?per_page=100&affiliation=owner", headers=GH_HEADERS)
     if r.status_code != 200:
         return {"additions": 0, "deletions": 0}
     repos = [repo for repo in r.json() if not repo.get("fork")]
-    print(f"  Processing {len(repos)} repos for LOC...", flush=True)
-    adds, dels = 0, 0
-    for idx, repo in enumerate(repos):
-        print(f"    [{idx+1}/{len(repos)}] LOC stats...", flush=True)
+    print(f"  Processing {len(repos)} repos for LOC in parallel...", flush=True)
+
+    def fetch_repo_loc(args):
+        idx, repo = args
         url = f"https://api.github.com/repos/{USER_NAME}/{repo['name']}/stats/contributors"
+        print(f"    [{idx+1}/{len(repos)}] LOC stats...", flush=True)
         for _ in range(100):
             sr = requests.get(url, headers=GH_HEADERS)
             if sr.status_code == 200:
+                a = d = 0
                 for c in sr.json() or []:
                     if c and c.get("author", {}).get("login") == USER_NAME:
                         for w in c.get("weeks", []):
-                            adds += w.get("a", 0)
-                            dels += w.get("d", 0)
-                break
+                            a += w.get("a", 0)
+                            d += w.get("d", 0)
+                return a, d
             elif sr.status_code == 202:
                 time.sleep(2)
             else:
                 break
+        return 0, 0
+
+    adds, dels = 0, 0
+    with ThreadPoolExecutor(max_workers=10) as ex:
+        for a, d in ex.map(fetch_repo_loc, enumerate(repos)):
+            adds += a
+            dels += d
     return {"additions": adds, "deletions": dels}
 
 
@@ -644,27 +655,30 @@ def _write(filename, content):
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     print("=" * 50)
     print("GitHub Profile Stats Generator")
     print("=" * 50)
 
-    print("\n[1/5] Fetching GitHub user stats...")
-    stats = get_user_stats()
+    print("\nFetching data in parallel...")
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        f_stats    = ex.submit(get_user_stats)
+        f_years    = ex.submit(get_contribution_years)
+        f_loc      = ex.submit(get_lines_of_code)
+        f_waka     = ex.submit(get_waka_stats)
+        f_waka_days= ex.submit(get_waka_summaries)
 
-    print("\n[2/5] Fetching contribution years...")
-    years = get_contribution_years()
+        stats     = f_stats.result()
+        years     = f_years.result()
+        loc       = f_loc.result()
+        waka      = f_waka.result()
+        waka_days = f_waka_days.result()
 
-    print("\n[3/5] Calculating activity & streaks...")
+    print("\nCalculating activity & streaks...")
     activity = calculate_activity(years)
 
-    print("\n[4/5] Fetching lines of code...")
-    loc = get_lines_of_code()
-
-    print("\n[5/5] Fetching WakaTime stats...")
-    waka = get_waka_stats()
-    waka_days = get_waka_summaries()
-
-    print("\n       Generating SVGs...")
+    print("\nGenerating SVGs...")
     generate_github_stats(stats, activity, loc)
     generate_waka_languages(waka)
     generate_waka_editors(waka)
