@@ -1,101 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="700px" height="564px" font-size="14px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="700px" height="226px" font-size="14px">
 <style>.k{fill:#ffa657}.v{fill:#a5d6ff}.c{fill:#616e7f} text,tspan{white-space:pre}</style>
-<rect width="700px" height="564px" fill="#161b22" rx="15"/>
+<rect width="700px" height="226px" fill="#161b22" rx="15"/>
 <text x="15" y="28" font-size="16px" fill="#616e7f">- Languages (last 30d) ——————————————————————————————————————————-—-</text>
 <rect x="15" y="48" width="8" height="8" fill="#58a6ff" rx="2"/>
-<text x="27" y="57" font-size="13px" fill="#a5d6ff">Other</text>
+<text x="27" y="57" font-size="13px" fill="#a5d6ff">Python</text>
 <rect x="130" y="46" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="46" width="124" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
-<text x="518" y="57" font-size="12px" fill="#616e7f">32.7%  42 hrs 41 mins</text>
+<rect x="130" y="46" width="133" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
+<text x="518" y="57" font-size="12px" fill="#616e7f">35.2%  35h 12m</text>
 <rect x="15" y="74" width="8" height="8" fill="#3fb950" rx="2"/>
 <text x="27" y="83" font-size="13px" fill="#a5d6ff">TypeScript</text>
 <rect x="130" y="72" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="72" width="53" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
-<text x="518" y="83" font-size="12px" fill="#616e7f">14.2%  18 hrs 28 mins</text>
+<rect x="130" y="72" width="83" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
+<text x="518" y="83" font-size="12px" fill="#616e7f">22.1%  22h 6m</text>
 <rect x="15" y="100" width="8" height="8" fill="#ffa657" rx="2"/>
-<text x="27" y="109" font-size="13px" fill="#a5d6ff">Go</text>
+<text x="27" y="109" font-size="13px" fill="#a5d6ff">JavaScript</text>
 <rect x="130" y="98" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="98" width="42" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
-<text x="518" y="109" font-size="12px" fill="#616e7f">11.2%  14 hrs 39 mins</text>
+<rect x="130" y="98" width="58" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
+<text x="518" y="109" font-size="12px" fill="#616e7f">15.4%  15h 24m</text>
 <rect x="15" y="126" width="8" height="8" fill="#f85149" rx="2"/>
-<text x="27" y="135" font-size="13px" fill="#a5d6ff">Markdown</text>
+<text x="27" y="135" font-size="13px" fill="#a5d6ff">Rust</text>
 <rect x="130" y="124" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="124" width="40" height="14" fill="#f85149" rx="3" opacity="0.85"/>
-<text x="518" y="135" font-size="12px" fill="#616e7f">10.7%  13 hrs 55 mins</text>
+<rect x="130" y="124" width="39" height="14" fill="#f85149" rx="3" opacity="0.85"/>
+<text x="518" y="135" font-size="12px" fill="#616e7f">10.3%  10h 18m</text>
 <rect x="15" y="152" width="8" height="8" fill="#d2a8ff" rx="2"/>
-<text x="27" y="161" font-size="13px" fill="#a5d6ff">Vue.js</text>
+<text x="27" y="161" font-size="13px" fill="#a5d6ff">Java</text>
 <rect x="130" y="150" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="150" width="20" height="14" fill="#d2a8ff" rx="3" opacity="0.85"/>
-<text x="518" y="161" font-size="12px" fill="#616e7f">5.5%  7 hrs 7 mins</text>
+<rect x="130" y="150" width="32" height="14" fill="#d2a8ff" rx="3" opacity="0.85"/>
+<text x="518" y="161" font-size="12px" fill="#616e7f">8.5%  8h 30m</text>
 <rect x="15" y="178" width="8" height="8" fill="#79c0ff" rx="2"/>
-<text x="27" y="187" font-size="13px" fill="#a5d6ff">JSON</text>
+<text x="27" y="187" font-size="13px" fill="#a5d6ff">Other</text>
 <rect x="130" y="176" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="176" width="19" height="14" fill="#79c0ff" rx="3" opacity="0.85"/>
-<text x="518" y="187" font-size="12px" fill="#616e7f">5.3%  6 hrs 51 mins</text>
-<rect x="15" y="204" width="8" height="8" fill="#56d364" rx="2"/>
-<text x="27" y="213" font-size="13px" fill="#a5d6ff">YAML</text>
-<rect x="130" y="202" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="202" width="14" height="14" fill="#56d364" rx="3" opacity="0.85"/>
-<text x="518" y="213" font-size="12px" fill="#616e7f">3.8%  4 hrs 56 mins</text>
-<rect x="15" y="230" width="8" height="8" fill="#e3b341" rx="2"/>
-<text x="27" y="239" font-size="13px" fill="#a5d6ff">Bash</text>
-<rect x="130" y="228" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="228" width="10" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
-<text x="518" y="239" font-size="12px" fill="#616e7f">2.7%  3 hrs 29 mins</text>
-<rect x="15" y="256" width="8" height="8" fill="#58a6ff" rx="2"/>
-<text x="27" y="265" font-size="13px" fill="#a5d6ff">C#</text>
-<rect x="130" y="254" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="254" width="9" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
-<text x="518" y="265" font-size="12px" fill="#616e7f">2.4%  3 hrs 10 mins</text>
-<rect x="15" y="282" width="8" height="8" fill="#3fb950" rx="2"/>
-<text x="27" y="291" font-size="13px" fill="#a5d6ff">Java</text>
-<rect x="130" y="280" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="280" width="6" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
-<text x="518" y="291" font-size="12px" fill="#616e7f">1.6%  2 hrs 4 mins</text>
-<rect x="15" y="308" width="8" height="8" fill="#ffa657" rx="2"/>
-<text x="27" y="317" font-size="13px" fill="#a5d6ff">hyprlang</text>
-<rect x="130" y="306" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="306" width="3" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
-<text x="518" y="317" font-size="12px" fill="#616e7f">1.1%  1 hr 22 mins</text>
-<rect x="15" y="334" width="8" height="8" fill="#f85149" rx="2"/>
-<text x="27" y="343" font-size="13px" fill="#a5d6ff">SQL</text>
-<rect x="130" y="332" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="332" width="3" height="14" fill="#f85149" rx="3" opacity="0.85"/>
-<text x="518" y="343" font-size="12px" fill="#616e7f">1.0%  1 hr 16 mins</text>
-<rect x="15" y="360" width="8" height="8" fill="#d2a8ff" rx="2"/>
-<text x="27" y="369" font-size="13px" fill="#a5d6ff">Prisma</text>
-<rect x="130" y="358" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="358" width="3" height="14" fill="#d2a8ff" rx="3" opacity="0.85"/>
-<text x="518" y="369" font-size="12px" fill="#616e7f">1.0%  1 hr 15 mins</text>
-<rect x="15" y="386" width="8" height="8" fill="#79c0ff" rx="2"/>
-<text x="27" y="395" font-size="13px" fill="#a5d6ff">PlantUML</text>
-<rect x="130" y="384" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="384" width="3" height="14" fill="#79c0ff" rx="3" opacity="0.85"/>
-<text x="518" y="395" font-size="12px" fill="#616e7f">0.9%  1 hr 13 mins</text>
-<rect x="15" y="412" width="8" height="8" fill="#56d364" rx="2"/>
-<text x="27" y="421" font-size="13px" fill="#a5d6ff">TeX</text>
-<rect x="130" y="410" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="410" width="3" height="14" fill="#56d364" rx="3" opacity="0.85"/>
-<text x="518" y="421" font-size="12px" fill="#616e7f">0.9%  1 hr 7 mins</text>
-<rect x="15" y="438" width="8" height="8" fill="#e3b341" rx="2"/>
-<text x="27" y="447" font-size="13px" fill="#a5d6ff">gitignore</text>
-<rect x="130" y="436" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="436" width="3" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
-<text x="518" y="447" font-size="12px" fill="#616e7f">0.8%  1 hr 3 mins</text>
-<rect x="15" y="464" width="8" height="8" fill="#58a6ff" rx="2"/>
-<text x="27" y="473" font-size="13px" fill="#a5d6ff">CSS</text>
-<rect x="130" y="462" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="462" width="2" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
-<text x="518" y="473" font-size="12px" fill="#616e7f">0.7%  57 mins</text>
-<rect x="15" y="490" width="8" height="8" fill="#3fb950" rx="2"/>
-<text x="27" y="499" font-size="13px" fill="#a5d6ff">conf</text>
-<rect x="130" y="488" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="488" width="2" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
-<text x="518" y="499" font-size="12px" fill="#616e7f">0.7%  56 mins</text>
-<rect x="15" y="516" width="8" height="8" fill="#ffa657" rx="2"/>
-<text x="27" y="525" font-size="13px" fill="#a5d6ff">Other</text>
-<rect x="130" y="514" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="514" width="11" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
-<text x="518" y="525" font-size="12px" fill="#616e7f">2.9%  3h 49m</text>
+<rect x="130" y="176" width="32" height="14" fill="#79c0ff" rx="3" opacity="0.85"/>
+<text x="518" y="187" font-size="12px" fill="#616e7f">8.5%  8h 30m</text>
 </svg>

@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GH_HEADERS = {"Authorization": "Bearer " + os.environ["ACCESS_TOKEN"]}
+GH_HEADERS = {"Authorization": "Bearer " + os.environ.get("ACCESS_TOKEN", "")}
 WAKA_KEY = os.environ.get("WAKATIME_API_KEY", "")
 USER_NAME = "tmih06"
 BIRTHDAY = datetime.datetime(2006, 4, 8)
@@ -363,8 +363,8 @@ def dline(px, py, k1, v1, k2, v2, col2=340):
 
 
 def generate_github_stats(stats, activity, loc):
-    W, pad = 700, 15
-    H = 260  # tight fit: 9 data lines + 2 headers + spacing
+    W, pad = 760, 15
+    H = 260
     out = []
     out.append('<?xml version="1.0" encoding="UTF-8"?>')
     out.append(f'<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="{W}px" height="{H}px" font-size="16px">')
@@ -372,8 +372,8 @@ def generate_github_stats(stats, activity, loc):
     out.append(f'<rect width="{W}px" height="{H}px" fill="{BG}" rx="15"/>')
     out.append(f'<text x="{pad}" y="30" fill="{TEXT}">')
 
-    # W=700, font=16px monospace ~9.6px/char → ~70 chars fit
-    COLS = 68
+    # W=760, font=16px monospace ~9.6px/char → ~77 chars fit
+    COLS = 74
 
     def hdr(y, title):
         prefix = f"- {title} "
@@ -381,7 +381,7 @@ def generate_github_stats(stats, activity, loc):
         dashes = "—" * max(1, COLS - len(prefix) - len(suffix))
         return f'<tspan x="{pad}" y="{y}" class="c">{x(prefix + dashes + suffix)}</tspan>'
 
-    def dbl(y, k1, v1, k2, v2, w1=32, w2=34):
+    def dbl(y, k1, v1, k2, v2, w1=32, w2=37):
         d1 = "." * max(2, w1 - len(k1) - 2 - len(str(v1))) + " "
         d2 = "." * max(2, w2 - len(k2) - 2 - len(str(v2))) + " "
         return (f'<tspan x="{pad}" y="{y}" class="c">. </tspan>'
@@ -521,16 +521,16 @@ def generate_waka_editors(waka):
 def generate_waka_activity(days):
     if not days:
         return
-    W, H = 340, 230
-    pad, bar_area_h, bar_area_y = 15, 130, 50
+    W, H = 760, 260
+    pad, bar_area_h, bar_area_y = 20, 160, 60
     n = len(days)
     slot = (W - pad * 2) // n
-    bar_w = max(4, slot - 2)
+    bar_w = max(8, slot - 3)
     max_sec = max((d["seconds"] for d in days), default=1) or 1
     avg_sec = sum(d["seconds"] for d in days) / n
 
     out = [svg_open(W, H)]
-    out.append(make_header(pad, pad + 14, "Daily Activity  (last 30d)", 34))
+    out.append(make_header(pad, pad + 14, "Daily Activity  (last 30d)", 74))
 
     for i, day in enumerate(days):
         bx = pad + i * slot
@@ -654,29 +654,77 @@ def _write(filename, content):
 
 # ── Main ─────────────────────────────────────────────────────────────────────
 
+def mock_data():
+    stats = {"created_at": "2020-01-01T00:00:00Z", "followers": 11, "repositories": 55,
+             "disk_mb": 512, "preferred_license": "MIT", "issues": 59, "pull_requests": 99, "stars": 2}
+    activity = {"total_contributions": 2320, "total_commits": 2096, "total_prs": 99,
+                "total_reviews": 10, "current_streak": 113, "longest_streak": 113,
+                "best_day_count": 102, "avg_per_day": 1.48}
+    loc = {"additions": 1209137, "deletions": 238762}
+    waka = {
+        "languages": [
+            {"name": "Python", "percent": 35.2, "total_seconds": 126720, "text": "35h 12m"},
+            {"name": "TypeScript", "percent": 22.1, "total_seconds": 79560, "text": "22h 6m"},
+            {"name": "JavaScript", "percent": 15.4, "total_seconds": 55440, "text": "15h 24m"},
+            {"name": "Rust", "percent": 10.3, "total_seconds": 37080, "text": "10h 18m"},
+            {"name": "Java", "percent": 8.5, "total_seconds": 30600, "text": "8h 30m"},
+            {"name": "Other", "percent": 8.5, "total_seconds": 30600, "text": "8h 30m"},
+        ],
+        "editors": [
+            {"name": "Claude Code", "percent": 54.6, "total_seconds": 196560, "text": "54h 36m"},
+            {"name": "Neovim", "percent": 43.0, "total_seconds": 154800, "text": "43h 0m"},
+            {"name": "Vim", "percent": 2.4, "total_seconds": 8640, "text": "2h 24m"},
+        ],
+        "operating_systems": [
+            {"name": "Linux", "percent": 100.0, "total_seconds": 360000, "text": "100h 0m"},
+        ],
+        "categories": [
+            {"name": "AI Coding", "percent": 73.5, "total_seconds": 264600, "text": "73h 30m"},
+            {"name": "Coding", "percent": 18.4, "total_seconds": 66240, "text": "18h 24m"},
+            {"name": "Writing Docs", "percent": 6.1, "total_seconds": 21960, "text": "6h 6m"},
+            {"name": "Writing Tests", "percent": 2.0, "total_seconds": 7200, "text": "2h 0m"},
+        ],
+        "daily_average": 12000,
+        "total_seconds": 360000,
+        "best_day": None,
+    }
+    today = datetime.date.today()
+    waka_days = [
+        {"date": (today - datetime.timedelta(days=29-i)).strftime("%Y-%m-%d"),
+         "seconds": 7200 + (i % 7) * 3600 + (i % 3) * 1800}
+        for i in range(30)
+    ]
+    return stats, activity, loc, waka, waka_days
+
+
 if __name__ == "__main__":
-    from concurrent.futures import ThreadPoolExecutor, as_completed
+    import sys
+    from concurrent.futures import ThreadPoolExecutor
 
     print("=" * 50)
     print("GitHub Profile Stats Generator")
     print("=" * 50)
 
-    print("\nFetching data in parallel...")
-    with ThreadPoolExecutor(max_workers=6) as ex:
-        f_stats    = ex.submit(get_user_stats)
-        f_years    = ex.submit(get_contribution_years)
-        f_loc      = ex.submit(get_lines_of_code)
-        f_waka     = ex.submit(get_waka_stats)
-        f_waka_days= ex.submit(get_waka_summaries)
+    if "--mock" in sys.argv:
+        print("\n[MOCK] Using mock data...")
+        stats, activity, loc, waka, waka_days = mock_data()
+    else:
+        print("\nFetching data in parallel...")
+        with ThreadPoolExecutor(max_workers=6) as ex:
+            f_stats     = ex.submit(get_user_stats)
+            f_years     = ex.submit(get_contribution_years)
+            f_loc       = ex.submit(get_lines_of_code)
+            f_waka      = ex.submit(get_waka_stats)
+            f_waka_days = ex.submit(get_waka_summaries)
 
-        stats     = f_stats.result()
-        years     = f_years.result()
-        loc       = f_loc.result()
-        waka      = f_waka.result()
-        waka_days = f_waka_days.result()
+            stats     = f_stats.result()
+            years     = f_years.result()
+            loc       = f_loc.result()
+            waka      = f_waka.result()
+            waka_days = f_waka_days.result()
 
-    print("\nCalculating activity & streaks...")
-    activity = calculate_activity(years)
+        print("\nCalculating activity & streaks...")
+        activity = calculate_activity(years)
 
     print("\nGenerating SVGs...")
     generate_github_stats(stats, activity, loc)
