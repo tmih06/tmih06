@@ -56,6 +56,7 @@ BAR_COLORS = ["#58a6ff", "#3fb950", "#ffa657", "#f85149", "#d2a8ff",
 # ── GitHub API ───────────────────────────────────────────────────────────────
 
 def gh_query(name, query, variables):
+    print(f"  -> {name}...", flush=True)
     for attempt in range(3):
         r = requests.post(
             "https://api.github.com/graphql",
@@ -72,6 +73,7 @@ def gh_query(name, query, variables):
 
 
 def get_user_stats():
+    print("  Querying user profile...", flush=True)
     data = gh_query("get_user_stats", """
     query($login: String!) {
         user(login: $login) {
@@ -112,6 +114,7 @@ def get_user_stats():
 
 
 def get_contribution_years():
+    print("  Querying contribution years...", flush=True)
     data = gh_query("get_contribution_years", """
     query($login: String!) {
         user(login: $login) {
@@ -140,8 +143,10 @@ def get_contribution_calendar(start, end):
 
 
 def calculate_activity(years):
+    print(f"  Processing {len(years)} years: {sorted(years)}", flush=True)
     all_days, total_contributions, total_commits, total_prs, total_reviews = [], 0, 0, 0, 0
     for year in sorted(years):
+        print(f"    Fetching calendar {year}...", flush=True)
         end = datetime.datetime.now().strftime("%Y-%m-%dT23:59:59Z") if year == datetime.datetime.now().year else f"{year}-12-31T23:59:59Z"
         cal = get_contribution_calendar(f"{year}-01-01T00:00:00Z", end)
         total_contributions += cal["contributionCalendar"]["totalContributions"]
@@ -194,13 +199,15 @@ def calculate_activity(years):
 
 
 def get_lines_of_code():
+    print("  Fetching repo list...", flush=True)
     r = requests.get("https://api.github.com/user/repos?per_page=100&affiliation=owner", headers=GH_HEADERS)
     if r.status_code != 200:
         return {"additions": 0, "deletions": 0}
+    repos = [repo for repo in r.json() if not repo.get("fork")]
+    print(f"  Processing {len(repos)} repos for LOC...", flush=True)
     adds, dels = 0, 0
-    for repo in r.json():
-        if repo.get("fork"):
-            continue
+    for idx, repo in enumerate(repos):
+        print(f"    [{idx+1}/{len(repos)}] LOC stats...", flush=True)
         url = f"https://api.github.com/repos/{USER_NAME}/{repo['name']}/stats/contributors"
         for _ in range(100):
             sr = requests.get(url, headers=GH_HEADERS)
@@ -229,6 +236,7 @@ def get_waka_stats():
     """Returns languages + editors + OS from last_30_days stats."""
     if not WAKA_KEY:
         return None
+    print("  Fetching WakaTime stats...", flush=True)
     for _ in range(5):
         r = requests.get(
             "https://wakatime.com/api/v1/users/current/stats/last_30_days",
@@ -242,6 +250,8 @@ def get_waka_stats():
         print(f"       WakaTime stats failed: {r.status_code}")
         return None
     data = r.json().get("data", {})
+    langs = data.get("languages", [])
+    print(f"  WakaTime: {len(langs)} languages, daily avg {fmt_seconds(data.get('daily_average', 0))}", flush=True)
     return {
         "languages": data.get("languages", []),
         "editors": data.get("editors", [])[:6],
@@ -257,6 +267,7 @@ def get_waka_summaries():
     """Returns last 30 days daily totals."""
     if not WAKA_KEY:
         return None
+    print("  Fetching WakaTime summaries...", flush=True)
     r = requests.get(
         "https://wakatime.com/api/v1/users/current/summaries?range=last_30_days",
         headers=waka_headers(),
