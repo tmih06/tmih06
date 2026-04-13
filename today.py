@@ -359,7 +359,7 @@ def generate_github_stats(stats, activity, loc):
         dashes = "—" * max(1, COLS - len(prefix) - len(suffix))
         return f'<tspan x="{pad}" y="{y}" class="c">{x(prefix + dashes + suffix)}</tspan>'
 
-    def dbl(y, k1, v1, k2, v2, w1=32, w2=30):
+    def dbl(y, k1, v1, k2, v2, w1=32, w2=34):
         d1 = "." * max(2, w1 - len(k1) - 2 - len(str(v1))) + " "
         d2 = "." * max(2, w2 - len(k2) - 2 - len(str(v2))) + " "
         return (f'<tspan x="{pad}" y="{y}" class="c">. </tspan>'
