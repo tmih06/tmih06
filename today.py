@@ -341,7 +341,7 @@ def dline(px, py, k1, v1, k2, v2, col2=340):
 
 
 def generate_github_stats(stats, activity, loc):
-    W, pad = 760, 15
+    W, pad = 700, 15
     H = 260  # tight fit: 9 data lines + 2 headers + spacing
     out = []
     out.append('<?xml version="1.0" encoding="UTF-8"?>')
@@ -350,8 +350,8 @@ def generate_github_stats(stats, activity, loc):
     out.append(f'<rect width="{W}px" height="{H}px" fill="{BG}" rx="15"/>')
     out.append(f'<text x="{pad}" y="30" fill="{TEXT}">')
 
-    # W=760, font=16px monospace ~9.6px/char → ~77 chars fit
-    COLS = 74
+    # W=700, font=16px monospace ~9.6px/char → ~70 chars fit
+    COLS = 68
 
     def hdr(y, title):
         prefix = f"- {title} "
@@ -418,7 +418,7 @@ def generate_waka_languages(waka):
         all_langs.append({"name": "Other", "percent": other_pct, "total_seconds": other_sec,
                           "text": fmt_seconds(other_sec)})
     n = len(all_langs)
-    W, pad, bar_x, bar_w = 610, 15, 130, 300
+    W, pad, bar_x, bar_w = 700, 15, 130, 380
     H = 50 + n * 26 + 20
     out = []
     out.append('<?xml version="1.0" encoding="UTF-8"?>')
@@ -429,7 +429,7 @@ def generate_waka_languages(waka):
     # Header
     prefix = "- Languages (last 30d) "
     suffix = "-—-"
-    dashes = "—" * max(1, 58 - len(prefix) - len(suffix))
+    dashes = "—" * max(1, 68 - len(prefix) - len(suffix))
     out.append(f'<text x="{pad}" y="28" font-size="16px" fill="{DOT}">{x(prefix + dashes + suffix)}</text>')
 
     for i, lang in enumerate(all_langs):
@@ -450,68 +450,18 @@ def generate_waka_languages(waka):
     _write("waka_languages.svg", "\n".join(out))
 
 
-def generate_waka_pie(waka):
-    """Standalone pie chart for language distribution."""
-    if not waka or not waka["languages"]:
-        return
-    import math
-    all_langs = [l for l in waka["languages"] if l.get("percent", 0) >= 0.5]
-    other_sec = sum(l.get("total_seconds", 0) for l in waka["languages"] if l.get("percent", 0) < 0.5)
-    other_pct = sum(l.get("percent", 0) for l in waka["languages"] if l.get("percent", 0) < 0.5)
-    if other_pct > 0:
-        all_langs.append({"name": "Other", "percent": other_pct, "total_seconds": other_sec})
-
-    W, H = 420, 320
-    cx, cy, r = 130, 170, 110
-    out = [svg_open(W, H)]
-    out.append(make_header(20, 34, "Lang Distribution", 44))
-
-    total = sum(l.get("total_seconds", 0) for l in all_langs) or 1
-    angle = -math.pi / 2
-    for i, lang in enumerate(all_langs):
-        sec = lang.get("total_seconds", 0)
-        sweep = 2 * math.pi * sec / total
-        if sweep < 0.005:
-            angle += sweep
-            continue
-        color = BAR_COLORS[i % len(BAR_COLORS)]
-        x1 = cx + r * math.cos(angle)
-        y1 = cy + r * math.sin(angle)
-        x2 = cx + r * math.cos(angle + sweep)
-        y2 = cy + r * math.sin(angle + sweep)
-        large = 1 if sweep > math.pi else 0
-        out.append(f'<path d="M {cx} {cy} L {x1:.2f} {y1:.2f} A {r} {r} 0 {large} 1 {x2:.2f} {y2:.2f} Z" fill="{color}" stroke="{BG}" stroke-width="2"/>')
-        angle += sweep
-
-    hole = int(r * 0.4)
-    out.append(f'<circle cx="{cx}" cy="{cy}" r="{hole}" fill="{BG}"/>')
-    out.append(f'<text x="{cx}" y="{cy+5}" text-anchor="middle" font-family="Consolas,monospace" font-size="12px" fill="{DOT}">{len(all_langs)} langs</text>')
-
-    # Legend — right side, stacked
-    lx, ly = cx * 2 + 10, 50
-    for i, lang in enumerate(all_langs):
-        color = BAR_COLORS[i % len(BAR_COLORS)]
-        pct = lang.get("percent", 0)
-        name = lang.get("name", "")
-        out.append(f'<rect x="{lx}" y="{ly}" width="8" height="8" fill="{color}" rx="2"/>')
-        out.append(f'<text x="{lx+12}" y="{ly+9}" font-family="Consolas,monospace" font-size="11px" fill="{TEXT}">{x(name)}  {pct:.1f}%</text>')
-        ly += 18
-
-    out.append("</svg>")
-    _write("waka_pie.svg", "\n".join(out))
-
 
 def generate_waka_editors(waka):
     if not waka or not waka["editors"]:
         return
     import math
     editors = [e for e in waka["editors"] if e.get("total_seconds", 0) > 0]
-    W, H = 420, 300
-    cx, cy, r = 130, 155, 95
-    pad = 20
+    W, H = 340, 300
+    cx, cy, r = 110, 155, 85
+    pad = 15
 
     out = [svg_open(W, H)]
-    out.append(make_header(pad, pad + 14, "Editors  (last 30d)", 44))
+    out.append(make_header(pad, pad + 14, "Editors  (last 30d)", 34))
 
     total = sum(e.get("total_seconds", 0) for e in editors) or 1
     angle = -math.pi / 2
@@ -534,7 +484,7 @@ def generate_waka_editors(waka):
     out.append(f'<text x="{cx}" y="{cy-8}" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="{DOT}">avg/day</text>')
     out.append(f'<text x="{cx}" y="{cy+12}" text-anchor="middle" font-family="Consolas,monospace" font-size="16px" font-weight="bold" fill="{ACCENT}">{x(daily_avg)}</text>')
 
-    lx, ly = cx * 2 + 10, 50
+    lx, ly = cx + r + 15, 50
     for i, ed in enumerate(editors):
         color = BAR_COLORS[i % len(BAR_COLORS)]
         out.append(f'<rect x="{lx}" y="{ly}" width="10" height="10" fill="{color}" rx="2"/>')
@@ -549,16 +499,16 @@ def generate_waka_editors(waka):
 def generate_waka_activity(days):
     if not days:
         return
-    W, H = 700, 230
-    pad, bar_area_h, bar_area_y = 20, 130, 50
+    W, H = 340, 230
+    pad, bar_area_h, bar_area_y = 15, 130, 50
     n = len(days)
     slot = (W - pad * 2) // n
-    bar_w = max(8, slot - 3)
+    bar_w = max(4, slot - 2)
     max_sec = max((d["seconds"] for d in days), default=1) or 1
     avg_sec = sum(d["seconds"] for d in days) / n
 
     out = [svg_open(W, H)]
-    out.append(make_header(pad, pad + 14, "Daily Activity  (last 30d)", 68))
+    out.append(make_header(pad, pad + 14, "Daily Activity  (last 30d)", 34))
 
     for i, day in enumerate(days):
         bx = pad + i * slot
@@ -589,12 +539,12 @@ def generate_waka_os(waka):
     if not waka or not waka.get("operating_systems"):
         return
     oses = waka["operating_systems"]
-    W, H = 420, 60 + len(oses) * 36 + 30
-    pad = 20
-    bar_x, bar_w = 120, 240
+    W, H = 340, 60 + len(oses) * 36 + 20
+    pad = 15
+    bar_x, bar_w = 100, 170
 
     out = [svg_open(W, H)]
-    out.append(make_header(pad, pad + 14, "Operating Systems  (last 30d)", 44))
+    out.append(make_header(pad, pad + 14, "Operating Systems  (last 30d)", 34))
 
     for i, os_item in enumerate(oses):
         y = pad + 36 + i * 36
@@ -705,7 +655,6 @@ if __name__ == "__main__":
     print("\n       Generating SVGs...")
     generate_github_stats(stats, activity, loc)
     generate_waka_languages(waka)
-    generate_waka_pie(waka)
     generate_waka_editors(waka)
     generate_waka_activity(waka_days)
     generate_waka_os(waka)
