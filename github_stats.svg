@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="760px" height="260px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="700px" height="260px" font-size="16px">
 <style>.k{fill:#ffa657}.v{fill:#a5d6ff}.c{fill:#616e7f}.a{fill:#3fb950}.d{fill:#f85149} text,tspan{white-space:pre}</style>
-<rect width="760px" height="260px" fill="#161b22" rx="15"/>
+<rect width="700px" height="260px" fill="#161b22" rx="15"/>
 <text x="15" y="30" fill="#c9d1d9">
-<tspan x="15" y="30" class="c">- Activity ————————————————————————————————————————————————————————————-—-</tspan>
-<tspan x="15" y="55" class="c">. </tspan><tspan class="k">Commits</tspan><tspan class="c">: .................. </tspan><tspan class="v">2,096</tspan><tspan class="c"> | </tspan><tspan class="k">PRs Opened</tspan><tspan class="c">: ................ </tspan><tspan class="v">99</tspan>
+<tspan x="15" y="30" class="c">- Activity ——————————————————————————————————————————————————————-—-</tspan>
+<tspan x="15" y="55" class="c">. </tspan><tspan class="k">Commits</tspan><tspan class="c">: .................. </tspan><tspan class="v">2,099</tspan><tspan class="c"> | </tspan><tspan class="k">PRs Opened</tspan><tspan class="c">: ................ </tspan><tspan class="v">99</tspan>
 <tspan x="15" y="75" class="c">. </tspan><tspan class="k">PRs Reviewed</tspan><tspan class="c">: ................ </tspan><tspan class="v">10</tspan><tspan class="c"> | </tspan><tspan class="k">Issues</tspan><tspan class="c">: .................... </tspan><tspan class="v">59</tspan>
 <tspan x="15" y="95" class="c">. </tspan><tspan class="k">Current Streak</tspan><tspan class="c">: ........ </tspan><tspan class="v">113 days</tspan><tspan class="c"> | </tspan><tspan class="k">Longest Streak</tspan><tspan class="c">: ...... </tspan><tspan class="v">113 days</tspan>
-<tspan x="15" y="115" class="c">. </tspan><tspan class="k">Best Day</tspan><tspan class="c">: ........... </tspan><tspan class="v">102 commits</tspan><tspan class="c"> | </tspan><tspan class="k">Avg</tspan><tspan class="c">: ................ </tspan><tspan class="v">~1.48/day</tspan>
-<tspan x="15" y="145" class="c">- GitHub Stats ————————————————————————————————————————————————————————-—-</tspan>
-<tspan x="15" y="170" class="c">. </tspan><tspan class="k">Repos</tspan><tspan class="c">: ....................... </tspan><tspan class="v">55</tspan><tspan class="c"> | </tspan><tspan class="k">Stars</tspan><tspan class="c">: ...................... </tspan><tspan class="v">2</tspan>
-<tspan x="15" y="190" class="c">. </tspan><tspan class="k">Contributions</tspan><tspan class="c">: ............ </tspan><tspan class="v">2,320</tspan><tspan class="c"> | </tspan><tspan class="k">Followers</tspan><tspan class="c">: ................. </tspan><tspan class="v">11</tspan>
-<tspan x="15" y="210" class="c">. </tspan><tspan class="k">Lines of Code</tspan><tspan class="c">: .......... </tspan><tspan class="v">970,375</tspan><tspan class="c"> | .... </tspan><tspan class="a">1,209,137++</tspan><tspan class="c">, </tspan><tspan class="d">238,762--</tspan>
-<tspan x="15" y="230" class="c">. </tspan><tspan class="k">Last Updated</tspan><tspan class="c">: ....................................... </tspan><tspan class="v">2026-04-14 01:12:15</tspan>
+<tspan x="15" y="115" class="c">. </tspan><tspan class="k">Best Day</tspan><tspan class="c">: ........... </tspan><tspan class="v">102 commits</tspan><tspan class="c"> | </tspan><tspan class="k">Avg</tspan><tspan class="c">: ................ </tspan><tspan class="v">~1.49/day</tspan>
+<tspan x="15" y="145" class="c">- GitHub Stats ——————————————————————————————————————————————————-—-</tspan>
+<tspan x="15" y="170" class="c">. </tspan><tspan class="k">Repos</tspan><tspan class="c">: ....................... </tspan><tspan class="v">56</tspan><tspan class="c"> | </tspan><tspan class="k">Stars</tspan><tspan class="c">: ...................... </tspan><tspan class="v">2</tspan>
+<tspan x="15" y="190" class="c">. </tspan><tspan class="k">Contributions</tspan><tspan class="c">: ............ </tspan><tspan class="v">2,324</tspan><tspan class="c"> | </tspan><tspan class="k">Followers</tspan><tspan class="c">: ................. </tspan><tspan class="v">11</tspan>
+<tspan x="15" y="210" class="c">. </tspan><tspan class="k">Lines of Code</tspan><tspan class="c">: ................ </tspan><tspan class="v">0</tspan><tspan class="c"> | .... </tspan><tspan class="a">0++</tspan><tspan class="c">, </tspan><tspan class="d">0--</tspan>
+<tspan x="15" y="230" class="c">. </tspan><tspan class="k">Last Updated</tspan><tspan class="c">: ................................. </tspan><tspan class="v">2026-04-13 19:31:05</tspan>
 </text></svg>
