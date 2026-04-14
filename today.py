@@ -6,8 +6,6 @@ Dark mode only. GitHub stats + WakaTime charts.
 import base64
 import datetime
 import os
-import time
-
 import requests
 from dateutil import relativedelta
 from dotenv import load_dotenv
@@ -198,47 +196,6 @@ def calculate_activity(years):
     }
 
 
-def get_lines_of_code():
-    from concurrent.futures import ThreadPoolExecutor
-
-    print("  Fetching repo list...", flush=True)
-    r = requests.get("https://api.github.com/user/repos?per_page=100&affiliation=owner", headers=GH_HEADERS)
-    if r.status_code != 200:
-        return {"additions": 0, "deletions": 0}
-    repos = [repo for repo in r.json() if not repo.get("fork")]
-    print(f"  Processing {len(repos)} repos for LOC in parallel...", flush=True)
-
-    def fetch_repo_loc(args):
-        idx, repo = args
-        url = f"https://api.github.com/repos/{USER_NAME}/{repo['name']}/stats/contributors"
-        print(f"    [{idx+1}/{len(repos)}] LOC stats...", flush=True)
-        for _ in range(100):
-            sr = requests.get(url, headers=GH_HEADERS)
-            if sr.status_code == 200:
-                a = d = 0
-                try:
-                    contributors = sr.json() or []
-                except Exception:
-                    contributors = []
-                for c in contributors:
-                    if c and c.get("author", {}).get("login") == USER_NAME:
-                        for w in c.get("weeks", []):
-                            a += w.get("a", 0)
-                            d += w.get("d", 0)
-                return a, d
-            elif sr.status_code == 202:
-                time.sleep(2)
-            else:
-                break
-        return 0, 0
-
-    adds, dels = 0, 0
-    with ThreadPoolExecutor(max_workers=10) as ex:
-        for a, d in ex.map(fetch_repo_loc, enumerate(repos)):
-            adds += a
-            dels += d
-    return {"additions": adds, "deletions": dels}
-
 
 # ── WakaTime API ─────────────────────────────────────────────────────────────
 
@@ -366,9 +323,9 @@ def dline(px, py, k1, v1, k2, v2, col2=340):
             f'</text>')
 
 
-def generate_github_stats(stats, activity, loc):
+def generate_github_stats(stats, activity):
     W, pad = 760, 15
-    H = 260
+    H = 240
     out = []
     out.append('<?xml version="1.0" encoding="UTF-8"?>')
     out.append(f'<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="{W}px" height="{H}px" font-size="16px">')
@@ -397,12 +354,6 @@ def generate_github_stats(stats, activity, loc):
                 f'<tspan class="c">: {d2}</tspan>'
                 f'<tspan class="v">{x(str(v2))}</tspan>')
 
-    total_loc = loc["additions"] - loc["deletions"]
-    add_s = f"{loc['additions']:,}++"
-    del_s = f"{loc['deletions']:,}--"
-    loc_val = f"{total_loc:,}"
-    loc_d1 = "." * max(2, 32 - len("Lines of Code") - 2 - len(loc_val)) + " "
-    loc_d2 = "." * max(2, 4) + " "
     now_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     now_d = "." * max(2, COLS - len("Last Updated") - 4 - len(now_str)) + " "
 
@@ -416,16 +367,6 @@ def generate_github_stats(stats, activity, loc):
     out.append(dbl(190, "Contributions",  f"{activity['total_contributions']:,}", "Followers", str(stats['followers']),                 32, 30))
     out.append(
         f'<tspan x="{pad}" y="210" class="c">. </tspan>'
-        f'<tspan class="k">Lines of Code</tspan>'
-        f'<tspan class="c">: {loc_d1}</tspan>'
-        f'<tspan class="v">{x(loc_val)}</tspan>'
-        f'<tspan class="c"> | {loc_d2}</tspan>'
-        f'<tspan class="a">{x(add_s)}</tspan>'
-        f'<tspan class="c">, </tspan>'
-        f'<tspan class="d">{x(del_s)}</tspan>'
-    )
-    out.append(
-        f'<tspan x="{pad}" y="230" class="c">. </tspan>'
         f'<tspan class="k">Last Updated</tspan>'
         f'<tspan class="c">: {now_d}</tspan>'
         f'<tspan class="v">{x(now_str)}</tspan>'
@@ -664,7 +605,6 @@ def mock_data():
     activity = {"total_contributions": 2320, "total_commits": 2096, "total_prs": 99,
                 "total_reviews": 10, "current_streak": 113, "longest_streak": 113,
                 "best_day_count": 102, "avg_per_day": 1.48}
-    loc = {"additions": 1209137, "deletions": 238762}
     waka = {
         "languages": [
             {"name": "Python", "percent": 35.2, "total_seconds": 126720, "text": "35h 12m"},
@@ -698,7 +638,7 @@ def mock_data():
          "seconds": 7200 + (i % 7) * 3600 + (i % 3) * 1800}
         for i in range(30)
     ]
-    return stats, activity, loc, waka, waka_days
+    return stats, activity, waka, waka_days
 
 
 if __name__ == "__main__":
@@ -711,19 +651,17 @@ if __name__ == "__main__":
 
     if "--mock" in sys.argv:
         print("\n[MOCK] Using mock data...")
-        stats, activity, loc, waka, waka_days = mock_data()
+        stats, activity, waka, waka_days = mock_data()
     else:
         print("\nFetching data in parallel...")
-        with ThreadPoolExecutor(max_workers=6) as ex:
+        with ThreadPoolExecutor(max_workers=5) as ex:
             f_stats     = ex.submit(get_user_stats)
             f_years     = ex.submit(get_contribution_years)
-            f_loc       = ex.submit(get_lines_of_code)
             f_waka      = ex.submit(get_waka_stats)
             f_waka_days = ex.submit(get_waka_summaries)
 
             stats     = f_stats.result()
             years     = f_years.result()
-            loc       = f_loc.result()
             waka      = f_waka.result()
             waka_days = f_waka_days.result()
 
@@ -731,7 +669,7 @@ if __name__ == "__main__":
         activity = calculate_activity(years)
 
     print("\nGenerating SVGs...")
-    generate_github_stats(stats, activity, loc)
+    generate_github_stats(stats, activity)
     generate_waka_languages(waka)
     generate_waka_editors(waka)
     generate_waka_activity(waka_days)
