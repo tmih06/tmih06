@@ -49,8 +49,8 @@
 <rect x="668" y="60" width="21" height="160" fill="#58a6ff" rx="2" opacity="0.85"/>
 <text x="678" y="56" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">11h 46m</text>
 <rect x="692" y="214" width="21" height="6" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="716" y="189" width="21" height="31" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="716" y="183" width="21" height="37" fill="#58a6ff" rx="2" opacity="0.85"/>
 <text x="726" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">04/14</text>
 <line x1="20" y1="160" x2="740" y2="160" stroke="#f85149" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
-<text x="738" y="156" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 4h 25m</text>
+<text x="738" y="156" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 4h 26m</text>
 </svg>
