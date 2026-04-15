@@ -50,8 +50,8 @@
 <rect x="668" y="214" width="21" height="6" fill="#58a6ff" rx="2" opacity="0.85"/>
 <rect x="692" y="101" width="21" height="119" fill="#58a6ff" rx="2" opacity="0.85"/>
 <text x="702" y="97" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 47m</text>
-<rect x="716" y="192" width="21" height="28" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="716" y="183" width="21" height="37" fill="#58a6ff" rx="2" opacity="0.85"/>
 <text x="726" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">04/15</text>
 <line x1="20" y1="157" x2="740" y2="157" stroke="#f85149" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
-<text x="738" y="153" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 4h 39m</text>
+<text x="738" y="153" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 4h 41m</text>
 </svg>
