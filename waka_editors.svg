@@ -1,27 +1,27 @@
 <svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="340" height="300" font-size="14px"><rect width="340" height="300" fill="#161b22" rx="12"/>
 <text x="15" y="29" font-family="Consolas,monospace" font-size="14px" fill="#616e7f">- Editors  (last 30d) —————————-—-</text>
-<path d="M 110.00 92.00 L 110.00 70.00 A 85 85 0 0 1 112.73 239.96 L 112.02 217.97 A 63 63 0 0 0 110.00 92.00 Z" fill="#58a6ff" stroke="#161b22" stroke-width="2"/>
-<path d="M 112.02 217.97 L 112.73 239.96 A 85 85 0 0 1 46.06 98.99 L 62.61 113.49 A 63 63 0 0 0 112.02 217.97 Z" fill="#3fb950" stroke="#161b22" stroke-width="2"/>
-<path d="M 62.61 113.49 L 46.06 98.99 A 85 85 0 0 1 86.89 73.20 L 92.87 94.37 A 63 63 0 0 0 62.61 113.49 Z" fill="#ffa657" stroke="#161b22" stroke-width="2"/>
-<path d="M 92.87 94.37 L 86.89 73.20 A 85 85 0 0 1 98.46 70.79 L 101.45 92.58 A 63 63 0 0 0 92.87 94.37 Z" fill="#f85149" stroke="#161b22" stroke-width="2"/>
-<path d="M 101.45 92.58 L 98.46 70.79 A 85 85 0 0 1 110.00 70.00 L 110.00 92.00 A 63 63 0 0 0 101.45 92.58 Z" fill="#d2a8ff" stroke="#161b22" stroke-width="2"/>
+<path d="M 110.00 92.00 L 110.00 70.00 A 85 85 0 0 1 117.56 239.66 L 115.60 217.75 A 63 63 0 0 0 110.00 92.00 Z" fill="#58a6ff" stroke="#161b22" stroke-width="2"/>
+<path d="M 115.60 217.75 L 117.56 239.66 A 85 85 0 0 1 43.52 102.03 L 60.73 115.74 A 63 63 0 0 0 115.60 217.75 Z" fill="#3fb950" stroke="#161b22" stroke-width="2"/>
+<path d="M 60.73 115.74 L 43.52 102.03 A 85 85 0 0 1 87.19 73.12 L 93.09 94.31 A 63 63 0 0 0 60.73 115.74 Z" fill="#ffa657" stroke="#161b22" stroke-width="2"/>
+<path d="M 93.09 94.31 L 87.19 73.12 A 85 85 0 0 1 98.61 70.77 L 101.56 92.57 A 63 63 0 0 0 93.09 94.31 Z" fill="#f85149" stroke="#161b22" stroke-width="2"/>
+<path d="M 101.56 92.57 L 98.61 70.77 A 85 85 0 0 1 110.00 70.00 L 110.00 92.00 A 63 63 0 0 0 101.56 92.57 Z" fill="#d2a8ff" stroke="#161b22" stroke-width="2"/>
 <text x="110" y="147" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">avg/day</text>
-<text x="110" y="167" text-anchor="middle" font-family="Consolas,monospace" font-size="16px" font-weight="bold" fill="#58a6ff">3h 9m</text>
+<text x="110" y="167" text-anchor="middle" font-family="Consolas,monospace" font-size="16px" font-weight="bold" fill="#58a6ff">3h 13m</text>
 <rect x="210" y="50" width="10" height="10" fill="#58a6ff" rx="2"/>
 <text x="226" y="60" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Claude Code</text>
-<text x="226" y="73" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">49.5%  70 hrs 15 mins</text>
+<text x="226" y="73" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">48.6%  69 hrs 52 mins</text>
 <rect x="210" y="86" width="10" height="10" fill="#3fb950" rx="2"/>
 <text x="226" y="96" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Neovim</text>
-<text x="226" y="109" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">37.0%  52 hrs 28 mins</text>
+<text x="226" y="109" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">37.1%  53 hrs 23 mins</text>
 <rect x="210" y="122" width="10" height="10" fill="#ffa657" rx="2"/>
 <text x="226" y="132" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">VS Code</text>
-<text x="226" y="145" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">9.2%  13 hrs 1 min</text>
+<text x="226" y="145" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">10.0%  14 hrs 20 mins</text>
 <rect x="210" y="158" width="10" height="10" fill="#f85149" rx="2"/>
 <text x="226" y="168" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Unknown Editor</text>
 <text x="226" y="181" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">2.2%  3 hrs 8 mins</text>
 <rect x="210" y="194" width="10" height="10" fill="#d2a8ff" rx="2"/>
 <text x="226" y="204" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Vim</text>
-<text x="226" y="217" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">2.2%  3 hrs 4 mins</text>
+<text x="226" y="217" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">2.1%  3 hrs 4 mins</text>
 <rect x="210" y="230" width="10" height="10" fill="#79c0ff" rx="2"/>
 <text x="226" y="240" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Antigravity</text>
 <text x="226" y="253" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">0.0%  0 secs</text>
