@@ -49,9 +49,9 @@
 <rect x="668" y="125" width="21" height="95" fill="#58a6ff" rx="2" opacity="0.85"/>
 <text x="678" y="121" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 0m</text>
 <rect x="692" y="186" width="21" height="34" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="716" y="123" width="21" height="97" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="716" y="111" width="21" height="109" fill="#58a6ff" rx="2" opacity="0.85"/>
 <text x="726" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">05/01</text>
-<text x="726" y="119" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 9m</text>
+<text x="726" y="107" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 4m</text>
 <line x1="20" y1="155" x2="740" y2="155" stroke="#f85149" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
-<text x="738" y="151" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 4h 49m</text>
+<text x="738" y="151" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 4h 50m</text>
 </svg>
