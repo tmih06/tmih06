@@ -7,6 +7,8 @@ import base64
 import datetime
 import os
 import requests
+import time
+from zoneinfo import ZoneInfo
 from dateutil import relativedelta
 from dotenv import load_dotenv
 
@@ -256,6 +258,67 @@ def get_waka_summaries():
     return days
 
 
+def add_duration_to_hours(matrix, start_at, duration, tzinfo):
+    end_at = start_at + datetime.timedelta(seconds=duration)
+    current = start_at
+    while current < end_at:
+        next_hour = (current + datetime.timedelta(hours=1)).replace(minute=0, second=0, microsecond=0)
+        chunk_end = min(next_hour, end_at)
+        matrix[current.weekday()][current.hour] += (chunk_end - current).total_seconds()
+        current = chunk_end.astimezone(tzinfo)
+
+
+def get_waka_hourly_activity(days=30):
+    """Returns working-hours heatmap data from per-day WakaTime durations."""
+    if not WAKA_KEY:
+        return None
+
+    print("  Fetching WakaTime hourly durations...", flush=True)
+    matrix = [[0 for _ in range(24)] for _ in range(7)]
+    timezone_name = None
+    today = datetime.date.today()
+
+    for i in range(days):
+        date = today - datetime.timedelta(days=days - 1 - i)
+        r = requests.get(
+            "https://wakatime.com/api/v1/users/current/durations",
+            headers=waka_headers(),
+            params={"date": date.strftime("%Y-%m-%d")},
+        )
+        if r.status_code == 403:
+            print("       WakaTime durations need read_heartbeats scope")
+            return None
+        if r.status_code != 200:
+            print(f"       WakaTime durations failed for {date}: {r.status_code}")
+            continue
+
+        payload = r.json()
+        timezone_name = timezone_name or payload.get("timezone")
+        try:
+            tzinfo = ZoneInfo(timezone_name) if timezone_name else datetime.datetime.now().astimezone().tzinfo
+        except Exception:
+            tzinfo = datetime.datetime.now().astimezone().tzinfo
+
+        for item in payload.get("data", []):
+            duration = item.get("duration", 0)
+            if duration <= 0:
+                continue
+            start_at = datetime.datetime.fromtimestamp(item.get("time", 0), datetime.timezone.utc).astimezone(tzinfo)
+            add_duration_to_hours(matrix, start_at, duration, tzinfo)
+
+    total_seconds = sum(sum(row) for row in matrix)
+    if total_seconds <= 0:
+        return None
+
+    print(f"  WakaTime hourly: {fmt_seconds(total_seconds)} across {days} days", flush=True)
+    return {
+        "matrix": matrix,
+        "timezone": timezone_name or "local",
+        "days": days,
+        "total_seconds": total_seconds,
+    }
+
+
 # ── SVG helpers ──────────────────────────────────────────────────────────────
 
 def x(s):
@@ -502,6 +565,110 @@ def generate_waka_activity(days):
     _write("waka_activity.svg", "\n".join(out))
 
 
+def generate_waka_hours(hourly):
+    if not hourly or not hourly.get("matrix"):
+        return
+
+    matrix = hourly["matrix"]
+    hour_totals = [sum(row[hour] for row in matrix) for hour in range(24)]
+    max_sec = max(hour_totals, default=0) or 1
+    W, H = 760, 205
+    pad, chart_x, chart_y = 20, 56, 72
+    chart_w, chart_h = 664, 84
+
+    peak_hour = max(range(24), key=lambda hour: hour_totals[hour])
+    peak_start = max(
+        range(24),
+        key=lambda start: sum(hour_totals[(start + offset) % 24] for offset in range(4)),
+    )
+    peak_end = (peak_start + 4) % 24
+    peak_range = f"{peak_start:02d}:00-{peak_end:02d}:00" if peak_end else f"{peak_start:02d}:00-24:00"
+
+    out = [svg_open(W, H)]
+    out.append(make_header(pad, pad + 14, "Working Hours  (last 30d)", 74))
+    out.append(
+        f'<text x="{pad}" y="50" font-family="Consolas,monospace" font-size="12px" fill="{DOT}">'
+        f'total {x(fmt_seconds(hourly.get("total_seconds", 0)))} | peak 4h {x(peak_range)} | busiest {peak_hour:02d}:00 ({x(fmt_seconds(hour_totals[peak_hour]))}) | tz {x(hourly.get("timezone", "local"))}'
+        f'</text>'
+    )
+
+    slot = chart_w / 23
+    base_y = chart_y + chart_h
+    points = []
+    for hour, seconds in enumerate(hour_totals):
+        px = chart_x + hour * slot
+        py = base_y - (seconds / max_sec * chart_h)
+        points.append((px, py))
+
+    def smooth_path(points):
+        if not points:
+            return ""
+        path = f"M {points[0][0]:.2f} {points[0][1]:.2f}"
+        for i in range(len(points) - 1):
+            p0 = points[i - 1] if i > 0 else points[i]
+            p1 = points[i]
+            p2 = points[i + 1]
+            p3 = points[i + 2] if i + 2 < len(points) else p2
+            c1x = p1[0] + (p2[0] - p0[0]) / 6
+            c1y = p1[1] + (p2[1] - p0[1]) / 6
+            c2x = p2[0] - (p3[0] - p1[0]) / 6
+            c2y = p2[1] - (p3[1] - p1[1]) / 6
+            path += f" C {c1x:.2f} {c1y:.2f}, {c2x:.2f} {c2y:.2f}, {p2[0]:.2f} {p2[1]:.2f}"
+        return path
+
+    curve = smooth_path(points)
+    area = f"{curve} L {chart_x + chart_w:.2f} {base_y:.2f} L {chart_x:.2f} {base_y:.2f} Z"
+
+    out.append("<defs>")
+    out.append('<linearGradient id="hourFill" x1="0" y1="0" x2="1" y2="0">')
+    out.append('<stop offset="0%" stop-color="#1d4ed8"/>')
+    out.append('<stop offset="45%" stop-color="#7c3aed"/>')
+    out.append('<stop offset="75%" stop-color="#db2777"/>')
+    out.append('<stop offset="100%" stop-color="#facc15"/>')
+    out.append('</linearGradient>')
+    out.append('<linearGradient id="hourFade" x1="0" y1="0" x2="1" y2="0">')
+    out.append('<stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.42"/>')
+    out.append('<stop offset="28%" stop-color="#2563eb" stop-opacity="0.5"/>')
+    out.append('<stop offset="50%" stop-color="#7c3aed" stop-opacity="0.58"/>')
+    out.append('<stop offset="70%" stop-color="#db2777" stop-opacity="0.62"/>')
+    out.append('<stop offset="86%" stop-color="#f97316" stop-opacity="0.58"/>')
+    out.append('<stop offset="100%" stop-color="#facc15" stop-opacity="0.48"/>')
+    out.append('</linearGradient>')
+    out.append("</defs>")
+
+    out.append(f'<line x1="{chart_x}" y1="{base_y}" x2="{chart_x + chart_w}" y2="{base_y}" stroke="{DOT}" stroke-width="1" opacity="0.35"/>')
+    for hour in range(24):
+        hx = chart_x + hour * slot
+        line_opacity = 0.16 if hour % 3 == 0 else 0.07
+        out.append(f'<line x1="{hx:.2f}" y1="{chart_y}" x2="{hx:.2f}" y2="{base_y}" stroke="{DOT}" stroke-width="1" opacity="{line_opacity}"/>')
+        out.append(
+            f'<text x="{hx:.2f}" y="{base_y + 18}" text-anchor="middle" '
+            f'font-family="Consolas,monospace" font-size="8px" fill="{DOT}">{hour:02d}</text>'
+        )
+
+    out.append(f'<path d="{area}" fill="url(#hourFade)"/>')
+    out.append(f'<path d="{curve}" fill="none" stroke="url(#hourFill)" stroke-width="4" stroke-linecap="round"/>')
+
+    for hour, seconds in enumerate(hour_totals):
+        px, py = points[hour]
+        radius = 4 if hour == peak_hour else 2.5
+        opacity = 1 if seconds > 0 else 0.25
+        out.append(
+            f'<circle cx="{px:.2f}" cy="{py:.2f}" r="{radius}" fill="#facc15" opacity="{opacity}">'
+            f'<title>{hour:02d}:00 - {x(fmt_seconds(seconds))} total</title>'
+            f'</circle>'
+        )
+
+    out.append(
+        f'<text x="{pad}" y="{H - 14}" font-family="Consolas,monospace" font-size="11px" fill="{DOT}">'
+        f'24-hour distribution across {hourly.get("days", 30)} days; higher curve = more coding time in that hour'
+        f'</text>'
+    )
+
+    out.append("</svg>")
+    _write("waka_hours.svg", "\n".join(out))
+
+
 def generate_waka_os(waka):
     if not waka or not waka.get("operating_systems"):
         return
@@ -638,7 +805,21 @@ def mock_data():
          "seconds": 7200 + (i % 7) * 3600 + (i % 3) * 1800}
         for i in range(30)
     ]
-    return stats, activity, waka, waka_days
+    waka_hours_matrix = [[0 for _ in range(24)] for _ in range(7)]
+    for day in range(7):
+        for hour in range(24):
+            if 8 <= hour <= 23 and day < 6:
+                peak = max(0, 8 - abs(hour - (14 + day % 3)))
+                waka_hours_matrix[day][hour] = (peak * 900) + (day + 1) * 120
+            elif hour in (0, 1) and day in (2, 4, 5):
+                waka_hours_matrix[day][hour] = 1800 + day * 300
+    waka_hours = {
+        "matrix": waka_hours_matrix,
+        "timezone": "Asia/Ho_Chi_Minh",
+        "days": 30,
+        "total_seconds": sum(sum(row) for row in waka_hours_matrix),
+    }
+    return stats, activity, waka, waka_days, waka_hours
 
 
 if __name__ == "__main__":
@@ -651,19 +832,21 @@ if __name__ == "__main__":
 
     if "--mock" in sys.argv:
         print("\n[MOCK] Using mock data...")
-        stats, activity, waka, waka_days = mock_data()
+        stats, activity, waka, waka_days, waka_hours = mock_data()
     else:
         print("\nFetching data in parallel...")
-        with ThreadPoolExecutor(max_workers=5) as ex:
-            f_stats     = ex.submit(get_user_stats)
-            f_years     = ex.submit(get_contribution_years)
-            f_waka      = ex.submit(get_waka_stats)
-            f_waka_days = ex.submit(get_waka_summaries)
+        with ThreadPoolExecutor(max_workers=6) as ex:
+            f_stats      = ex.submit(get_user_stats)
+            f_years      = ex.submit(get_contribution_years)
+            f_waka       = ex.submit(get_waka_stats)
+            f_waka_days  = ex.submit(get_waka_summaries)
+            f_waka_hours = ex.submit(get_waka_hourly_activity)
 
-            stats     = f_stats.result()
-            years     = f_years.result()
-            waka      = f_waka.result()
-            waka_days = f_waka_days.result()
+            stats      = f_stats.result()
+            years      = f_years.result()
+            waka       = f_waka.result()
+            waka_days  = f_waka_days.result()
+            waka_hours = f_waka_hours.result()
 
         print("\nCalculating activity & streaks...")
         activity = calculate_activity(years)
@@ -673,6 +856,7 @@ if __name__ == "__main__":
     generate_waka_languages(waka)
     generate_waka_editors(waka)
     generate_waka_activity(waka_days)
+    generate_waka_hours(waka_hours)
     generate_waka_os(waka)
     generate_waka_ai(waka)
 

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="760" height="205" font-size="14px"><rect width="760" height="205" fill="#161b22" rx="12"/>
+<text x="20" y="34" font-family="Consolas,monospace" font-size="14px" fill="#616e7f">- Working Hours  (last 30d) ———————————————————————————————————————————-—-</text>
+<text x="20" y="50" font-family="Consolas,monospace" font-size="12px" fill="#616e7f">total 145h 26m | peak 4h 21:00-01:00 | busiest 00:00 (13h 12m) | tz Asia/Ho_Chi_Minh</text>
+<defs>
+<linearGradient id="hourFill" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#1d4ed8"/>
+<stop offset="45%" stop-color="#7c3aed"/>
+<stop offset="75%" stop-color="#db2777"/>
+<stop offset="100%" stop-color="#facc15"/>
+</linearGradient>
+<linearGradient id="hourFade" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.42"/>
+<stop offset="28%" stop-color="#2563eb" stop-opacity="0.5"/>
+<stop offset="50%" stop-color="#7c3aed" stop-opacity="0.58"/>
+<stop offset="70%" stop-color="#db2777" stop-opacity="0.62"/>
+<stop offset="86%" stop-color="#f97316" stop-opacity="0.58"/>
+<stop offset="100%" stop-color="#facc15" stop-opacity="0.48"/>
+</linearGradient>
+</defs>
+<line x1="56" y1="156" x2="720" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.35"/>
+<line x1="56.00" y1="72" x2="56.00" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.16"/>
+<text x="56.00" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">00</text>
+<line x1="84.87" y1="72" x2="84.87" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="84.87" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">01</text>
+<line x1="113.74" y1="72" x2="113.74" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="113.74" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">02</text>
+<line x1="142.61" y1="72" x2="142.61" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.16"/>
+<text x="142.61" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">03</text>
+<line x1="171.48" y1="72" x2="171.48" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="171.48" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">04</text>
+<line x1="200.35" y1="72" x2="200.35" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="200.35" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">05</text>
+<line x1="229.22" y1="72" x2="229.22" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.16"/>
+<text x="229.22" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">06</text>
+<line x1="258.09" y1="72" x2="258.09" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="258.09" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">07</text>
+<line x1="286.96" y1="72" x2="286.96" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="286.96" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">08</text>
+<line x1="315.83" y1="72" x2="315.83" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.16"/>
+<text x="315.83" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">09</text>
+<line x1="344.70" y1="72" x2="344.70" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="344.70" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">10</text>
+<line x1="373.57" y1="72" x2="373.57" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="373.57" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">11</text>
+<line x1="402.43" y1="72" x2="402.43" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.16"/>
+<text x="402.43" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">12</text>
+<line x1="431.30" y1="72" x2="431.30" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="431.30" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">13</text>
+<line x1="460.17" y1="72" x2="460.17" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="460.17" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">14</text>
+<line x1="489.04" y1="72" x2="489.04" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.16"/>
+<text x="489.04" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">15</text>
+<line x1="517.91" y1="72" x2="517.91" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="517.91" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">16</text>
+<line x1="546.78" y1="72" x2="546.78" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="546.78" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">17</text>
+<line x1="575.65" y1="72" x2="575.65" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.16"/>
+<text x="575.65" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">18</text>
+<line x1="604.52" y1="72" x2="604.52" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="604.52" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">19</text>
+<line x1="633.39" y1="72" x2="633.39" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="633.39" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">20</text>
+<line x1="662.26" y1="72" x2="662.26" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.16"/>
+<text x="662.26" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">21</text>
+<line x1="691.13" y1="72" x2="691.13" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="691.13" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">22</text>
+<line x1="720.00" y1="72" x2="720.00" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
+<text x="720.00" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">23</text>
+<path d="M 56.00 72.00 C 60.81 74.16, 75.25 79.42, 84.87 84.97 C 94.49 90.51, 104.12 95.53, 113.74 105.25 C 123.36 114.98, 132.99 135.14, 142.61 143.32 C 152.23 151.49, 161.86 152.21, 171.48 154.32 C 181.10 156.43, 190.72 155.88, 200.35 156.00 C 209.97 156.12, 219.59 156.43, 229.22 155.03 C 238.84 153.62, 248.46 149.31, 258.09 147.55 C 267.71 145.80, 277.33 144.58, 286.96 144.49 C 296.58 144.40, 306.20 147.00, 315.83 146.99 C 325.45 146.98, 335.07 144.92, 344.70 144.45 C 354.32 143.98, 363.94 144.03, 373.57 144.15 C 383.19 144.28, 392.81 147.62, 402.43 145.18 C 412.06 142.74, 421.68 135.57, 431.30 129.50 C 440.93 123.44, 450.55 117.05, 460.17 108.80 C 469.80 100.56, 479.42 85.77, 489.04 80.05 C 498.67 74.32, 508.29 69.67, 517.91 74.46 C 527.54 79.25, 537.16 103.32, 546.78 108.80 C 556.41 114.29, 566.03 105.89, 575.65 107.38 C 585.28 108.88, 594.90 117.55, 604.52 117.77 C 614.14 117.99, 623.77 115.54, 633.39 108.72 C 643.01 101.91, 652.64 82.26, 662.26 76.87 C 671.88 71.47, 681.51 74.79, 691.13 76.37 C 700.75 77.94, 715.19 84.64, 720.00 86.30 L 720.00 156.00 L 56.00 156.00 Z" fill="url(#hourFade)"/>
+<path d="M 56.00 72.00 C 60.81 74.16, 75.25 79.42, 84.87 84.97 C 94.49 90.51, 104.12 95.53, 113.74 105.25 C 123.36 114.98, 132.99 135.14, 142.61 143.32 C 152.23 151.49, 161.86 152.21, 171.48 154.32 C 181.10 156.43, 190.72 155.88, 200.35 156.00 C 209.97 156.12, 219.59 156.43, 229.22 155.03 C 238.84 153.62, 248.46 149.31, 258.09 147.55 C 267.71 145.80, 277.33 144.58, 286.96 144.49 C 296.58 144.40, 306.20 147.00, 315.83 146.99 C 325.45 146.98, 335.07 144.92, 344.70 144.45 C 354.32 143.98, 363.94 144.03, 373.57 144.15 C 383.19 144.28, 392.81 147.62, 402.43 145.18 C 412.06 142.74, 421.68 135.57, 431.30 129.50 C 440.93 123.44, 450.55 117.05, 460.17 108.80 C 469.80 100.56, 479.42 85.77, 489.04 80.05 C 498.67 74.32, 508.29 69.67, 517.91 74.46 C 527.54 79.25, 537.16 103.32, 546.78 108.80 C 556.41 114.29, 566.03 105.89, 575.65 107.38 C 585.28 108.88, 594.90 117.55, 604.52 117.77 C 614.14 117.99, 623.77 115.54, 633.39 108.72 C 643.01 101.91, 652.64 82.26, 662.26 76.87 C 671.88 71.47, 681.51 74.79, 691.13 76.37 C 700.75 77.94, 715.19 84.64, 720.00 86.30" fill="none" stroke="url(#hourFill)" stroke-width="4" stroke-linecap="round"/>
+<circle cx="56.00" cy="72.00" r="4" fill="#facc15" opacity="1"><title>00:00 - 13h 12m total</title></circle>
+<circle cx="84.87" cy="84.97" r="2.5" fill="#facc15" opacity="1"><title>01:00 - 11h 9m total</title></circle>
+<circle cx="113.74" cy="105.25" r="2.5" fill="#facc15" opacity="1"><title>02:00 - 7h 58m total</title></circle>
+<circle cx="142.61" cy="143.32" r="2.5" fill="#facc15" opacity="1"><title>03:00 - 1h 59m total</title></circle>
+<circle cx="171.48" cy="154.32" r="2.5" fill="#facc15" opacity="1"><title>04:00 - 15m total</title></circle>
+<circle cx="200.35" cy="156.00" r="2.5" fill="#facc15" opacity="0.25"><title>05:00 - 0m total</title></circle>
+<circle cx="229.22" cy="155.03" r="2.5" fill="#facc15" opacity="1"><title>06:00 - 9m total</title></circle>
+<circle cx="258.09" cy="147.55" r="2.5" fill="#facc15" opacity="1"><title>07:00 - 1h 19m total</title></circle>
+<circle cx="286.96" cy="144.49" r="2.5" fill="#facc15" opacity="1"><title>08:00 - 1h 48m total</title></circle>
+<circle cx="315.83" cy="146.99" r="2.5" fill="#facc15" opacity="1"><title>09:00 - 1h 24m total</title></circle>
+<circle cx="344.70" cy="144.45" r="2.5" fill="#facc15" opacity="1"><title>10:00 - 1h 48m total</title></circle>
+<circle cx="373.57" cy="144.15" r="2.5" fill="#facc15" opacity="1"><title>11:00 - 1h 51m total</title></circle>
+<circle cx="402.43" cy="145.18" r="2.5" fill="#facc15" opacity="1"><title>12:00 - 1h 42m total</title></circle>
+<circle cx="431.30" cy="129.50" r="2.5" fill="#facc15" opacity="1"><title>13:00 - 4h 9m total</title></circle>
+<circle cx="460.17" cy="108.80" r="2.5" fill="#facc15" opacity="1"><title>14:00 - 7h 25m total</title></circle>
+<circle cx="489.04" cy="80.05" r="2.5" fill="#facc15" opacity="1"><title>15:00 - 11h 56m total</title></circle>
+<circle cx="517.91" cy="74.46" r="2.5" fill="#facc15" opacity="1"><title>16:00 - 12h 49m total</title></circle>
+<circle cx="546.78" cy="108.80" r="2.5" fill="#facc15" opacity="1"><title>17:00 - 7h 25m total</title></circle>
+<circle cx="575.65" cy="107.38" r="2.5" fill="#facc15" opacity="1"><title>18:00 - 7h 38m total</title></circle>
+<circle cx="604.52" cy="117.77" r="2.5" fill="#facc15" opacity="1"><title>19:00 - 6h 0m total</title></circle>
+<circle cx="633.39" cy="108.72" r="2.5" fill="#facc15" opacity="1"><title>20:00 - 7h 25m total</title></circle>
+<circle cx="662.26" cy="76.87" r="2.5" fill="#facc15" opacity="1"><title>21:00 - 12h 26m total</title></circle>
+<circle cx="691.13" cy="76.37" r="2.5" fill="#facc15" opacity="1"><title>22:00 - 12h 31m total</title></circle>
+<circle cx="720.00" cy="86.30" r="2.5" fill="#facc15" opacity="1"><title>23:00 - 10h 57m total</title></circle>
+<text x="20" y="191" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">24-hour distribution across 30 days; higher curve = more coding time in that hour</text>
+</svg>

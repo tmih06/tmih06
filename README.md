@@ -4,6 +4,8 @@
 
 <img src="https://raw.githubusercontent.com/tmih06/tmih06/main/waka_activity.svg" width="700"/>
 
+<img src="https://raw.githubusercontent.com/tmih06/tmih06/main/waka_hours.svg" width="700"/>
+
 <table><tr>
 <td><img src="https://raw.githubusercontent.com/tmih06/tmih06/main/waka_editors.svg" width="340"/></td>
 <td><img src="https://raw.githubusercontent.com/tmih06/tmih06/main/waka_os.svg" width="340"/><br/><img src="https://raw.githubusercontent.com/tmih06/tmih06/main/waka_ai.svg" width="340"/></td>
