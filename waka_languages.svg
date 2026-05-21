@@ -6,48 +6,48 @@
 <rect x="15" y="48" width="8" height="8" fill="#58a6ff" rx="2"/>
 <text x="27" y="57" font-size="13px" fill="#a5d6ff">Markdown</text>
 <rect x="130" y="46" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="46" width="85" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
-<text x="518" y="57" font-size="12px" fill="#616e7f">22.4%  30 hrs 53 mins</text>
+<rect x="130" y="46" width="82" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
+<text x="518" y="57" font-size="12px" fill="#616e7f">21.8%  29 hrs 16 mins</text>
 <rect x="15" y="74" width="8" height="8" fill="#3fb950" rx="2"/>
 <text x="27" y="83" font-size="13px" fill="#a5d6ff">Other</text>
 <rect x="130" y="72" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="72" width="79" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
-<text x="518" y="83" font-size="12px" fill="#616e7f">20.8%  28 hrs 41 mins</text>
+<rect x="130" y="72" width="78" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
+<text x="518" y="83" font-size="12px" fill="#616e7f">20.7%  27 hrs 52 mins</text>
 <rect x="15" y="100" width="8" height="8" fill="#ffa657" rx="2"/>
 <text x="27" y="109" font-size="13px" fill="#a5d6ff">TypeScript</text>
 <rect x="130" y="98" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="98" width="59" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
-<text x="518" y="109" font-size="12px" fill="#616e7f">15.6%  21 hrs 29 mins</text>
+<rect x="130" y="98" width="58" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
+<text x="518" y="109" font-size="12px" fill="#616e7f">15.4%  20 hrs 46 mins</text>
 <rect x="15" y="126" width="8" height="8" fill="#f85149" rx="2"/>
 <text x="27" y="135" font-size="13px" fill="#a5d6ff">Rust</text>
 <rect x="130" y="124" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="124" width="39" height="14" fill="#f85149" rx="3" opacity="0.85"/>
-<text x="518" y="135" font-size="12px" fill="#616e7f">10.3%  14 hrs 15 mins</text>
+<rect x="130" y="124" width="42" height="14" fill="#f85149" rx="3" opacity="0.85"/>
+<text x="518" y="135" font-size="12px" fill="#616e7f">11.3%  15 hrs 11 mins</text>
 <rect x="15" y="152" width="8" height="8" fill="#d2a8ff" rx="2"/>
 <text x="27" y="161" font-size="13px" fill="#a5d6ff">YAML</text>
 <rect x="130" y="150" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="150" width="23" height="14" fill="#d2a8ff" rx="3" opacity="0.85"/>
-<text x="518" y="161" font-size="12px" fill="#616e7f">6.1%  8 hrs 26 mins</text>
+<text x="518" y="161" font-size="12px" fill="#616e7f">6.2%  8 hrs 23 mins</text>
 <rect x="15" y="178" width="8" height="8" fill="#79c0ff" rx="2"/>
 <text x="27" y="187" font-size="13px" fill="#a5d6ff">JSON</text>
 <rect x="130" y="176" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="176" width="21" height="14" fill="#79c0ff" rx="3" opacity="0.85"/>
-<text x="518" y="187" font-size="12px" fill="#616e7f">5.6%  7 hrs 40 mins</text>
+<text x="518" y="187" font-size="12px" fill="#616e7f">5.5%  7 hrs 26 mins</text>
 <rect x="15" y="204" width="8" height="8" fill="#56d364" rx="2"/>
 <text x="27" y="213" font-size="13px" fill="#a5d6ff">Bash</text>
 <rect x="130" y="202" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="202" width="13" height="14" fill="#56d364" rx="3" opacity="0.85"/>
-<text x="518" y="213" font-size="12px" fill="#616e7f">3.5%  4 hrs 52 mins</text>
+<text x="518" y="213" font-size="12px" fill="#616e7f">3.6%  4 hrs 52 mins</text>
 <rect x="15" y="230" width="8" height="8" fill="#e3b341" rx="2"/>
 <text x="27" y="239" font-size="13px" fill="#a5d6ff">Python</text>
 <rect x="130" y="228" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="228" width="10" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
-<text x="518" y="239" font-size="12px" fill="#616e7f">2.7%  3 hrs 46 mins</text>
+<text x="518" y="239" font-size="12px" fill="#616e7f">2.8%  3 hrs 42 mins</text>
 <rect x="15" y="256" width="8" height="8" fill="#58a6ff" rx="2"/>
 <text x="27" y="265" font-size="13px" fill="#a5d6ff">Go</text>
 <rect x="130" y="254" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="254" width="9" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
-<text x="518" y="265" font-size="12px" fill="#616e7f">2.5%  3 hrs 29 mins</text>
+<rect x="130" y="254" width="8" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
+<text x="518" y="265" font-size="12px" fill="#616e7f">2.3%  3 hrs 8 mins</text>
 <rect x="15" y="282" width="8" height="8" fill="#3fb950" rx="2"/>
 <text x="27" y="291" font-size="13px" fill="#a5d6ff">TOML</text>
 <rect x="130" y="280" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
@@ -57,7 +57,7 @@
 <text x="27" y="317" font-size="13px" fill="#a5d6ff">Git Config</text>
 <rect x="130" y="306" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="306" width="6" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
-<text x="518" y="317" font-size="12px" fill="#616e7f">1.7%  2 hrs 17 mins</text>
+<text x="518" y="317" font-size="12px" fill="#616e7f">1.6%  2 hrs 13 mins</text>
 <rect x="15" y="334" width="8" height="8" fill="#f85149" rx="2"/>
 <text x="27" y="343" font-size="13px" fill="#a5d6ff">JavaScript</text>
 <rect x="130" y="332" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
@@ -81,6 +81,6 @@
 <rect x="15" y="438" width="8" height="8" fill="#e3b341" rx="2"/>
 <text x="27" y="447" font-size="13px" fill="#a5d6ff">Other</text>
 <rect x="130" y="436" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="436" width="11" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
-<text x="518" y="447" font-size="12px" fill="#616e7f">3.1%  4h 15m</text>
+<rect x="130" y="436" width="10" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
+<text x="518" y="447" font-size="12px" fill="#616e7f">2.9%  3h 51m</text>
 </svg>
