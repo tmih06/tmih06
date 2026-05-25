@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="760" height="205" font-size="14px"><rect width="760" height="205" fill="#161b22" rx="12"/>
 <text x="20" y="34" font-family="Consolas,monospace" font-size="14px" fill="#616e7f">- Working Hours  (last 30d) ———————————————————————————————————————————-—-</text>
-<text x="20" y="50" font-family="Consolas,monospace" font-size="12px" fill="#616e7f">total 128h 1m | peak 4h 15:00-19:00 | busiest 16:00 (10h 50m) | tz Asia/Ho_Chi_Minh</text>
+<text x="20" y="50" font-family="Consolas,monospace" font-size="12px" fill="#616e7f">total 128h 17m | peak 4h 15:00-19:00 | busiest 16:00 (10h 43m) | tz Asia/Ho_Chi_Minh</text>
 <defs>
 <linearGradient id="hourFill" x1="0" y1="0" x2="1" y2="0">
 <stop offset="0%" stop-color="#1d4ed8"/>
@@ -66,31 +66,31 @@
 <text x="691.13" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">22</text>
 <line x1="720.00" y1="72" x2="720.00" y2="156" stroke="#616e7f" stroke-width="1" opacity="0.07"/>
 <text x="720.00" y="174" text-anchor="middle" font-family="Consolas,monospace" font-size="8px" fill="#616e7f">23</text>
-<path d="M 56.00 72.62 C 60.81 73.34, 75.25 72.70, 84.87 76.93 C 94.49 81.17, 104.12 92.99, 113.74 98.03 C 123.36 103.07, 132.99 100.55, 142.61 107.18 C 152.23 113.80, 161.86 132.00, 171.48 137.78 C 181.10 143.55, 190.72 139.17, 200.35 141.82 C 209.97 144.46, 219.59 152.57, 229.22 153.64 C 238.84 154.71, 248.46 149.49, 258.09 148.25 C 267.71 147.00, 277.33 146.67, 286.96 146.17 C 296.58 145.66, 306.20 145.29, 315.83 145.20 C 325.45 145.11, 335.07 144.16, 344.70 145.61 C 354.32 147.06, 363.94 153.44, 373.57 153.89 C 383.19 154.35, 392.81 151.10, 402.43 148.35 C 412.06 145.59, 421.68 142.89, 431.30 137.37 C 440.93 131.85, 450.55 124.72, 460.17 115.21 C 469.80 105.71, 479.42 87.54, 489.04 80.34 C 498.67 73.14, 508.29 71.73, 517.91 72.00 C 527.54 72.27, 537.16 79.14, 546.78 81.98 C 556.41 84.81, 566.03 86.38, 575.65 89.01 C 585.28 91.63, 594.90 95.79, 604.52 97.75 C 614.14 99.70, 623.77 97.95, 633.39 100.72 C 643.01 103.49, 652.64 114.45, 662.26 114.35 C 671.88 114.26, 681.51 104.65, 691.13 100.15 C 700.75 95.65, 715.19 89.48, 720.00 87.34 L 720.00 156.00 L 56.00 156.00 Z" fill="url(#hourFade)"/>
-<path d="M 56.00 72.62 C 60.81 73.34, 75.25 72.70, 84.87 76.93 C 94.49 81.17, 104.12 92.99, 113.74 98.03 C 123.36 103.07, 132.99 100.55, 142.61 107.18 C 152.23 113.80, 161.86 132.00, 171.48 137.78 C 181.10 143.55, 190.72 139.17, 200.35 141.82 C 209.97 144.46, 219.59 152.57, 229.22 153.64 C 238.84 154.71, 248.46 149.49, 258.09 148.25 C 267.71 147.00, 277.33 146.67, 286.96 146.17 C 296.58 145.66, 306.20 145.29, 315.83 145.20 C 325.45 145.11, 335.07 144.16, 344.70 145.61 C 354.32 147.06, 363.94 153.44, 373.57 153.89 C 383.19 154.35, 392.81 151.10, 402.43 148.35 C 412.06 145.59, 421.68 142.89, 431.30 137.37 C 440.93 131.85, 450.55 124.72, 460.17 115.21 C 469.80 105.71, 479.42 87.54, 489.04 80.34 C 498.67 73.14, 508.29 71.73, 517.91 72.00 C 527.54 72.27, 537.16 79.14, 546.78 81.98 C 556.41 84.81, 566.03 86.38, 575.65 89.01 C 585.28 91.63, 594.90 95.79, 604.52 97.75 C 614.14 99.70, 623.77 97.95, 633.39 100.72 C 643.01 103.49, 652.64 114.45, 662.26 114.35 C 671.88 114.26, 681.51 104.65, 691.13 100.15 C 700.75 95.65, 715.19 89.48, 720.00 87.34" fill="none" stroke="url(#hourFill)" stroke-width="4" stroke-linecap="round"/>
-<circle cx="56.00" cy="72.62" r="2.5" fill="#facc15" opacity="1"><title>00:00 - 10h 45m total</title></circle>
-<circle cx="84.87" cy="76.93" r="2.5" fill="#facc15" opacity="1"><title>01:00 - 10h 12m total</title></circle>
-<circle cx="113.74" cy="98.03" r="2.5" fill="#facc15" opacity="1"><title>02:00 - 7h 28m total</title></circle>
-<circle cx="142.61" cy="107.18" r="2.5" fill="#facc15" opacity="1"><title>03:00 - 6h 17m total</title></circle>
-<circle cx="171.48" cy="137.78" r="2.5" fill="#facc15" opacity="1"><title>04:00 - 2h 21m total</title></circle>
-<circle cx="200.35" cy="141.82" r="2.5" fill="#facc15" opacity="1"><title>05:00 - 1h 49m total</title></circle>
-<circle cx="229.22" cy="153.64" r="2.5" fill="#facc15" opacity="1"><title>06:00 - 18m total</title></circle>
-<circle cx="258.09" cy="148.25" r="2.5" fill="#facc15" opacity="1"><title>07:00 - 1h 0m total</title></circle>
-<circle cx="286.96" cy="146.17" r="2.5" fill="#facc15" opacity="1"><title>08:00 - 1h 16m total</title></circle>
-<circle cx="315.83" cy="145.20" r="2.5" fill="#facc15" opacity="1"><title>09:00 - 1h 23m total</title></circle>
-<circle cx="344.70" cy="145.61" r="2.5" fill="#facc15" opacity="1"><title>10:00 - 1h 20m total</title></circle>
-<circle cx="373.57" cy="153.89" r="2.5" fill="#facc15" opacity="1"><title>11:00 - 16m total</title></circle>
-<circle cx="402.43" cy="148.35" r="2.5" fill="#facc15" opacity="1"><title>12:00 - 59m total</title></circle>
-<circle cx="431.30" cy="137.37" r="2.5" fill="#facc15" opacity="1"><title>13:00 - 2h 24m total</title></circle>
-<circle cx="460.17" cy="115.21" r="2.5" fill="#facc15" opacity="1"><title>14:00 - 5h 15m total</title></circle>
-<circle cx="489.04" cy="80.34" r="2.5" fill="#facc15" opacity="1"><title>15:00 - 9h 45m total</title></circle>
-<circle cx="517.91" cy="72.00" r="4" fill="#facc15" opacity="1"><title>16:00 - 10h 50m total</title></circle>
-<circle cx="546.78" cy="81.98" r="2.5" fill="#facc15" opacity="1"><title>17:00 - 9h 32m total</title></circle>
-<circle cx="575.65" cy="89.01" r="2.5" fill="#facc15" opacity="1"><title>18:00 - 8h 38m total</title></circle>
-<circle cx="604.52" cy="97.75" r="2.5" fill="#facc15" opacity="1"><title>19:00 - 7h 30m total</title></circle>
-<circle cx="633.39" cy="100.72" r="2.5" fill="#facc15" opacity="1"><title>20:00 - 7h 7m total</title></circle>
-<circle cx="662.26" cy="114.35" r="2.5" fill="#facc15" opacity="1"><title>21:00 - 5h 22m total</title></circle>
-<circle cx="691.13" cy="100.15" r="2.5" fill="#facc15" opacity="1"><title>22:00 - 7h 12m total</title></circle>
-<circle cx="720.00" cy="87.34" r="2.5" fill="#facc15" opacity="1"><title>23:00 - 8h 51m total</title></circle>
+<path d="M 56.00 75.31 C 60.81 75.43, 75.25 72.43, 84.87 76.05 C 94.49 79.66, 104.12 92.01, 113.74 97.00 C 123.36 102.00, 132.99 99.27, 142.61 106.04 C 152.23 112.80, 161.86 131.64, 171.48 137.58 C 181.10 143.52, 190.72 139.00, 200.35 141.67 C 209.97 144.34, 219.59 152.53, 229.22 153.62 C 238.84 154.70, 248.46 149.43, 258.09 148.17 C 267.71 146.91, 277.33 146.58, 286.96 146.06 C 296.58 145.55, 306.20 145.18, 315.83 145.09 C 325.45 144.99, 335.07 144.04, 344.70 145.50 C 354.32 146.97, 363.94 153.41, 373.57 153.87 C 383.19 154.33, 392.81 151.05, 402.43 148.27 C 412.06 145.48, 421.68 142.76, 431.30 137.17 C 440.93 131.59, 450.55 124.39, 460.17 114.78 C 469.80 105.17, 479.42 86.67, 489.04 79.54 C 498.67 72.41, 508.29 71.44, 517.91 72.00 C 527.54 72.56, 537.16 79.96, 546.78 82.92 C 556.41 85.87, 566.03 87.59, 575.65 89.71 C 585.28 91.83, 594.90 94.70, 604.52 95.63 C 614.14 96.55, 623.77 92.27, 633.39 95.28 C 643.01 98.28, 652.64 113.46, 662.26 113.64 C 671.88 113.81, 681.51 100.64, 691.13 96.34 C 700.75 92.03, 715.19 89.24, 720.00 87.82 L 720.00 156.00 L 56.00 156.00 Z" fill="url(#hourFade)"/>
+<path d="M 56.00 75.31 C 60.81 75.43, 75.25 72.43, 84.87 76.05 C 94.49 79.66, 104.12 92.01, 113.74 97.00 C 123.36 102.00, 132.99 99.27, 142.61 106.04 C 152.23 112.80, 161.86 131.64, 171.48 137.58 C 181.10 143.52, 190.72 139.00, 200.35 141.67 C 209.97 144.34, 219.59 152.53, 229.22 153.62 C 238.84 154.70, 248.46 149.43, 258.09 148.17 C 267.71 146.91, 277.33 146.58, 286.96 146.06 C 296.58 145.55, 306.20 145.18, 315.83 145.09 C 325.45 144.99, 335.07 144.04, 344.70 145.50 C 354.32 146.97, 363.94 153.41, 373.57 153.87 C 383.19 154.33, 392.81 151.05, 402.43 148.27 C 412.06 145.48, 421.68 142.76, 431.30 137.17 C 440.93 131.59, 450.55 124.39, 460.17 114.78 C 469.80 105.17, 479.42 86.67, 489.04 79.54 C 498.67 72.41, 508.29 71.44, 517.91 72.00 C 527.54 72.56, 537.16 79.96, 546.78 82.92 C 556.41 85.87, 566.03 87.59, 575.65 89.71 C 585.28 91.83, 594.90 94.70, 604.52 95.63 C 614.14 96.55, 623.77 92.27, 633.39 95.28 C 643.01 98.28, 652.64 113.46, 662.26 113.64 C 671.88 113.81, 681.51 100.64, 691.13 96.34 C 700.75 92.03, 715.19 89.24, 720.00 87.82" fill="none" stroke="url(#hourFill)" stroke-width="4" stroke-linecap="round"/>
+<circle cx="56.00" cy="75.31" r="2.5" fill="#facc15" opacity="1"><title>00:00 - 10h 18m total</title></circle>
+<circle cx="84.87" cy="76.05" r="2.5" fill="#facc15" opacity="1"><title>01:00 - 10h 12m total</title></circle>
+<circle cx="113.74" cy="97.00" r="2.5" fill="#facc15" opacity="1"><title>02:00 - 7h 31m total</title></circle>
+<circle cx="142.61" cy="106.04" r="2.5" fill="#facc15" opacity="1"><title>03:00 - 6h 22m total</title></circle>
+<circle cx="171.48" cy="137.58" r="2.5" fill="#facc15" opacity="1"><title>04:00 - 2h 21m total</title></circle>
+<circle cx="200.35" cy="141.67" r="2.5" fill="#facc15" opacity="1"><title>05:00 - 1h 49m total</title></circle>
+<circle cx="229.22" cy="153.62" r="2.5" fill="#facc15" opacity="1"><title>06:00 - 18m total</title></circle>
+<circle cx="258.09" cy="148.17" r="2.5" fill="#facc15" opacity="1"><title>07:00 - 1h 0m total</title></circle>
+<circle cx="286.96" cy="146.06" r="2.5" fill="#facc15" opacity="1"><title>08:00 - 1h 16m total</title></circle>
+<circle cx="315.83" cy="145.09" r="2.5" fill="#facc15" opacity="1"><title>09:00 - 1h 23m total</title></circle>
+<circle cx="344.70" cy="145.50" r="2.5" fill="#facc15" opacity="1"><title>10:00 - 1h 20m total</title></circle>
+<circle cx="373.57" cy="153.87" r="2.5" fill="#facc15" opacity="1"><title>11:00 - 16m total</title></circle>
+<circle cx="402.43" cy="148.27" r="2.5" fill="#facc15" opacity="1"><title>12:00 - 59m total</title></circle>
+<circle cx="431.30" cy="137.17" r="2.5" fill="#facc15" opacity="1"><title>13:00 - 2h 24m total</title></circle>
+<circle cx="460.17" cy="114.78" r="2.5" fill="#facc15" opacity="1"><title>14:00 - 5h 15m total</title></circle>
+<circle cx="489.04" cy="79.54" r="2.5" fill="#facc15" opacity="1"><title>15:00 - 9h 45m total</title></circle>
+<circle cx="517.91" cy="72.00" r="4" fill="#facc15" opacity="1"><title>16:00 - 10h 43m total</title></circle>
+<circle cx="546.78" cy="82.92" r="2.5" fill="#facc15" opacity="1"><title>17:00 - 9h 19m total</title></circle>
+<circle cx="575.65" cy="89.71" r="2.5" fill="#facc15" opacity="1"><title>18:00 - 8h 27m total</title></circle>
+<circle cx="604.52" cy="95.63" r="2.5" fill="#facc15" opacity="1"><title>19:00 - 7h 42m total</title></circle>
+<circle cx="633.39" cy="95.28" r="2.5" fill="#facc15" opacity="1"><title>20:00 - 7h 45m total</title></circle>
+<circle cx="662.26" cy="113.64" r="2.5" fill="#facc15" opacity="1"><title>21:00 - 5h 24m total</title></circle>
+<circle cx="691.13" cy="96.34" r="2.5" fill="#facc15" opacity="1"><title>22:00 - 7h 36m total</title></circle>
+<circle cx="720.00" cy="87.82" r="2.5" fill="#facc15" opacity="1"><title>23:00 - 8h 42m total</title></circle>
 <text x="20" y="191" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">24-hour distribution across 30 days; higher curve = more coding time in that hour</text>
 </svg>
