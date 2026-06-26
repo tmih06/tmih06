@@ -6,86 +6,86 @@
 <rect x="15" y="48" width="8" height="8" fill="#58a6ff" rx="2"/>
 <text x="27" y="57" font-size="13px" fill="#a5d6ff">Rust</text>
 <rect x="130" y="46" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="46" width="152" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
-<text x="518" y="57" font-size="12px" fill="#616e7f">40.0%  80 hrs 12 mins</text>
+<rect x="130" y="46" width="153" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
+<text x="518" y="57" font-size="12px" fill="#616e7f">40.5%  78 hrs 26 mins</text>
 <rect x="15" y="74" width="8" height="8" fill="#3fb950" rx="2"/>
 <text x="27" y="83" font-size="13px" fill="#a5d6ff">Other</text>
 <rect x="130" y="72" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="72" width="65" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
-<text x="518" y="83" font-size="12px" fill="#616e7f">17.4%  34 hrs 48 mins</text>
+<rect x="130" y="72" width="71" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
+<text x="518" y="83" font-size="12px" fill="#616e7f">18.8%  36 hrs 23 mins</text>
 <rect x="15" y="100" width="8" height="8" fill="#ffa657" rx="2"/>
 <text x="27" y="109" font-size="13px" fill="#a5d6ff">Markdown</text>
 <rect x="130" y="98" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="98" width="54" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
-<text x="518" y="109" font-size="12px" fill="#616e7f">14.4%  28 hrs 57 mins</text>
+<rect x="130" y="98" width="53" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
+<text x="518" y="109" font-size="12px" fill="#616e7f">14.2%  27 hrs 28 mins</text>
 <rect x="15" y="126" width="8" height="8" fill="#f85149" rx="2"/>
 <text x="27" y="135" font-size="13px" fill="#a5d6ff">TOML</text>
 <rect x="130" y="124" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="124" width="23" height="14" fill="#f85149" rx="3" opacity="0.85"/>
-<text x="518" y="135" font-size="12px" fill="#616e7f">6.1%  12 hrs 15 mins</text>
+<text x="518" y="135" font-size="12px" fill="#616e7f">6.2%  12 hrs 3 mins</text>
 <rect x="15" y="152" width="8" height="8" fill="#d2a8ff" rx="2"/>
 <text x="27" y="161" font-size="13px" fill="#a5d6ff">TypeScript</text>
 <rect x="130" y="150" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="150" width="20" height="14" fill="#d2a8ff" rx="3" opacity="0.85"/>
-<text x="518" y="161" font-size="12px" fill="#616e7f">5.3%  10 hrs 36 mins</text>
+<rect x="130" y="150" width="18" height="14" fill="#d2a8ff" rx="3" opacity="0.85"/>
+<text x="518" y="161" font-size="12px" fill="#616e7f">4.8%  9 hrs 13 mins</text>
 <rect x="15" y="178" width="8" height="8" fill="#79c0ff" rx="2"/>
 <text x="27" y="187" font-size="13px" fill="#a5d6ff">JSON</text>
 <rect x="130" y="176" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="176" width="13" height="14" fill="#79c0ff" rx="3" opacity="0.85"/>
-<text x="518" y="187" font-size="12px" fill="#616e7f">3.5%  6 hrs 57 mins</text>
+<rect x="130" y="176" width="9" height="14" fill="#79c0ff" rx="3" opacity="0.85"/>
+<text x="518" y="187" font-size="12px" fill="#616e7f">2.5%  4 hrs 54 mins</text>
 <rect x="15" y="204" width="8" height="8" fill="#56d364" rx="2"/>
 <text x="27" y="213" font-size="13px" fill="#a5d6ff">YAML</text>
 <rect x="130" y="202" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="202" width="11" height="14" fill="#56d364" rx="3" opacity="0.85"/>
-<text x="518" y="213" font-size="12px" fill="#616e7f">3.0%  6 hrs 4 mins</text>
+<rect x="130" y="202" width="9" height="14" fill="#56d364" rx="3" opacity="0.85"/>
+<text x="518" y="213" font-size="12px" fill="#616e7f">2.4%  4 hrs 35 mins</text>
 <rect x="15" y="230" width="8" height="8" fill="#e3b341" rx="2"/>
 <text x="27" y="239" font-size="13px" fill="#a5d6ff">Bash</text>
 <rect x="130" y="228" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="228" width="7" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
-<text x="518" y="239" font-size="12px" fill="#616e7f">1.9%  3 hrs 43 mins</text>
+<text x="518" y="239" font-size="12px" fill="#616e7f">1.9%  3 hrs 42 mins</text>
 <rect x="15" y="256" width="8" height="8" fill="#58a6ff" rx="2"/>
 <text x="27" y="265" font-size="13px" fill="#a5d6ff">Python</text>
 <rect x="130" y="254" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="254" width="4" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
-<text x="518" y="265" font-size="12px" fill="#616e7f">1.3%  2 hrs 31 mins</text>
+<text x="518" y="265" font-size="12px" fill="#616e7f">1.3%  2 hrs 27 mins</text>
 <rect x="15" y="282" width="8" height="8" fill="#3fb950" rx="2"/>
 <text x="27" y="291" font-size="13px" fill="#a5d6ff">Go</text>
 <rect x="130" y="280" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="280" width="4" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
-<text x="518" y="291" font-size="12px" fill="#616e7f">1.2%  2 hrs 26 mins</text>
+<rect x="130" y="280" width="3" height="14" fill="#3fb950" rx="3" opacity="0.85"/>
+<text x="518" y="291" font-size="12px" fill="#616e7f">1.0%  2 hrs</text>
 <rect x="15" y="308" width="8" height="8" fill="#ffa657" rx="2"/>
-<text x="27" y="317" font-size="13px" fill="#a5d6ff">Makefile</text>
+<text x="27" y="317" font-size="13px" fill="#a5d6ff">Valve Data Format</text>
 <rect x="130" y="306" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="306" width="3" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
-<text x="518" y="317" font-size="12px" fill="#616e7f">0.9%  1 hr 48 mins</text>
+<text x="518" y="317" font-size="12px" fill="#616e7f">0.9%  1 hr 40 mins</text>
 <rect x="15" y="334" width="8" height="8" fill="#f85149" rx="2"/>
 <text x="27" y="343" font-size="13px" fill="#a5d6ff">Text</text>
 <rect x="130" y="332" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="332" width="2" height="14" fill="#f85149" rx="3" opacity="0.85"/>
 <text x="518" y="343" font-size="12px" fill="#616e7f">0.7%  1 hr 25 mins</text>
 <rect x="15" y="360" width="8" height="8" fill="#d2a8ff" rx="2"/>
-<text x="27" y="369" font-size="13px" fill="#a5d6ff">Java</text>
+<text x="27" y="369" font-size="13px" fill="#a5d6ff">Makefile</text>
 <rect x="130" y="358" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="358" width="2" height="14" fill="#d2a8ff" rx="3" opacity="0.85"/>
-<text x="518" y="369" font-size="12px" fill="#616e7f">0.6%  1 hr 15 mins</text>
+<text x="518" y="369" font-size="12px" fill="#616e7f">0.7%  1 hr 21 mins</text>
 <rect x="15" y="386" width="8" height="8" fill="#79c0ff" rx="2"/>
-<text x="27" y="395" font-size="13px" fill="#a5d6ff">Git Config</text>
+<text x="27" y="395" font-size="13px" fill="#a5d6ff">Docker</text>
 <rect x="130" y="384" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="384" width="2" height="14" fill="#79c0ff" rx="3" opacity="0.85"/>
-<text x="518" y="395" font-size="12px" fill="#616e7f">0.6%  1 hr 14 mins</text>
+<text x="518" y="395" font-size="12px" fill="#616e7f">0.7%  1 hr 20 mins</text>
 <rect x="15" y="412" width="8" height="8" fill="#56d364" rx="2"/>
-<text x="27" y="421" font-size="13px" fill="#a5d6ff">Docker</text>
+<text x="27" y="421" font-size="13px" fill="#a5d6ff">Java</text>
 <rect x="130" y="410" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="410" width="2" height="14" fill="#56d364" rx="3" opacity="0.85"/>
 <text x="518" y="421" font-size="12px" fill="#616e7f">0.6%  1 hr 12 mins</text>
 <rect x="15" y="438" width="8" height="8" fill="#e3b341" rx="2"/>
 <text x="27" y="447" font-size="13px" fill="#a5d6ff">C</text>
 <rect x="130" y="436" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="436" width="1" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
-<text x="518" y="447" font-size="12px" fill="#616e7f">0.5%  1 hr 1 min</text>
+<rect x="130" y="436" width="2" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
+<text x="518" y="447" font-size="12px" fill="#616e7f">0.6%  1 hr 7 mins</text>
 <rect x="15" y="464" width="8" height="8" fill="#58a6ff" rx="2"/>
 <text x="27" y="473" font-size="13px" fill="#a5d6ff">Other</text>
 <rect x="130" y="462" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="462" width="7" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
-<text x="518" y="473" font-size="12px" fill="#616e7f">2.0%  4h 1m</text>
+<rect x="130" y="462" width="8" height="14" fill="#58a6ff" rx="3" opacity="0.85"/>
+<text x="518" y="473" font-size="12px" fill="#616e7f">2.2%  4h 21m</text>
 </svg>
