@@ -1,61 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="760" height="260" font-size="14px"><rect width="760" height="260" fill="#161b22" rx="12"/>
 <text x="20" y="34" font-family="Consolas,monospace" font-size="14px" fill="#616e7f">- Daily Activity  (last 30d) ——————————————————————————————————————————-—-</text>
-<rect x="20" y="183" width="21" height="37" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="30" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">05/29</text>
-<rect x="44" y="217" width="21" height="3" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="68" y="152" width="21" height="68" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="78" y="148" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">6h 34m</text>
-<rect x="92" y="184" width="21" height="36" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="116" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="140" y="139" width="21" height="81" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="150" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/03</text>
-<text x="150" y="135" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 49m</text>
-<rect x="164" y="113" width="21" height="107" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="174" y="109" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">10h 23m</text>
-<rect x="188" y="138" width="21" height="82" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="198" y="134" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 0m</text>
-<rect x="212" y="129" width="21" height="91" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="222" y="125" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 50m</text>
-<rect x="236" y="146" width="21" height="74" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="246" y="142" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 12m</text>
-<rect x="260" y="124" width="21" height="96" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="270" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/08</text>
-<text x="270" y="120" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">9h 19m</text>
-<rect x="284" y="127" width="21" height="93" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="294" y="123" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 59m</text>
-<rect x="308" y="133" width="21" height="87" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="318" y="129" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 23m</text>
-<rect x="332" y="159" width="21" height="61" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="342" y="155" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">5h 57m</text>
-<rect x="356" y="204" width="21" height="16" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="380" y="137" width="21" height="83" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="390" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/13</text>
-<text x="390" y="133" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 4m</text>
-<rect x="404" y="130" width="21" height="90" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="414" y="126" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 42m</text>
-<rect x="428" y="119" width="21" height="101" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="438" y="115" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">9h 49m</text>
-<rect x="452" y="168" width="21" height="52" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="476" y="128" width="21" height="92" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="486" y="124" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 57m</text>
-<rect x="500" y="93" width="21" height="127" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="510" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/18</text>
-<text x="510" y="89" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">12h 17m</text>
-<rect x="524" y="161" width="21" height="59" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="534" y="157" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">5h 43m</text>
-<rect x="548" y="157" width="21" height="63" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="558" y="153" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">6h 7m</text>
-<rect x="572" y="60" width="21" height="160" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="582" y="56" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">15h 25m</text>
-<rect x="596" y="109" width="21" height="111" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="606" y="105" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">10h 45m</text>
-<rect x="620" y="184" width="21" height="36" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="630" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/23</text>
-<rect x="644" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="668" y="219" width="21" height="1" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="692" y="216" width="21" height="4" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="716" y="220" width="21" height="0" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="726" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/27</text>
-<line x1="20" y1="156" x2="740" y2="156" stroke="#f85149" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
-<text x="738" y="152" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 6h 11m</text>
+<rect x="20" y="217" width="21" height="3" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="30" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">05/30</text>
+<rect x="44" y="152" width="21" height="68" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="54" y="148" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">6h 34m</text>
+<rect x="68" y="184" width="21" height="36" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="92" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="116" y="139" width="21" height="81" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="126" y="135" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 49m</text>
+<rect x="140" y="113" width="21" height="107" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="150" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/04</text>
+<text x="150" y="109" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">10h 23m</text>
+<rect x="164" y="138" width="21" height="82" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="174" y="134" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 0m</text>
+<rect x="188" y="129" width="21" height="91" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="198" y="125" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 50m</text>
+<rect x="212" y="146" width="21" height="74" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="222" y="142" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 12m</text>
+<rect x="236" y="124" width="21" height="96" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="246" y="120" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">9h 19m</text>
+<rect x="260" y="127" width="21" height="93" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="270" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/09</text>
+<text x="270" y="123" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 59m</text>
+<rect x="284" y="133" width="21" height="87" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="294" y="129" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 23m</text>
+<rect x="308" y="159" width="21" height="61" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="318" y="155" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">5h 57m</text>
+<rect x="332" y="204" width="21" height="16" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="356" y="137" width="21" height="83" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="366" y="133" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 4m</text>
+<rect x="380" y="130" width="21" height="90" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="390" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/14</text>
+<text x="390" y="126" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 42m</text>
+<rect x="404" y="119" width="21" height="101" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="414" y="115" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">9h 49m</text>
+<rect x="428" y="168" width="21" height="52" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="452" y="128" width="21" height="92" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="462" y="124" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">8h 57m</text>
+<rect x="476" y="93" width="21" height="127" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="486" y="89" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">12h 17m</text>
+<rect x="500" y="161" width="21" height="59" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="510" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/19</text>
+<text x="510" y="157" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">5h 43m</text>
+<rect x="524" y="157" width="21" height="63" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="534" y="153" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">6h 7m</text>
+<rect x="548" y="60" width="21" height="160" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="558" y="56" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">15h 25m</text>
+<rect x="572" y="109" width="21" height="111" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="582" y="105" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">10h 45m</text>
+<rect x="596" y="184" width="21" height="36" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="620" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="630" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/24</text>
+<rect x="644" y="219" width="21" height="1" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="668" y="216" width="21" height="4" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="692" y="220" width="21" height="0" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="716" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="726" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">06/28</text>
+<line x1="20" y1="158" x2="740" y2="158" stroke="#f85149" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
+<text x="738" y="154" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 6h 4m</text>
 </svg>
