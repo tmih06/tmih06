@@ -1,29 +1,29 @@
 <svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="340" height="300" font-size="14px"><rect width="340" height="300" fill="#161b22" rx="12"/>
 <text x="15" y="29" font-family="Consolas,monospace" font-size="14px" fill="#616e7f">- Editors  (last 30d) —————————-—-</text>
-<path d="M 110.00 92.00 L 110.00 70.00 A 85 85 0 1 1 106.35 239.92 L 107.30 217.94 A 63 63 0 1 0 110.00 92.00 Z" fill="#58a6ff" stroke="#161b22" stroke-width="2"/>
-<path d="M 107.30 217.94 L 106.35 239.92 A 85 85 0 0 1 28.38 131.26 L 49.51 137.40 A 63 63 0 0 0 107.30 217.94 Z" fill="#3fb950" stroke="#161b22" stroke-width="2"/>
-<path d="M 49.51 137.40 L 28.38 131.26 A 85 85 0 0 1 55.27 89.96 L 69.43 106.80 A 63 63 0 0 0 49.51 137.40 Z" fill="#ffa657" stroke="#161b22" stroke-width="2"/>
-<path d="M 69.43 106.80 L 55.27 89.96 A 85 85 0 0 1 75.35 77.38 L 84.32 97.47 A 63 63 0 0 0 69.43 106.80 Z" fill="#f85149" stroke="#161b22" stroke-width="2"/>
-<path d="M 84.32 97.47 L 75.35 77.38 A 85 85 0 0 1 95.45 71.25 L 99.22 92.93 A 63 63 0 0 0 84.32 97.47 Z" fill="#d2a8ff" stroke="#161b22" stroke-width="2"/>
-<path d="M 99.22 92.93 L 95.45 71.25 A 85 85 0 0 1 110.00 70.00 L 110.00 92.00 A 63 63 0 0 0 99.22 92.93 Z" fill="#79c0ff" stroke="#161b22" stroke-width="2"/>
+<path d="M 110.00 92.00 L 110.00 70.00 A 85 85 0 1 1 101.26 239.55 L 103.52 217.67 A 63 63 0 1 0 110.00 92.00 Z" fill="#58a6ff" stroke="#161b22" stroke-width="2"/>
+<path d="M 103.52 217.67 L 101.26 239.55 A 85 85 0 0 1 29.00 129.23 L 49.97 135.90 A 63 63 0 0 0 103.52 217.67 Z" fill="#3fb950" stroke="#161b22" stroke-width="2"/>
+<path d="M 49.97 135.90 L 29.00 129.23 A 85 85 0 0 1 56.16 89.23 L 70.09 106.25 A 63 63 0 0 0 49.97 135.90 Z" fill="#ffa657" stroke="#161b22" stroke-width="2"/>
+<path d="M 70.09 106.25 L 56.16 89.23 A 85 85 0 0 1 75.99 77.10 L 84.79 97.26 A 63 63 0 0 0 70.09 106.25 Z" fill="#f85149" stroke="#161b22" stroke-width="2"/>
+<path d="M 84.79 97.26 L 75.99 77.10 A 85 85 0 0 1 95.73 71.21 L 99.42 92.89 A 63 63 0 0 0 84.79 97.26 Z" fill="#d2a8ff" stroke="#161b22" stroke-width="2"/>
+<path d="M 99.42 92.89 L 95.73 71.21 A 85 85 0 0 1 110.00 70.00 L 110.00 92.00 A 63 63 0 0 0 99.42 92.89 Z" fill="#79c0ff" stroke="#161b22" stroke-width="2"/>
 <text x="110" y="147" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">avg/day</text>
-<text x="110" y="167" text-anchor="middle" font-family="Consolas,monospace" font-size="16px" font-weight="bold" fill="#58a6ff">4h 59m</text>
+<text x="110" y="167" text-anchor="middle" font-family="Consolas,monospace" font-size="16px" font-weight="bold" fill="#58a6ff">4h 50m</text>
 <rect x="210" y="50" width="10" height="10" fill="#58a6ff" rx="2"/>
 <text x="226" y="60" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Codex CLI</text>
-<text x="226" y="73" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">49.6%  52 hrs</text>
+<text x="226" y="73" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">50.6%  54 hrs 2 mins</text>
 <rect x="210" y="86" width="10" height="10" fill="#3fb950" rx="2"/>
 <text x="226" y="96" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Kiro</text>
-<text x="226" y="109" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">28.2%  29 hrs 34 mins</text>
+<text x="226" y="109" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">27.7%  29 hrs 34 mins</text>
 <rect x="210" y="122" width="10" height="10" fill="#ffa657" rx="2"/>
 <text x="226" y="132" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Opencode Cli</text>
-<text x="226" y="145" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">9.2%  9 hrs 36 mins</text>
+<text x="226" y="145" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">9.0%  9 hrs 36 mins</text>
 <rect x="210" y="158" width="10" height="10" fill="#f85149" rx="2"/>
 <text x="226" y="168" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Neovim</text>
-<text x="226" y="181" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">4.4%  4 hrs 34 mins</text>
+<text x="226" y="181" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">4.3%  4 hrs 34 mins</text>
 <rect x="210" y="194" width="10" height="10" fill="#d2a8ff" rx="2"/>
 <text x="226" y="204" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">OpenCode</text>
-<text x="226" y="217" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">3.9%  4 hrs 2 mins</text>
+<text x="226" y="217" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">3.8%  4 hrs 2 mins</text>
 <rect x="210" y="230" width="10" height="10" fill="#79c0ff" rx="2"/>
 <text x="226" y="240" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Kiro Cli</text>
-<text x="226" y="253" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">2.7%  2 hrs 48 mins</text>
+<text x="226" y="253" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">2.6%  2 hrs 48 mins</text>
 </svg>
