@@ -1,47 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="760" height="260" font-size="14px"><rect width="760" height="260" fill="#161b22" rx="12"/>
 <text x="20" y="34" font-family="Consolas,monospace" font-size="14px" fill="#616e7f">- Daily Activity  (last 30d) ——————————————————————————————————————————-—-</text>
-<rect x="20" y="184" width="21" height="36" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="30" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">07/23</text>
-<rect x="44" y="60" width="21" height="160" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="54" y="56" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">18h 41m</text>
-<rect x="68" y="199" width="21" height="21" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="92" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="116" y="174" width="21" height="46" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="140" y="177" width="21" height="43" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="150" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">07/28</text>
-<rect x="164" y="216" width="21" height="4" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="188" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="212" y="203" width="21" height="17" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="20" y="60" width="21" height="160" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="30" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">07/24</text>
+<text x="30" y="56" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">18h 41m</text>
+<rect x="44" y="199" width="21" height="21" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="68" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="92" y="174" width="21" height="46" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="116" y="177" width="21" height="43" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="140" y="216" width="21" height="4" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="150" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">07/29</text>
+<rect x="164" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="188" y="203" width="21" height="17" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="212" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
 <rect x="236" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="260" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="270" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/02</text>
-<rect x="284" y="154" width="21" height="66" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="294" y="150" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 48m</text>
-<rect x="308" y="164" width="21" height="56" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="318" y="160" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">6h 38m</text>
-<rect x="332" y="157" width="21" height="63" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="342" y="153" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 23m</text>
-<rect x="356" y="213" width="21" height="7" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="380" y="214" width="21" height="6" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="390" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/07</text>
-<rect x="404" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="428" y="202" width="21" height="18" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="452" y="180" width="21" height="40" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="476" y="204" width="21" height="16" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="500" y="181" width="21" height="39" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="510" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/12</text>
-<rect x="524" y="217" width="21" height="3" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="548" y="219" width="21" height="1" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="572" y="202" width="21" height="18" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="596" y="196" width="21" height="24" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="620" y="199" width="21" height="21" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="630" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/17</text>
-<rect x="644" y="135" width="21" height="85" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="654" y="131" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">9h 59m</text>
-<rect x="668" y="182" width="21" height="38" fill="#58a6ff" rx="2" opacity="0.85"/>
-<rect x="692" y="201" width="21" height="19" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="260" y="154" width="21" height="66" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="270" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/03</text>
+<text x="270" y="150" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 48m</text>
+<rect x="284" y="164" width="21" height="56" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="294" y="160" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">6h 38m</text>
+<rect x="308" y="157" width="21" height="63" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="318" y="153" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">7h 23m</text>
+<rect x="332" y="213" width="21" height="7" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="356" y="214" width="21" height="6" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="380" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="390" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/08</text>
+<rect x="404" y="202" width="21" height="18" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="428" y="180" width="21" height="40" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="452" y="204" width="21" height="16" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="476" y="181" width="21" height="39" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="500" y="217" width="21" height="3" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="510" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/13</text>
+<rect x="524" y="219" width="21" height="1" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="548" y="202" width="21" height="18" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="572" y="196" width="21" height="24" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="596" y="199" width="21" height="21" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="620" y="135" width="21" height="85" fill="#58a6ff" rx="2" opacity="0.85"/>
+<text x="630" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/18</text>
+<text x="630" y="131" text-anchor="middle" font-family="Consolas,monospace" font-size="10px" fill="#c9d1d9">9h 59m</text>
+<rect x="644" y="182" width="21" height="38" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="668" y="201" width="21" height="19" fill="#58a6ff" rx="2" opacity="0.85"/>
+<rect x="692" y="197" width="21" height="23" fill="#58a6ff" rx="2" opacity="0.85"/>
 <rect x="716" y="218" width="21" height="2" fill="#58a6ff" rx="2" opacity="0.85"/>
-<text x="726" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/21</text>
+<text x="726" y="238" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">08/22</text>
 <line x1="20" y1="192" x2="740" y2="192" stroke="#f85149" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
-<text x="738" y="188" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 3h 21m</text>
+<text x="738" y="188" text-anchor="end" font-family="Consolas,monospace" font-size="10px" fill="#f85149">avg 3h 18m</text>
 </svg>
