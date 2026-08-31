@@ -17,7 +17,7 @@
 <text x="27" y="109" font-size="13px" fill="#a5d6ff">YAML</text>
 <rect x="130" y="98" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
 <rect x="130" y="98" width="32" height="14" fill="#ffa657" rx="3" opacity="0.85"/>
-<text x="518" y="109" font-size="12px" fill="#616e7f">8.7%  8 hrs 52 mins</text>
+<text x="518" y="109" font-size="12px" fill="#616e7f">8.7%  8 hrs 54 mins</text>
 <rect x="15" y="126" width="8" height="8" fill="#f85149" rx="2"/>
 <text x="27" y="135" font-size="13px" fill="#a5d6ff">Other</text>
 <rect x="130" y="124" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
@@ -41,7 +41,7 @@
 <rect x="15" y="230" width="8" height="8" fill="#e3b341" rx="2"/>
 <text x="27" y="239" font-size="13px" fill="#a5d6ff">JSON</text>
 <rect x="130" y="228" width="380" height="14" fill="#616e7f" opacity="0.15" rx="3"/>
-<rect x="130" y="228" width="16" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
+<rect x="130" y="228" width="15" height="14" fill="#e3b341" rx="3" opacity="0.85"/>
 <text x="518" y="239" font-size="12px" fill="#616e7f">4.2%  4 hrs 19 mins</text>
 <rect x="15" y="256" width="8" height="8" fill="#58a6ff" rx="2"/>
 <text x="27" y="265" font-size="13px" fill="#a5d6ff">C++</text>
