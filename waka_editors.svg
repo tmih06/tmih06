@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" font-family="Consolas,monospace" width="340" height="300" font-size="14px"><rect width="340" height="300" fill="#161b22" rx="12"/>
 <text x="15" y="29" font-family="Consolas,monospace" font-size="14px" fill="#616e7f">- Editors  (last 30d) —————————-—-</text>
-<path d="M 110.00 92.00 L 110.00 70.00 A 85 85 0 1 1 105.87 239.90 L 106.94 217.93 A 63 63 0 1 0 110.00 92.00 Z" fill="#58a6ff" stroke="#161b22" stroke-width="2"/>
-<path d="M 106.94 217.93 L 105.87 239.90 A 85 85 0 0 1 69.07 80.50 L 79.67 99.78 A 63 63 0 0 0 106.94 217.93 Z" fill="#3fb950" stroke="#161b22" stroke-width="2"/>
-<path d="M 79.67 99.78 L 69.07 80.50 A 85 85 0 0 1 87.32 73.08 L 93.19 94.28 A 63 63 0 0 0 79.67 99.78 Z" fill="#ffa657" stroke="#161b22" stroke-width="2"/>
-<path d="M 93.19 94.28 L 87.32 73.08 A 85 85 0 0 1 95.39 71.27 L 99.17 92.94 A 63 63 0 0 0 93.19 94.28 Z" fill="#f85149" stroke="#161b22" stroke-width="2"/>
-<path d="M 99.17 92.94 L 95.39 71.27 A 85 85 0 0 1 103.47 70.25 L 105.16 92.19 A 63 63 0 0 0 99.17 92.94 Z" fill="#d2a8ff" stroke="#161b22" stroke-width="2"/>
-<path d="M 105.16 92.19 L 103.47 70.25 A 85 85 0 0 1 110.00 70.00 L 110.00 92.00 A 63 63 0 0 0 105.16 92.19 Z" fill="#79c0ff" stroke="#161b22" stroke-width="2"/>
+<path d="M 110.00 92.00 L 110.00 70.00 A 85 85 0 0 1 118.91 239.53 L 116.61 217.65 A 63 63 0 0 0 110.00 92.00 Z" fill="#58a6ff" stroke="#161b22" stroke-width="2"/>
+<path d="M 116.61 217.65 L 118.91 239.53 A 85 85 0 0 1 68.37 80.89 L 79.14 100.07 A 63 63 0 0 0 116.61 217.65 Z" fill="#3fb950" stroke="#161b22" stroke-width="2"/>
+<path d="M 79.14 100.07 L 68.37 80.89 A 85 85 0 0 1 88.02 72.89 L 93.71 94.14 A 63 63 0 0 0 79.14 100.07 Z" fill="#ffa657" stroke="#161b22" stroke-width="2"/>
+<path d="M 93.71 94.14 L 88.02 72.89 A 85 85 0 0 1 95.85 71.19 L 99.51 92.88 A 63 63 0 0 0 93.71 94.14 Z" fill="#f85149" stroke="#161b22" stroke-width="2"/>
+<path d="M 99.51 92.88 L 95.85 71.19 A 85 85 0 0 1 103.67 70.24 L 105.31 92.17 A 63 63 0 0 0 99.51 92.88 Z" fill="#d2a8ff" stroke="#161b22" stroke-width="2"/>
+<path d="M 105.31 92.17 L 103.67 70.24 A 85 85 0 0 1 110.00 70.00 L 110.00 92.00 A 63 63 0 0 0 105.31 92.17 Z" fill="#79c0ff" stroke="#161b22" stroke-width="2"/>
 <text x="110" y="147" text-anchor="middle" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">avg/day</text>
-<text x="110" y="167" text-anchor="middle" font-family="Consolas,monospace" font-size="16px" font-weight="bold" fill="#58a6ff">6h 13m</text>
+<text x="110" y="167" text-anchor="middle" font-family="Consolas,monospace" font-size="16px" font-weight="bold" fill="#58a6ff">6h 26m</text>
 <rect x="210" y="50" width="10" height="10" fill="#58a6ff" rx="2"/>
 <text x="226" y="60" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Pi</text>
-<text x="226" y="73" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">50.6%  141 hrs 37 mins</text>
+<text x="226" y="73" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">48.1%  139 hrs 12 mins</text>
 <rect x="210" y="86" width="10" height="10" fill="#3fb950" rx="2"/>
 <text x="226" y="96" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">OMP</text>
-<text x="226" y="109" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">41.1%  115 hrs</text>
+<text x="226" y="109" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">43.4%  125 hrs 22 mins</text>
 <rect x="210" y="122" width="10" height="10" fill="#ffa657" rx="2"/>
 <text x="226" y="132" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Oh My Pi</text>
-<text x="226" y="145" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">3.7%  10 hrs 18 mins</text>
+<text x="226" y="145" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">4.0%  11 hrs 28 mins</text>
 <rect x="210" y="158" width="10" height="10" fill="#f85149" rx="2"/>
 <text x="226" y="168" font-family="Consolas,monospace" font-size="13px" fill="#c9d1d9">Codex Vscode</text>
 <text x="226" y="181" font-family="Consolas,monospace" font-size="11px" fill="#616e7f">1.5%  4 hrs 19 mins</text>
